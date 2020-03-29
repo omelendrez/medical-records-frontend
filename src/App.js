@@ -1,13 +1,11 @@
 import React from 'react';
-import './App.css';
+
+import Customers from './components/Customers'
 
 function App() {
   return (
-    <div className="App">
-      <div className="alert alert-primary">
-        Esta es una nueva página
-      </div>
-      <button className="btn btn-primary">Dar Enter</button>
+    <div className="container-fluid">
+      <Customers />
     </div>
   );
 }
