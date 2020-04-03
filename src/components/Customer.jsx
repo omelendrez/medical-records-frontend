@@ -1,14 +1,17 @@
 import React from 'react'
 
-const Customer = ({ data }) => {
-  const { name, address, phone } = data
+const Customer = ({ data, indice }) => {
+
+  const { name, address, phone, email } = data
 
   return (
-    <React.Fragment>
-      <div>{name}</div>
-      <div>{address}</div>
-      <div>{phone}</div>
-    </React.Fragment>
+    <tr>
+      <td>{indice}</td>
+      <td>{name}</td>
+      <td>{address}</td>
+      <td>{phone}</td>
+      <td>{email}</td>
+    </tr>
   )
 }
 
