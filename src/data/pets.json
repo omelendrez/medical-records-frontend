@@ -1,9 +1,10 @@
 {
   "success": true,
   "pets": {
-    "count": 3,
+    "count": 2,
     "rows": [
       {
+        "id": 1,
         "customerId": 1,
         "name": "Foster",
         "type": "Can",
@@ -12,9 +13,13 @@
         "weight": "45kg",
         "yearBorn": "1990",
         "observations": "Bueno",
-        "statusId": 1
+        "status": {
+          "id": 1,
+          "name": "Activo"
+        }
       },
       {
+        "id": 2,
         "customerId": 1,
         "name": "Michifuz",
         "type": "Felino",
@@ -23,7 +28,10 @@
         "weight": "",
         "yearBorn": "2019",
         "observations": "Medio loco",
-        "statusId": 1
+        "status": {
+          "id": 1,
+          "name": "Activo"
+        }
       }
     ]
   }
