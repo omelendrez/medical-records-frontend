@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Customer from './Customer'
-
-import { customers } from '../data/customers.json'
+import { getCustomers } from '../services/customers'
 
 const Customers = () => {
+
+  const [customers, setCustomers] = useState({ rows: [] })
+
+  useEffect(() => {
+    getCustomers()
+      .then(customers => setCustomers(customers))
+  }, [])
 
   const { rows } = customers
 

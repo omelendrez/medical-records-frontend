@@ -1,32 +1,35 @@
 {
   "success": true,
-  "consultations": [
-    {
-      "id": 1,
-      "petId": 1,
-      "date": "15-Jan-20",
-      "diagnosis": "Puñalada en la espalda",
-      "treatment": "Sutura",
-      "nextConsultation": "05-Mar-20",
-      "observations": ""
-    },
-    {
-      "id": 2,
-      "petId": 2,
-      "date": "25-Feb-20",
-      "diagnosis": "Balazo en la oreja",
-      "treatment": "Cafiaspirinas",
-      "nextConsultation": null,
-      "observations": ""
-    },
-    {
-      "id": 3,
-      "petId": 1,
-      "date": "15-Mar-20",
-      "diagnosis": "Puñalada en la espalda",
-      "treatment": "Se le da el alta",
-      "nextConsultation": null,
-      "observations": ""
-    }
-  ]
+  "consultations": {
+    "count": 3,
+    "rows": [
+      {
+        "id": 1,
+        "petId": 1,
+        "date": "15-Jan-20",
+        "diagnosis": "Puñalada en la espalda",
+        "treatment": "Sutura",
+        "nextConsultation": "05-Mar-20",
+        "observations": ""
+      },
+      {
+        "id": 2,
+        "petId": 2,
+        "date": "25-Feb-20",
+        "diagnosis": "Balazo en la oreja",
+        "treatment": "Cafiaspirinas",
+        "nextConsultation": null,
+        "observations": ""
+      },
+      {
+        "id": 3,
+        "petId": 1,
+        "date": "15-Mar-20",
+        "diagnosis": "Puñalada en la espalda",
+        "treatment": "Se le da el alta",
+        "nextConsultation": null,
+        "observations": ""
+      }
+    ]
+  }
 }

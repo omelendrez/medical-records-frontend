@@ -5,3 +5,10 @@
   background-position-y: bottom;
   background-position-x: right;
 }
+
+.image h1 {
+  padding-top: 60px;
+  text-align: center;
+  font-size: 4em;
+  color: #888;
+}
