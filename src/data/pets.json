@@ -10,14 +10,6 @@
       "weight": "45kg",
       "yearBorn": "1990",
       "observations": "Bueno",
-      "customer": {
-        "id": 1,
-        "name": "Omar Melendrez",
-        "address": "Alberdi 2678",
-        "phone": "2915754922",
-        "email": "omar.melendrez@gmail.com",
-        "observations": ""
-      },
       "status": {
         "id": 1,
         "name": "Active"
@@ -32,14 +24,6 @@
       "weight": "",
       "yearBorn": "2019",
       "observations": "Medio loco",
-      "customer": {
-        "id": 1,
-        "name": "Omar Melendrez",
-        "address": "Alberdi 2678",
-        "phone": "2915754922",
-        "email": "omar.melendrez@gmail.com",
-        "observations": ""
-      },
       "status": {
         "id": 1,
         "name": "Active"
