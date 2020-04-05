@@ -1,38 +1,49 @@
 {
   "success": true,
-  "pets": {
-    "count": 2,
-    "rows": [
-      {
+  "pets": [
+    {
+      "id": 1,
+      "name": "Foster",
+      "type": "Can",
+      "breed": "Ovejero Belga",
+      "sex": "M",
+      "weight": "45kg",
+      "yearBorn": "1990",
+      "observations": "Bueno",
+      "customer": {
         "id": 1,
-        "customerId": 1,
-        "name": "Foster",
-        "type": "Can",
-        "breed": "Ovejero Belga",
-        "sex": "M",
-        "weight": "45kg",
-        "yearBorn": "1990",
-        "observations": "Bueno",
-        "status": {
-          "id": 1,
-          "name": "Activo"
-        }
+        "name": "Omar Melendrez",
+        "address": "Alberdi 2678",
+        "phone": "2915754922",
+        "email": "omar.melendrez@gmail.com",
+        "observations": ""
       },
-      {
-        "id": 2,
-        "customerId": 1,
-        "name": "Michifuz",
-        "type": "Felino",
-        "breed": "Mestizo",
-        "sex": "M",
-        "weight": "",
-        "yearBorn": "2019",
-        "observations": "Medio loco",
-        "status": {
-          "id": 1,
-          "name": "Activo"
-        }
+      "status": {
+        "id": 1,
+        "name": "Active"
       }
-    ]
-  }
+    },
+    {
+      "id": 2,
+      "name": "Michifuz",
+      "type": "Felino",
+      "breed": "Mestizo",
+      "sex": "M",
+      "weight": "",
+      "yearBorn": "2019",
+      "observations": "Medio loco",
+      "customer": {
+        "id": 1,
+        "name": "Omar Melendrez",
+        "address": "Alberdi 2678",
+        "phone": "2915754922",
+        "email": "omar.melendrez@gmail.com",
+        "observations": ""
+      },
+      "status": {
+        "id": 1,
+        "name": "Active"
+      }
+    }
+  ]
 }

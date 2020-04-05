@@ -1,0 +1,83 @@
+{
+  "success": true,
+  "consultations": [
+    {
+      "id": 1,
+      "date": "15-Jan-20",
+      "diagnosis": "Puñalada en la espalda",
+      "treatment": "Sutura",
+      "nextConsultation": "05-Mar-20",
+      "observations": "",
+      "pet": {
+        "id": 1,
+        "name": "Foster",
+        "type": "Can",
+        "breed": "Ovejero Belga",
+        "sex": "M",
+        "weight": "45kg",
+        "yearBorn": "1990",
+        "observations": "Bueno",
+        "customer": {
+          "id": 1,
+          "name": "Omar Melendrez",
+          "address": "Alberdi 2678",
+          "phone": "2915754922",
+          "email": "omar.melendrez@gmail.com",
+          "observations": ""
+        }
+      }
+    },
+    {
+      "id": 2,
+      "date": "25-Feb-20",
+      "diagnosis": "Balazo en la oreja",
+      "treatment": "Cafiaspirinas",
+      "nextConsultation": null,
+      "observations": "",
+      "pet": {
+        "id": 2,
+        "name": "Michifuz",
+        "type": "Felino",
+        "breed": "Mestizo",
+        "sex": "M",
+        "weight": "",
+        "yearBorn": "2019",
+        "observations": "Medio loco",
+        "customer": {
+          "id": 1,
+          "name": "Omar Melendrez",
+          "address": "Alberdi 2678",
+          "phone": "2915754922",
+          "email": "omar.melendrez@gmail.com",
+          "observations": ""
+        }
+      }
+    },
+    {
+      "id": 3,
+      "date": "15-Mar-20",
+      "diagnosis": "Puñalada en la espalda",
+      "treatment": "Se le da el alta",
+      "nextConsultation": null,
+      "observations": "",
+      "pet": {
+        "id": 1,
+        "name": "Foster",
+        "type": "Can",
+        "breed": "Ovejero Belga",
+        "sex": "M",
+        "weight": "45kg",
+        "yearBorn": "1990",
+        "observations": "Bueno",
+        "customer": {
+          "id": 1,
+          "name": "Omar Melendrez",
+          "address": "Alberdi 2678",
+          "phone": "2915754922",
+          "email": "omar.melendrez@gmail.com",
+          "observations": ""
+        }
+      }
+    }
+  ]
+}
