@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom'
 
 const Navbar = () => {
   const location = useLocation()
-  const isSeacrh = location.pathname === '/clientes'
+  const hasSearch = location.pathname === '/clientes' || location.pathname === '/pacientes' || location.pathname === '/consultas'
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -26,11 +26,13 @@ const Navbar = () => {
             <a className="nav-link" href="/consultas">Consultas</a>
           </li>
         </ul>
-        {isSeacrh &&
+        {
+          hasSearch &&
           <form className="form-inline my-2 my-lg-0">
             <input className="form-control mr-sm-2" type="search" aria-label="Search" />
             <button className="btn btn-warning" type="submit">Buscar</button>
-          </form>}
+          </form>
+        }
 
       </div>
     </nav>
