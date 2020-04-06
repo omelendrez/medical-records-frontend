@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Pet from './Pet'
-
-import { pets } from '../data/pets.json'
+import { getPets } from '../services/pets'
 
 const Pets = () => {
+
+  const [pets, setPets] = useState({ rows: [] })
+
+  useEffect(() => {
+    getPets()
+      .then(pets => setPets(pets))
+  }, [])
 
   const { rows } = pets
 
