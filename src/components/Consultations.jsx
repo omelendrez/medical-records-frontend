@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Consultation from './Consultation'
-
-import { consultations } from '../data/consultations.json'
+import { getConsultations } from '../services/consultations'
 
 const Consultations = () => {
+
+  const [consultations, setConsultations] = useState({ rows: [] })
+
+  useEffect(() => {
+    getConsultations()
+      .then(consultations => setConsultations(consultations))
+  }, [])
 
   const { rows } = consultations
 
