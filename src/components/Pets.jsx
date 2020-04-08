@@ -7,9 +7,9 @@ const Pets = ({ filter }) => {
   const [pets, setPets] = useState({ rows: [] })
 
   useEffect(() => {
-    getPets()
+    getPets(filter)
       .then(pets => setPets(pets))
-  }, [])
+  }, [filter])
 
   const { rows } = pets
 
