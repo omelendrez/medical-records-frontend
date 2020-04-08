@@ -3,6 +3,9 @@ import { useLocation } from 'react-router-dom'
 import NavLink from './NavLink'
 
 const Navbar = ({ doSearch }) => {
+  const { pathname: page } = useLocation()
+  const hasSearch = page === '/clientes' || page === '/pacientes' || page === '/consultas'
+
   const [search, setSearch] = useState('')
 
   const onChange = e => {
@@ -14,8 +17,6 @@ const Navbar = ({ doSearch }) => {
     doSearch(search)
   }
 
-  const { pathname: page } = useLocation()
-  const hasSearch = page === '/clientes' || page === '/pacientes' || page === '/consultas'
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
