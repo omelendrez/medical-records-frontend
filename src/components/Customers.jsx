@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react'
 import Customer from './Customer'
 import { getCustomers } from '../services/customers'
 
-const Customers = () => {
+const Customers = ({ filter }) => {
 
   const [customers, setCustomers] = useState({ rows: [] })
 
   useEffect(() => {
-    getCustomers()
+    getCustomers(filter)
       .then(customers => setCustomers(customers))
-  }, [])
+  }, [filter])
 
   const { rows } = customers
 

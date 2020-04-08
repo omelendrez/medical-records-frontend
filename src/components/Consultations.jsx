@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Consultation from './Consultation'
 import { getConsultations } from '../services/consultations'
 
-const Consultations = () => {
+const Consultations = ({ filter }) => {
 
   const [consultations, setConsultations] = useState({ rows: [] })
 

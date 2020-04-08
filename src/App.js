@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Home from './components/Home'
@@ -7,15 +7,17 @@ import Pets from './components/Pets'
 import Consultations from './components/Consultations'
 
 function App() {
+  const [filter, setFilter] = useState('')
+
   return (
     <BrowserRouter>
-      <Navbar />
+      <Navbar doSearch={setFilter} />
       <main>
         <Switch>
           <Route path="/" component={Home} exact />
-          <Route path="/clientes" component={Customers} exact />
-          <Route path="/pacientes" component={Pets} />
-          <Route path="/consultas" component={Consultations} />
+          <Route path="/clientes" component={() => <Customers filter={filter} />} />
+          <Route path="/pacientes" component={() => <Pets filter={filter} />} />
+          <Route path="/consultas" component={() => <Consultations filter={filter} />} />
         </Switch>
       </main>
     </BrowserRouter>
