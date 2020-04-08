@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Customer from './Customer'
-import { getCustomers } from '../services/customers'
+import { getCustomers } from '../../services/customers'
 
 const Customers = ({ filter }) => {
 

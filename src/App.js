@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Home from './components/Home'
-import Customers from './components/Customers'
-import Pets from './components/Pets'
-import Consultations from './components/Consultations'
+import Customers from './components/customers/Customers'
+import Pets from './components/pets/Pets'
+import Consultations from './components/consultations/Consultations'
 
 function App() {
   const [filter, setFilter] = useState('')

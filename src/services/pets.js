@@ -1,7 +1,7 @@
 import http from './api'
 
-export const getPets = async () => {
-    const response = await http.get('pets')
+export const getPets = async filter => {
+    const response = await http.get(`pets?filter=${filter}`)
     return response.data.pets
 }
 

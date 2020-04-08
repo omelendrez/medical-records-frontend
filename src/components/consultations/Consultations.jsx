@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Consultation from './Consultation'
-import { getConsultations } from '../services/consultations'
+import { getConsultations } from '../../services/consultations'
 
 const Consultations = ({ filter }) => {
 
