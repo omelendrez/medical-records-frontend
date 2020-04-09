@@ -1,7 +1,7 @@
 import http from './api'
 
-export const getConsultations = async () => {
-  const response = await http.get('consultations')
+export const getConsultations = async filter => {
+  const response = await http.get(`consultations?filter=${filter}`)
   return response.data.consultations
 }
 

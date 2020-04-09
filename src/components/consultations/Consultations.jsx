@@ -7,9 +7,9 @@ const Consultations = ({ filter }) => {
   const [consultations, setConsultations] = useState({ rows: [] })
 
   useEffect(() => {
-    getConsultations()
+    getConsultations(filter)
       .then(consultations => setConsultations(consultations))
-  }, [])
+  }, [filter])
 
   const { rows } = consultations
 
