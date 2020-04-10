@@ -6,9 +6,9 @@
   background-position-x: right;
 }
 
-.image h1 {
-  padding-top: 60px;
-  text-align: center;
-  font-size: 4em;
-  color: #888;
+.image .logo {
+  background-image: url(../logo.jpg);
+  background-repeat: no-repeat;
+  background-size: auto 30%;
+  height: 100%;
 }
