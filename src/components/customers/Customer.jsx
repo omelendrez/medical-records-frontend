@@ -3,12 +3,12 @@ import './Customer.css'
 
 const Customer = ({ data, indice, deleteCustomer, editCustomer }) => {
 
-  const { name, address, phone, email, pets } = data
+  const { id, name, address, phone, email, pets } = data
   const petsList = pets.map(pet => pet.name)
 
   return (
     <tr>
-      <td>{indice}</td>
+      <td>{id}</td>
       <td className="name">{name}
         <div className="pet">
           {petsList.join(', ')}

@@ -7,6 +7,7 @@ const Customers = ({ filter }) => {
 
   const [customers, setCustomers] = useState({ rows: [] })
   const [addCustomer, setAddCustomer] = useState(false)
+  const [editCustomer, setEditCustomer] = useState(false)
 
   useEffect(() => {
     getCustomers(filter)
@@ -21,16 +22,16 @@ const Customers = ({ filter }) => {
   }
 
   const handleEdit = customer => {
-    console.log(customer)
+    setEditCustomer(`./edit-cliente/${customer.id}`)
   }
 
   const { rows } = customers
 
   return (
     <>
+      {editCustomer && <Redirect to={editCustomer} />}
       {addCustomer && <Redirect to="./nuevo-cliente" />}
       <div className="container-fluid">
-        <button className="btn btn-primary my-1 float-right" onClick={() => setAddCustomer(true)}>Agregar</button>
         <table className="table">
           <thead>
             <tr>
@@ -39,7 +40,9 @@ const Customers = ({ filter }) => {
               <th scope="col">Dirección</th>
               <th scope="col">Teléfono</th>
               <th scope="col">Email</th>
-              <th scope="col" colSpan="2"></th>
+              <th scope="col" colSpan="2">
+                <button className="btn btn-primary my-1 float-right" onClick={() => setAddCustomer(true)}>Agregar</button>
+              </th>
             </tr>
           </thead>
           <tbody>

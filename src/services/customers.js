@@ -5,6 +5,11 @@ export const getCustomers = async filter => {
   return response.data.customers
 }
 
+export const getCustomer = async id => {
+  const response = await http.get(`customers/${id}`)
+  return response.data.customer
+}
+
 export const saveCustomer = customer => {
   return new Promise((resolve, reject) => {
     http.post('customers', customer)
