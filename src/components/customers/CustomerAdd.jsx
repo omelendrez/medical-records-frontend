@@ -15,7 +15,7 @@ const CustomerForm = props => {
 
   const handleChange = (e => {
     e.preventDefault()
-    setError(false)
+    error && setError(false)
     setForm({
       ...form,
       [e.target.id]: e.target.value
