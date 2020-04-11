@@ -11,7 +11,7 @@ const CustomerForm = props => {
   useEffect(() => {
     getCustomer(props.match.params.id)
       .then(customer => setForm(customer))
-  }, [])
+  }, [props.match.params.id])
 
 
   const handleChange = (e => {

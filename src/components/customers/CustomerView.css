@@ -1,0 +1,15 @@
+.customer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.customer .name {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.customer .attribute {
+  font-weight: bold;
+}

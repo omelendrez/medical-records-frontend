@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './Customer.css'
 
 const Customer = ({ data, indice, deleteCustomer, editCustomer }) => {
@@ -9,7 +10,8 @@ const Customer = ({ data, indice, deleteCustomer, editCustomer }) => {
   return (
     <tr>
       <td>{id}</td>
-      <td className="name">{name}
+      <td className="name">
+        <Link to={`/clientes/${id}`}>{name}</Link>
         <div className="pet">
           {petsList.join(', ')}
         </div>
