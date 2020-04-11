@@ -22,7 +22,6 @@ const CustomerForm = props => {
     })
   })
 
-
   const handleSave = (e => {
     saveCustomer(form)
       .then(() => setBack(true))
