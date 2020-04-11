@@ -24,7 +24,6 @@ const CustomerForm = props => {
 
 
   const handleSave = (e => {
-    e.preventDefault()
     saveCustomer(form)
       .then(() => setBack(true))
       .catch(err => {
@@ -109,7 +108,7 @@ const CustomerForm = props => {
               <button
                 type="submit"
                 className="btn btn-primary"
-                onClick={e => handleSave(e)}
+                onClick={() => handleSave()}
               >Guardar</button>
 
               <button
