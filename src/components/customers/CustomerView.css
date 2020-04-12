@@ -1,15 +1,22 @@
 .customer {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
+  margin: 18px;
 }
 
-.customer .name {
-  font-size: 2em;
-  font-weight: bold;
+.customer .container {
+  padding-bottom: 18px;
 }
 
-.customer .attribute {
-  font-weight: bold;
+
+.customer .observations {
+  font-style: italic;
+}
+ .customer .pets {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 1.4em;
+}
+
+.customer .pets .pet {
+  margin-right: 20px;
 }

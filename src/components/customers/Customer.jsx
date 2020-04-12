@@ -12,7 +12,7 @@ const Customer = ({ data, deleteCustomer, editCustomer }) => {
       <td>{id}</td>
       <td className="name">
         <Link to={`/clientes/${id}`}>{name}</Link>
-        <div className="pet">
+        <div className="pet-list">
           {petsList.join(', ')}
         </div>
       </td>
