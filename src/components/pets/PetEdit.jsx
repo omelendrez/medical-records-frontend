@@ -6,7 +6,16 @@ const PetForm = props => {
     const [back, setBack] = useState(false)
     const [error, setError] = useState('')
 
-    const [form, setForm] = useState({})
+    const [form, setForm] = useState({
+        customerId: '',
+        name: '',
+        type: '',
+        breed: '',
+        observations: '',
+        sex: '',
+        yearBorn: '',
+        weight: ''
+    })
 
     useEffect(() => {
         getPet(props.match.params.id)

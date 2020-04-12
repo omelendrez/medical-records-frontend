@@ -31,19 +31,27 @@ const CustomerForm = props => {
             <h6 className="card-subtitle mb-2 text-muted">{customer.phone}</h6>
 
             <p className="card-text observations">{customer.observations}</p>
-            <div className="pets">
 
-              {
-                customer.pets.map((pet, index) => {
-                  return (
-                    <Link
-                      to={`/edit-paciente/${pet.id}`}
-                      key={index}
-                      className="pet"
-                    >{pet.name}</Link>
-                  )
-                })
-              }
+            <div className="pets">
+              <div className="pets-header">
+                Pacientes
+              </div>
+              <ul className="list-group">
+                {
+                  customer.pets.map((pet, index) => {
+                    return (
+                      <li className="list-group-item" key={index}>
+                        <Link
+                          to={`/edit-paciente/${pet.id}`}
+                          className="pet"
+                        >{pet.name}</Link>
+                      </li>
+                    )
+                  })
+                }
+              </ul>
+
+
               <div>
                 <button
                   type="button"

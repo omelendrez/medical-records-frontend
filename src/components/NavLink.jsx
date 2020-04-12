@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 const NavLink = (props) => {
   const { pathname: page } = useLocation()
-  const isActive = page === props.to;
+  const isActive = props.to.includes(page.split('/')[1]);
   const className = 'nav-link ' && isActive ? 'active' : '';
 
   return (

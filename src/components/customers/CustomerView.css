@@ -21,7 +21,12 @@
   border: 1px solid #ccc;
   border-radius: 6px;
   padding: 10px;
-  font-size: 1.4em;
+}
+
+.customer .pets .pets-header {
+  font-size: 1.2em;
+  padding-bottom: 6px;
+  font-weight: bold;
 }
 
 .customer .pets .pet {
