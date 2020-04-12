@@ -5,6 +5,11 @@ export const getConsultations = async filter => {
   return response.data.consultations
 }
 
+export const getConsultation = async id => {
+  const response = await http.get(`consultations/${id}`)
+  return response.data.consultation
+}
+
 export const saveConsultation = consultation => {
   return new Promise((resolve, reject) => {
     http.post('consultations', consultation)

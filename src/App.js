@@ -10,6 +10,8 @@ import Pets from './components/pets/Pets'
 import PetAdd from './components/pets/PetAdd'
 import PetEdit from './components/pets/PetEdit'
 import Consultations from './components/consultations/Consultations'
+import ConsultationAdd from './components/consultations/ConsultationAdd'
+import ConsultationEdit from './components/consultations/ConsultationEdit'
 
 function App() {
   const [filter, setFilter] = useState('')
@@ -28,6 +30,8 @@ function App() {
           <Route path="/nuevo-paciente" component={() => <PetAdd />} />
           <Route path="/edit-paciente/:id" exact component={PetEdit} />
           <Route path="/consultas" component={() => <Consultations filter={filter} />} />
+          <Route path="/edit-consulta/:id" exact component={ConsultationEdit} />
+          <Route path="/nueva-consulta" component={() => <ConsultationAdd />} />
         </Switch>
       </main>
     </BrowserRouter>
