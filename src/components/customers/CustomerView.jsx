@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { Redirect, Link } from 'react-router-dom'
 import { getCustomer } from '../../services/customers'
+import { getPet } from '../../services/pets'
+import Pet from './Pet'
 import './CustomerView.css'
 
 const CustomerForm = props => {
   const [back, setBack] = useState(false)
   const [addPet, setAddPet] = useState('')
   const [customer, setCustomer] = useState({ pets: [] })
+  const [pet, setPet] = useState({})
 
   useEffect(() => {
     getCustomer(props.match.params.id)
@@ -16,6 +19,11 @@ const CustomerForm = props => {
   const handleAddPet = e => {
     e.preventDefault()
     setAddPet(`/clientes/${customer.id}/nuevo-paciente`)
+  }
+
+  const selectPet = pet => {
+    getPet(pet.id)
+      .then(pet => setPet(pet))
   }
 
   return (
@@ -32,7 +40,7 @@ const CustomerForm = props => {
 
             <p className="card-text observations">{customer.observations}</p>
 
-            <div className="pets">
+            {!pet.name && <div className="pets">
               <div className="pets-header">
                 Pacientes
               </div>
@@ -40,11 +48,12 @@ const CustomerForm = props => {
                 {
                   customer.pets.map((pet, index) => {
                     return (
-                      <li className="list-group-item" key={index}>
-                        <Link
-                          to={`/edit-paciente/${pet.id}`}
-                          className="pet"
-                        >{pet.name}</Link>
+                      <li
+                        className="list-group-item"
+                        key={index}
+                        onClick={() => selectPet(pet)}
+                      >
+                        {pet.name}
                       </li>
                     )
                   })
@@ -60,9 +69,12 @@ const CustomerForm = props => {
                 >Agregar</button>
               </div>
             </div>
+            }
+            {pet.name && <Pet pet={pet} />}
             {
               !customer.pets.length && <div className="alert alert-warning my-3">No tiene mascotas</div>
             }
+
           </div>
           <div className="container-fluid my-4">
             <button
@@ -72,9 +84,9 @@ const CustomerForm = props => {
             >Volver</button>
           </div>
         </div>
-        <div className="card consultations">
-          test
-        </div>
+        {pet.name && <div className="card consultations">
+          {pet.consultations.map(consultation => consultation.treatment).join('<br/>')}
+        </div>}
       </div>
 
     </>

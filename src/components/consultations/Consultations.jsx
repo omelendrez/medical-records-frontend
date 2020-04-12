@@ -6,7 +6,6 @@ import { getConsultations, deleteConsultation } from '../../services/consultatio
 const Consultations = ({ filter }) => {
 
   const [consultations, setConsultations] = useState({ rows: [] })
-  const [addConsultation, setAddConsultation] = useState(false)
   const [editConsultation, setEditConsultation] = useState(false)
 
   useEffect(() => {
@@ -30,7 +29,6 @@ const Consultations = ({ filter }) => {
   return (
     <>
       {editConsultation && <Redirect to={editConsultation} />}
-      {addConsultation && <Redirect to="./nueva-consulta" />}
       <div className="container-fluid">
         <table className="table">
           <thead>
@@ -41,7 +39,6 @@ const Consultations = ({ filter }) => {
               <th scope="col">Tratamiento</th>
               <th scope="col">Nueva Consulta</th>
               <th scope="col" colSpan="2">
-                <button className="btn btn-primary my-1 float-right" onClick={() => setAddConsultation(true)}>Agregar</button>
               </th>
             </tr>
           </thead>

@@ -6,7 +6,6 @@ import { getPets, deletePet } from '../../services/pets'
 const Pets = ({ filter }) => {
 
   const [pets, setPets] = useState({ rows: [] })
-  const [addPet, setAddPet] = useState(false)
   const [editPet, setEditPet] = useState(false)
 
   useEffect(() => {
@@ -30,7 +29,6 @@ const Pets = ({ filter }) => {
   return (
     <>
       {editPet && <Redirect to={editPet} />}
-      {addPet && <Redirect to="./nuevo-paciente" />}
       <div className="container-fluid">
         <table className="table">
           <thead>
@@ -40,7 +38,7 @@ const Pets = ({ filter }) => {
               <th scope="col">Tipo</th>
               <th scope="col">Raza</th>
               <th scope="col" colSpan="2">
-                <button className="btn btn-primary my-1 float-right" onClick={() => setAddPet(true)}>Agregar</button>
+
               </th>
             </tr>
           </thead>
