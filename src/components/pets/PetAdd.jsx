@@ -6,6 +6,7 @@ const PetForm = props => {
   const [back, setBack] = useState(false)
   const [error, setError] = useState('')
   const [form, setForm] = useState({
+    customerId: props.match.params.id,
     name: '',
     type: '',
     breed: '',
@@ -32,7 +33,7 @@ const PetForm = props => {
 
   return (
     <>
-      {back && <Redirect to="/pacientes" />}
+      {back && <Redirect to={`/clientes/${props.match.params.id}`} />}
       <div
         className="container">
         <div className="row">
@@ -156,4 +157,3 @@ const PetForm = props => {
 }
 
 export default PetForm
-

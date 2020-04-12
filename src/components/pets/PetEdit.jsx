@@ -6,7 +6,16 @@ const PetForm = props => {
     const [back, setBack] = useState(false)
     const [error, setError] = useState('')
 
-    const [form, setForm] = useState({})
+    const [form, setForm] = useState({
+        customerId: '',
+        name: '',
+        type: '',
+        breed: '',
+        observations: '',
+        sex: '',
+        yearBorn: '',
+        weight: ''
+    })
 
     useEffect(() => {
         getPet(props.match.params.id)
@@ -35,7 +44,7 @@ const PetForm = props => {
 
     return (
         <>
-            {back && <Redirect to="/pacientes" />}
+            {back && <Redirect to={`/clientes/${form.customerId}`} />}
             <div className="container">
                 <div className="row">
                     <div className="container col-8">

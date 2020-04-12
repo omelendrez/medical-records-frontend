@@ -1,15 +1,34 @@
-.customer {
+.main-container {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
 }
 
-.customer .name {
-  font-size: 2em;
+.customer,
+.consultations {
+  border: 0;
+}
+
+.customer .container {
+  padding-bottom: 18px;
+}
+
+.customer .observations {
+  font-style: italic;
+  max-width: 240px;
+  min-width: 240px;
+}
+ .customer .pets {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.customer .pets .pets-header {
+  font-size: 1.2em;
+  padding-bottom: 6px;
   font-weight: bold;
 }
 
-.customer .attribute {
-  font-weight: bold;
+.customer .pets .pet {
+  margin-right: 20px;
 }
