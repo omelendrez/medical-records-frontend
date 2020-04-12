@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import './Customer.css'
 
-const Customer = ({ data, indice, deleteCustomer, editCustomer }) => {
+const Customer = ({ data, deleteCustomer, editCustomer }) => {
 
   const { id, name, address, phone, email, pets } = data
   const petsList = pets.map(pet => pet.name)

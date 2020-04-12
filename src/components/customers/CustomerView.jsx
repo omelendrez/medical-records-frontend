@@ -36,6 +36,11 @@ const CustomerForm = props => {
             !customer.pets.length && <div className="alert alert-info">No tiene mascotas</div>
           }
         </div>
+        <button
+          type="button"
+          className="btn btn-danger float-right"
+          onClick={() => setBack(true)}
+        >Volver</button>
       </div>
     </>
   )

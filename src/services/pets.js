@@ -5,6 +5,11 @@ export const getPets = async filter => {
     return response.data.pets
 }
 
+export const getPet = async id => {
+    const response = await http.get(`pets/${id}`)
+    return response.data.pet
+}
+
 export const savePet = pet => {
     return new Promise((resolve, reject) => {
         http.post('pets', pet)
