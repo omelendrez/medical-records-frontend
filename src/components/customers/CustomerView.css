@@ -1,14 +1,21 @@
-.customer {
-  margin: 18px;
+.main-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.customer,
+.consultations {
+  border: 0;
 }
 
 .customer .container {
   padding-bottom: 18px;
 }
 
-
 .customer .observations {
   font-style: italic;
+  max-width: 240px;
+  min-width: 240px;
 }
  .customer .pets {
   border: 1px solid #ccc;

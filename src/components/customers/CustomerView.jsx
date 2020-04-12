@@ -22,48 +22,53 @@ const CustomerForm = props => {
     <>
       {addPet && <Redirect to={addPet} />}
       {back && <Redirect to="/clientes" />}
-      <div className="card customer" style={{ width: '40vw' }}>
-        <div className="card-body">
-          <h5 className="card-title">{customer.name}</h5>
-          <h6 className="card-subtitle mb-2 text-muted">{customer.address}</h6>
-          <h6 className="card-subtitle mb-2 text-muted">{customer.phone}</h6>
+      <div className="main-container">
 
-          <p className="card-text observations">{customer.observations}</p>
-          <div className="pets">
+        <div className="card customer">
+          <div className="card-body">
+            <h5 className="card-title">{customer.name}</h5>
+            <h6 className="card-subtitle mb-2 text-muted">{customer.address}</h6>
+            <h6 className="card-subtitle mb-2 text-muted">{customer.phone}</h6>
 
-            {
-              customer.pets.map((pet, index) => {
-                return (
-                  <Link
-                    to="#"
-                    key={index}
-                    className="pet"
-                  >{pet.name}</Link>
-                )
-              })
-            }
-            <div>
-              <button
-                type="button"
-                className="btn btn-primary btn-sm"
-                onClick={e => handleAddPet(e)}
-              >Agregar</button>
+            <p className="card-text observations">{customer.observations}</p>
+            <div className="pets">
+
+              {
+                customer.pets.map((pet, index) => {
+                  return (
+                    <Link
+                      to={`/edit-paciente/${pet.id}`}
+                      key={index}
+                      className="pet"
+                    >{pet.name}</Link>
+                  )
+                })
+              }
+              <div>
+                <button
+                  type="button"
+                  className="btn btn-primary mt-4"
+                  onClick={e => handleAddPet(e)}
+                >Agregar</button>
+              </div>
             </div>
+            {
+              !customer.pets.length && <div className="alert alert-warning my-3">No tiene mascotas</div>
+            }
           </div>
-          {
-            !customer.pets.length && <div className="alert alert-info">No tiene mascotas</div>
-          }
-        </div>
-        <div className="container">
-          <div>
+          <div className="container-fluid my-4">
             <button
               type="button"
-              className="btn btn-danger"
+              className="btn btn-danger float-right"
               onClick={() => setBack(true)}
             >Volver</button>
           </div>
         </div>
+        <div className="card consultations">
+          test
+        </div>
       </div>
+
     </>
   )
 }
