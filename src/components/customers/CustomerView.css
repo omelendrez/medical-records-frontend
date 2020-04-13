@@ -32,3 +32,9 @@
 .customer .pets .pet {
   margin-right: 20px;
 }
+
+.consultations .consultation {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
