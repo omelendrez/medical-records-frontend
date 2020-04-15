@@ -32,7 +32,7 @@ function App() {
           <Route path="/edit-paciente/:id" exact component={PetEdit} />
           <Route path="/consultas" component={() => <Consultations filter={filter} />} />
           <Route path="/edit-consulta/:id" exact component={ConsultationEdit} />
-          <Route path="/nueva-consulta" component={() => <ConsultationAdd />} />
+          <Route path="/nueva-consulta/:id" exact component={ConsultationAdd} />
         </Switch>
       </main>
     </BrowserRouter>

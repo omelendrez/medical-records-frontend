@@ -5,7 +5,9 @@ import { saveConsultation } from '../../services/consultations'
 const ConsultationForm = props => {
   const [back, setBack] = useState(false)
   const [error, setError] = useState('')
+
   const [form, setForm] = useState({
+    petId: props.match.params.id,
     date: '',
     diagnosis: '',
     treatment: '',
@@ -43,7 +45,7 @@ const ConsultationForm = props => {
                   <div className="form-group">
                     <label htmlFor="date">Fecha consulta</label>
                     <input
-                      type="text"
+                      type="date"
                       className="form-control"
                       id="date"
                       onChange={e => handleChange(e)}
@@ -84,7 +86,7 @@ const ConsultationForm = props => {
                   <div className="form-group">
                     <label htmlFor="nextConsultation">Nueva consulta</label>
                     <input
-                      type="Text"
+                      type="date"
                       className="form-control"
                       id="nextConsultation"
                       onChange={e => handleChange(e)}

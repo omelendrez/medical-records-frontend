@@ -55,7 +55,7 @@ const ConsultationForm = props => {
                   <div className="form-group">
                     <label htmlFor="date">Fecha consulta</label>
                     <input
-                      type="text"
+                      type="date"
                       className="form-control"
                       id="date"
                       onChange={e => handleChange(e)}
@@ -96,7 +96,7 @@ const ConsultationForm = props => {
                   <div className="form-group">
                     <label htmlFor="nextConsultation">Proxima consulta</label>
                     <input
-                      type="nextConsultation"
+                      type="date"
                       className="form-control"
                       id="nextConsultation"
                       onChange={e => handleChange(e)}
