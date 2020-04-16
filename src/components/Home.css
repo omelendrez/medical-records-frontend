@@ -9,6 +9,7 @@
 .image .logo {
   background-image: url(../logo.jpg);
   background-repeat: no-repeat;
+  background-position-y: bottom;
   background-size: auto 30%;
   height: 100%;
 }
