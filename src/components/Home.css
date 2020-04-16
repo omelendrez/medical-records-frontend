@@ -12,3 +12,8 @@
   background-size: auto 30%;
   height: 100%;
 }
+
+.image .logo h1 {
+  text-align: center;
+  padding-top: 30px;
+}
