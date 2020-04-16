@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import { getCustomer } from '../../services/customers'
 import { getPet } from '../../services/pets'
+import { deleteConsultation } from '../../services/consultations'
 import './CustomerView.css'
 
-const Consultation = ({ consultation }) => {
-  const { date, diagnosis, treatment, nextConsultation, observations } = consultation
+const Consultation = ({ consultation, editConsultation, deleteConsultation }) => {
+  const { id, date, diagnosis, treatment, nextConsultation, observations } = consultation
   return (
     <div className="card consultation">
       <div className="card-body">
@@ -14,13 +15,24 @@ const Consultation = ({ consultation }) => {
         <p className="card-text">{treatment}</p>
         <h6 className="card-subtitle mb-2">Próxima consulta: {nextConsultation}</h6>
         <p className="card-text">{observations}</p>
+        <div>
+          <button
+            type="button"
+            className="btn btn-info m-1"
+            onClick={() => editConsultation(id)}
+          >Modificar</button>
+          <button
+            type="button"
+            className="btn btn-danger float-right"
+            onClick={() => deleteConsultation(consultation)}
+          >Eliminar</button>
+        </div>
       </div>
     </div>
   )
 }
 
-
-const Consultations = ({ consultations, addConsultation }) => {
+const Consultations = ({ consultations, addConsultation, editConsultation, deleteConsultation }) => {
 
   return (
     <div className="consultations">
@@ -31,7 +43,12 @@ const Consultations = ({ consultations, addConsultation }) => {
           onClick={e => addConsultation(e)}
         >Agregar</button>
       </div>
-      {consultations.map((consultation, index) => <Consultation key={index} consultation={consultation} />)}
+      {consultations.map((consultation, index) => <Consultation
+        key={index}
+        consultation={consultation}
+        editConsultation={editConsultation}
+        deleteConsultation={deleteConsultation}
+      />)}
     </div>
   )
 }
@@ -100,7 +117,7 @@ const Customer = ({ customer, pet, handleAddPet, selectPet, setBack }) => {
       <div className="container-fluid my-4">
         <button
           type="button"
-          className="btn btn-danger float-right"
+          className="btn btn-warning float-right"
           onClick={() => setBack(true)}
         >Volver</button>
       </div>
@@ -115,6 +132,7 @@ const CustomerView = props => {
   const [customer, setCustomer] = useState({ pets: [] })
   const [pet, setPet] = useState({})
   const [addConsultation, setAddConsultation] = useState('')
+  const [editConsultation, setEditConsultation] = useState('')
 
   useEffect(() => {
     getCustomer(props.match.params.id)
@@ -122,7 +140,17 @@ const CustomerView = props => {
   }, [props.match.params.id])
 
   const handleAddConsultation = e => {
-    setAddConsultation(`/nueva-consulta/${pet.id}`)
+    setAddConsultation(`/nueva-consulta/${customer.id}/${pet.id}`)
+  }
+
+  const handleEditConsultation = id => {
+    setEditConsultation(`/edit-consulta/${id}`)
+  }
+
+  const handleDeleteConsultation = consultation => {
+    deleteConsultation(consultation)
+      .then(() => getPet(pet.id)
+        .then(pet => setPet(pet)))
   }
 
   const handleAddPet = e => {
@@ -138,6 +166,7 @@ const CustomerView = props => {
   return (
     <>
       {addConsultation && <Redirect to={addConsultation} />}
+      {editConsultation && <Redirect to={editConsultation} />}
       {addPet && <Redirect to={addPet} />}
       {back && <Redirect to="/clientes" />}
       <div className="main-container container-fluid">
@@ -152,8 +181,9 @@ const CustomerView = props => {
         {pet.name && <Consultations
           consultations={consultations}
           addConsultation={handleAddConsultation}
+          editConsultation={handleEditConsultation}
+          deleteConsultation={handleDeleteConsultation}
         />}
-
       </div>
 
     </>

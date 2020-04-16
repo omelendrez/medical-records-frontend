@@ -66,6 +66,21 @@ const ConsultationForm = props => {
                 </div>
                 <div className="col">
                   <div className="form-group">
+                    <label htmlFor="nextConsultation">Proxima consulta</label>
+                    <input
+                      type="date"
+                      className="form-control"
+                      id="nextConsultation"
+                      onChange={e => handleChange(e)}
+                      value={form.nextConsultation}
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="form-row">
+                <div className="col">
+                  <div className="form-group">
                     <label htmlFor="diagnosis">Diagnostico</label>
                     <input
                       type="text"
@@ -82,26 +97,13 @@ const ConsultationForm = props => {
                 <div className="col">
                   <div className="form-group">
                     <label htmlFor="treatment">Tratamiento</label>
-                    <input
-                      type="text"
+                    <textarea
                       className="form-control"
                       id="treatment"
                       onChange={e => handleChange(e)}
                       value={form.treatment}
                       required
-                    />
-                  </div>
-                </div>
-                <div className="col">
-                  <div className="form-group">
-                    <label htmlFor="nextConsultation">Proxima consulta</label>
-                    <input
-                      type="date"
-                      className="form-control"
-                      id="nextConsultation"
-                      onChange={e => handleChange(e)}
-                      value={form.nextConsultation}
-                      required
+                      rows="6"
                     />
                   </div>
                 </div>
@@ -113,6 +115,7 @@ const ConsultationForm = props => {
                   id="observations"
                   onChange={e => handleChange(e)}
                   value={form.observations}
+                  rows="1"
                 />
               </div>
 

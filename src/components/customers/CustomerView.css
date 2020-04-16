@@ -9,6 +9,10 @@
   border: 0;
 }
 
+.customer .card-body {
+  flex: unset;
+}
+
 .customer .container {
   padding-bottom: 18px;
 }
@@ -28,6 +32,10 @@
   font-size: 1.2em;
   padding-bottom: 6px;
   font-weight: bold;
+}
+
+.customer .pets .list-group-item {
+  cursor: pointer;
 }
 
 .customer .pets .pet {
