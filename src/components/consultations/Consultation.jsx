@@ -3,17 +3,18 @@ import { Link } from 'react-router-dom'
 
 const Consultation = ({ data, deleteConsultation, editConsultation }) => {
 
-  const { id, date, diagnosis, treatment, nextConsultation } = data
+  const { id, date, diagnosis, treatment, nextConsultation, pet } = data
 
   return (
     <tr>
       <td>{id}</td>
-      <td className="date">
+      <td className="date text-nowrap">
         <Link to={`/consultas/${id}`}>{date}</Link>
       </td>
+      <td>{pet.name}</td>
       <td>{diagnosis}</td>
       <td>{treatment}</td>
-      <td>{nextConsultation}</td>
+      <td className="text-nowrap">{nextConsultation}</td>
       <td>
         <button
           className="btn btn-danger"

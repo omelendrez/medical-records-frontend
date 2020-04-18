@@ -24,6 +24,7 @@ const ConsultationForm = props => {
   })
 
   const handleSave = (e => {
+    e.preventDefault()
     saveConsultation(form)
       .then(() => setBack(true))
       .catch(err => {
@@ -55,14 +56,13 @@ const ConsultationForm = props => {
                 </div>
                 <div className="col">
                   <div className="form-group">
-                    <label htmlFor="nextConsultation">Nueva consulta</label>
+                    <label htmlFor="nextConsultation">Próxima consulta</label>
                     <input
                       type="date"
                       className="form-control"
                       id="nextConsultation"
                       onChange={e => handleChange(e)}
                       value={form.nextConsultation}
-                      required
                     />
                   </div>
                 </div>
@@ -111,7 +111,7 @@ const ConsultationForm = props => {
               <button
                 type="submit"
                 className="btn btn-primary"
-                onClick={() => handleSave()}
+                onClick={e => handleSave(e)}
               >Guardar</button>
 
               <button
