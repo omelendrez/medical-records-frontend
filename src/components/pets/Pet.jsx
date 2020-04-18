@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom'
 
 const Pet = ({ data, deletePet, editPet }) => {
 
-  const { id, name, type, breed } = data
+  const { id, name, type, breed, customerId } = data
 
   return (
     <tr>
       <td>{id}</td>
       <td className="name">
-        <Link to={`/pacientes/${id}`}>{name}</Link>
+        <Link to={`/clientes/${customerId}`}>{name}</Link>
       </td>
       <td>{type}</td>
       <td>{breed}</td>
