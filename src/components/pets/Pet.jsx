@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Pet = ({ data, deletePet, editPet }) => {
 
-  const { id, name, type, breed, customerId } = data
+  const { id, name, type, breed, observations, customerId } = data
 
   return (
     <tr>
@@ -13,6 +13,7 @@ const Pet = ({ data, deletePet, editPet }) => {
       </td>
       <td>{type}</td>
       <td>{breed}</td>
+      <td>{observations}</td>
       <td>
         <button
           className="btn btn-danger"

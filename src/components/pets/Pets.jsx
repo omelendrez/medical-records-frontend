@@ -37,6 +37,7 @@ const Pets = ({ filter }) => {
               <th scope="col">Nombre</th>
               <th scope="col">Tipo</th>
               <th scope="col">Raza</th>
+              <th scope="col">Observaciones</th>
               <th scope="col" colSpan="2">
 
               </th>

@@ -40,6 +40,7 @@ const Customers = ({ filter }) => {
               <th scope="col">Dirección</th>
               <th scope="col">Teléfono</th>
               <th scope="col">Email</th>
+              <th scope="col">Observaciones</th>
               <th scope="col" colSpan="2">
                 <button className="btn btn-primary my-1 float-right" onClick={() => setAddCustomer(true)}>Agregar</button>
               </th>

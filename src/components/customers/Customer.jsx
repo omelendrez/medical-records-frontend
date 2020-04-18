@@ -4,7 +4,7 @@ import './Customer.css'
 
 const Customer = ({ data, deleteCustomer, editCustomer }) => {
 
-  const { id, name, address, phone, email, pets } = data
+  const { id, name, address, phone, email, pets, observations } = data
   const petsList = pets.map(pet => pet.name)
 
   return (
@@ -19,6 +19,7 @@ const Customer = ({ data, deleteCustomer, editCustomer }) => {
       <td>{address}</td>
       <td>{phone}</td>
       <td>{email}</td>
+      <td>{observations}</td>
       <td>
         <button
           className="btn btn-danger"
