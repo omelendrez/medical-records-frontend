@@ -13,8 +13,8 @@ const Consultation = ({ consultation, editConsultation, deleteConsultation }) =>
         <h5 className="card-title">{date}</h5>
         <h6 className="card-subtitle mb-2">Diagnóstico: {diagnosis}</h6>
         <p className="card-text">{treatment}</p>
-        <h6 className="card-subtitle mb-2">Próxima consulta: {nextConsultation}</h6>
-        <p className="card-text">{observations}</p>
+        {nextConsultation && <h6 className="card-subtitle mb-2">Próxima consulta: {nextConsultation}</h6>}
+        {observations && <p className="card-text">{observations}</p>}
         <div>
           <button
             type="button"
