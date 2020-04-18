@@ -9,6 +9,10 @@
   border: 0;
 }
 
+.consultations .consultations-list  {
+  height: 86vh;
+}
+
 .customer .card-body {
   flex: unset;
 }

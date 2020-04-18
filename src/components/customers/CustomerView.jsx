@@ -43,12 +43,14 @@ const Consultations = ({ consultations, addConsultation, editConsultation, delet
           onClick={e => addConsultation(e)}
         >Agregar</button>
       </div>
-      {consultations.map((consultation, index) => <Consultation
-        key={index}
-        consultation={consultation}
-        editConsultation={editConsultation}
-        deleteConsultation={deleteConsultation}
-      />)}
+      <div className="consultations-list overflow-auto">
+        {consultations.map((consultation, index) => <Consultation
+          key={index}
+          consultation={consultation}
+          editConsultation={editConsultation}
+          deleteConsultation={deleteConsultation}
+        />)}
+      </div>
     </div>
   )
 }
