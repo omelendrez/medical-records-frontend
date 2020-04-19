@@ -16,9 +16,9 @@ const ConsultationForm = props => {
   })
 
   useEffect(() => {
-    getConsultation(props.match.params.id)
+    getConsultation(props.match.params.consultationId)
       .then(consultation => setForm(consultation))
-  }, [props.match.params.id])
+  }, [props.match.params.consultationId])
 
 
   const handleChange = (e => {
@@ -44,7 +44,7 @@ const ConsultationForm = props => {
 
   return (
     <>
-      {back && <Redirect to="/consultas" />}
+      {back && <Redirect to={`/clientes/${form.pet.customerId}`} />}
       <div className="container">
         <div className="row">
           <div className="container col-8">

@@ -37,6 +37,7 @@ const Consultations = ({ filter }) => {
               <th scope="col">Fecha</th>
               <th scope="col">Paciente</th>
               <th scope="col">Diagnostico</th>
+              <th scope="col">Tratamiento</th>
               <th scope="col">Próx. Turno</th>
               <th scope="col" colSpan="2">
               </th>
