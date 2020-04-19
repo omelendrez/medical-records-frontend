@@ -18,7 +18,7 @@ const Navbar = ({ doSearch }) => {
   }
 
   return (
-    <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
+    <nav className="navbar navbar-expand navbar-dark bg-dark">
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto">
           <NavLink to="/">Home</NavLink>
