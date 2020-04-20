@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import Pet from './Pet'
+import Confirm from '../Confirm'
 import { getPets, deletePet } from '../../services/pets'
 
 const Pets = ({ filter }) => {
 
   const [pets, setPets] = useState({ rows: [] })
   const [editPet, setEditPet] = useState(false)
+  const [showConfirm, setShowConfirm] = useState(false)
+  const [selected, setSelected] = useState({})
 
   useEffect(() => {
     getPets(filter)
@@ -14,9 +17,17 @@ const Pets = ({ filter }) => {
   }, [filter])
 
   const handleDelete = pet => {
-    deletePet(pet)
+    setSelected(pet)
+    setShowConfirm(true)
+  }
+
+  const confirmDelete = () => {
+    deletePet(selected)
       .then(() => getPets(filter)
-        .then(pets => setPets(pets))
+        .then(pets => {
+          setPets(pets)
+          setShowConfirm(false)
+        })
       )
   }
 
@@ -28,6 +39,16 @@ const Pets = ({ filter }) => {
 
   return (
     <>
+      {showConfirm &&
+        <Confirm
+          title={`Eliminando ${selected.name}`}
+          question={`Desea eliminar ${selected.name}?`}
+          okButton="Eliminar"
+          cancelButton="Salir"
+          cancelDelete={() => setShowConfirm(false)}
+          confirmDelete={() => confirmDelete()}
+        />
+      }
       {editPet && <Redirect to={editPet} />}
       <div className="container-fluid">
         <table className="table">
