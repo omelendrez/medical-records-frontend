@@ -22,7 +22,7 @@ const Confirm = ({ title, question, okButton, cancelButton, confirmDelete, cance
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={() => cancelDelete()}>{cancelButton}</button>
-              <button type="button" className="btn btn-primary" onClick={() => confirmDelete()}>{okButton}</button>
+              <button type="button" className="btn btn-danger" onClick={() => confirmDelete()}>{okButton}</button>
             </div>
           </div>
         </div>

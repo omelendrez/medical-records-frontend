@@ -44,7 +44,7 @@ const Pets = ({ filter }) => {
           title={`Eliminando ${selected.name}`}
           question={`Desea eliminar ${selected.name}?`}
           okButton="Eliminar"
-          cancelButton="Salir"
+          cancelButton="Cancelar"
           cancelDelete={() => setShowConfirm(false)}
           confirmDelete={() => confirmDelete()}
         />
