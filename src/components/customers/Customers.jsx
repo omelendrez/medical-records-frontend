@@ -42,8 +42,8 @@ const Customers = ({ filter }) => {
     <>
       {showConfirm &&
         <Confirm
-          title={`Eliminando ${selected.name}`}
-          question={`Desea eliminar ${selected.name}?`}
+          title="Eliminando cliente"
+          question={`Desea eliminar cliente ${selected.name}?`}
           okButton="Eliminar"
           cancelButton="Cancelar"
           cancelDelete={() => setShowConfirm(false)}

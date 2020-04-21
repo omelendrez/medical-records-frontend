@@ -41,8 +41,8 @@ const Consultations = ({ filter }) => {
     <>
       {showConfirm &&
         <Confirm
-          title={`Eliminando ${selected.diagnosis}`}
-          question={`Desea eliminar ${selected.diagnosis} del paciente ${selected.pet.name}?`}
+          title="Eliminando consulta"
+          question={`Desea eliminar consulta del ${selected.date} del paciente ${selected.pet.name}?`}
           okButton="Eliminar"
           cancelButton="Cancelar"
           cancelDelete={() => setShowConfirm(false)}
