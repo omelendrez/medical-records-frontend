@@ -20,19 +20,16 @@ const Customers = ({ filter }) => {
   const confirmDelete = () => {
     deleteCustomer(selected)
       .then(() => getCustomers(filter)
-        .then(customers => setCustomers(customers))
+        .then(customers => {
+          setCustomers(customers)
+          setShowConfirm(false)
+        })
       )
-    setShowConfirm(false)
   }
 
   const handleDelete = customer => {
     setSelected(customer)
     setShowConfirm(true)
-  }
-
-  const cancelDelete = () => {
-    setSelected({})
-    setShowConfirm(false)
   }
 
   const handleEdit = customer => {
@@ -45,12 +42,12 @@ const Customers = ({ filter }) => {
     <>
       {showConfirm &&
         <Confirm
-          title="Eliminando cliente"
-          question="Seguro quiere borrar este registro?"
-          okButton="SI"
-          cancelButton="NO"
-          confirmDelete={confirmDelete}
-          cancelDelete={cancelDelete}
+          title={`Eliminando ${selected.name}`}
+          question={`Desea eliminar ${selected.name}?`}
+          okButton="Eliminar"
+          cancelButton="Cancelar"
+          cancelDelete={() => setShowConfirm(false)}
+          confirmDelete={() => confirmDelete()}
         />
       }
       {editCustomer && <Redirect to={editCustomer} />}

@@ -24,14 +24,11 @@ const Consultations = ({ filter }) => {
   const confirmDelete = () => {
     deleteConsultation(selected)
       .then(() => getConsultations(filter)
-        .then(consultations => setConsultations(consultations))
+        .then(consultations => {
+          setConsultations(consultations)
+          setShowConfirm(false)
+        })
       )
-    setShowConfirm(false)
-  }
-
-  const cancelDelete = () => {
-    setSelected({})
-    setShowConfirm(false)
   }
 
   const handleEdit = Consultation => {
@@ -42,17 +39,16 @@ const Consultations = ({ filter }) => {
 
   return (
     <>
-          {showConfirm &&
+      {showConfirm &&
         <Confirm
-          title="Eliminando cliente"
-          question="Seguro quiere borrar este registro?"
-          okButton="SI"
-          cancelButton="NO"
-          confirmDelete={confirmDelete}
-          cancelDelete={cancelDelete}
+          title={`Eliminando ${selected.diagnosis}`}
+          question={`Desea eliminar ${selected.diagnosis} del paciente ${selected.pet.name}?`}
+          okButton="Eliminar"
+          cancelButton="Cancelar"
+          cancelDelete={() => setShowConfirm(false)}
+          confirmDelete={() => confirmDelete()}
         />
       }
-
       {editConsultation && <Redirect to={editConsultation} />}
       <div className="container-fluid">
         <table className="table">
