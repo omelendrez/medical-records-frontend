@@ -34,7 +34,7 @@ const ConsultationForm = props => {
 
   return (
     <>
-      {back && <Redirect to={`/clientes/${props.match.params.customerId}`} />}
+      {back && <Redirect to={`/clientes/${props.match.params.customerId}/${props.match.params.petId}`} />}
       <div className="container">
         <div className="row">
           <div className="container col-8">

@@ -7,7 +7,8 @@ const Confirm = ({ title, question, okButton, cancelButton, confirmDelete, cance
     left: 0,
     height: '100%',
     width: '100%',
-    backgroundColor: 'rgba(179,182,183,.5)'
+    backgroundColor: 'rgba(179,182,183,.5)',
+    zIndex: 999
   }
   return (
     <div style={backgroundStyle}>

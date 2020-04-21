@@ -30,7 +30,6 @@ const ConsultationForm = props => {
     })
   })
 
-
   const handleSave = (e => {
     e.preventDefault()
     saveConsultation(form)
@@ -40,11 +39,9 @@ const ConsultationForm = props => {
       })
   })
 
-  console.log(form)
-
   return (
     <>
-      {back && <Redirect to={`/clientes/${form.pet.customerId}`} />}
+      {back && <Redirect to={`/clientes/${form.pet.customerId}/${form.petId}`} />}
       <div className="container">
         <div className="row">
           <div className="container col-8">

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
+import Confirm from '../Confirm'
 import { getCustomer } from '../../services/customers'
 import { getPet } from '../../services/pets'
 import { deleteConsultation } from '../../services/consultations'
@@ -23,7 +24,7 @@ const Consultation = ({ consultation, editConsultation, deleteConsultation }) =>
           >Modificar</button>
           <button
             type="button"
-            className="btn btn-danger float-right"
+            className="btn btn-danger m-1 float-right"
             onClick={() => deleteConsultation(consultation)}
           >Eliminar</button>
         </div>
@@ -129,35 +130,50 @@ const Customer = ({ customer, pet, handleAddPet, selectPet, setBack }) => {
 }
 
 const CustomerView = props => {
-  const [back, setBack] = useState(false)
-  const [addPet, setAddPet] = useState('')
+  const [redirect, setRedirect] = useState('')
   const [customer, setCustomer] = useState({ pets: [] })
   const [pet, setPet] = useState({})
-  const [addConsultation, setAddConsultation] = useState('')
-  const [editConsultation, setEditConsultation] = useState('')
+  const [selected, setSelected] = useState({})
+  const [showConfirm, setShowConfirm] = useState(false)
+
+  const setBack = () => {
+    setRedirect('/clientes')
+  }
 
   useEffect(() => {
     getCustomer(props.match.params.id)
-      .then(customer => setCustomer(customer))
-  }, [props.match.params.id])
+      .then(customer => {
+        setCustomer(customer)
+        const pet = { id: props.match.params.petId }
+        props.match.params.petId && selectPet(pet)
+      })
+  }, [props.match.params.id, props.match.params.petId])
 
   const handleAddConsultation = e => {
-    setAddConsultation(`/nueva-consulta/${customer.id}/${pet.id}`)
+    setRedirect(`/nueva-consulta/${customer.id}/${pet.id}`)
   }
 
   const handleEditConsultation = id => {
-    setEditConsultation(`/edit-consulta/${id}`)
+    setRedirect(`/edit-consulta/${id}`)
   }
 
   const handleDeleteConsultation = consultation => {
-    deleteConsultation(consultation)
-      .then(() => getPet(pet.id)
-        .then(pet => setPet(pet)))
+    setSelected(consultation)
+    setShowConfirm(true)
   }
+  const confirmDelete = () => {
+    deleteConsultation(selected)
+      .then(() => getPet(pet.id)
+        .then(pet => {
+          setPet(pet)
+          setShowConfirm(false)
+        }))
+  }
+
 
   const handleAddPet = e => {
     e.preventDefault()
-    setAddPet(`/clientes/${customer.id}/nuevo-paciente`)
+    setRedirect(`/nuevo-paciente/${customer.id}`)
   }
 
   const selectPet = pet => {
@@ -167,10 +183,17 @@ const CustomerView = props => {
   const { consultations } = pet
   return (
     <>
-      {addConsultation && <Redirect to={addConsultation} />}
-      {editConsultation && <Redirect to={editConsultation} />}
-      {addPet && <Redirect to={addPet} />}
-      {back && <Redirect to="/clientes" />}
+      {showConfirm &&
+        <Confirm
+          title="Eliminando consulta"
+          question={`Desea eliminar consulta del ${selected.date} del paciente ${pet.name}?`}
+          okButton="Eliminar"
+          cancelButton="Cancelar"
+          cancelDelete={() => setShowConfirm(false)}
+          confirmDelete={() => confirmDelete()}
+        />
+      }
+      {redirect && <Redirect to={redirect} />}
       <div className="main-container container-fluid">
         <Customer
           customer={customer}
