@@ -7,9 +7,9 @@ import { getConsultations, deleteConsultation } from '../../services/consultatio
 const Consultations = ({ filter }) => {
 
   const [consultations, setConsultations] = useState({ rows: [] })
-  const [editConsultation, setEditConsultation] = useState(false)
   const [showConfirm, setShowConfirm] = useState(false)
   const [selected, setSelected] = useState({})
+  const [redirect, setRedirect] = useState('')
 
   useEffect(() => {
     getConsultations(filter)
@@ -32,7 +32,11 @@ const Consultations = ({ filter }) => {
   }
 
   const handleEdit = Consultation => {
-    setEditConsultation(`./edit-consulta/${Consultation.id}`)
+    setRedirect(`./edit-consulta/${Consultation.id}`)
+  }
+
+  const handleRestore = () => {
+    setRedirect('/restaurar/consultas')
   }
 
   const { rows } = consultations
@@ -49,7 +53,7 @@ const Consultations = ({ filter }) => {
           confirmDelete={() => confirmDelete()}
         />
       }
-      {editConsultation && <Redirect to={editConsultation} />}
+      {redirect && <Redirect to={redirect} />}
       <div className="container-fluid">
         <table className="table">
           <thead>
@@ -76,6 +80,15 @@ const Consultations = ({ filter }) => {
             )}
           </tbody>
         </table>
+        <div className="float-right">
+          <button
+            className="btn btn-warning"
+            onClick={() => handleRestore()}
+          >
+            Restaurar
+          </button>
+        </div>
+
       </div>
     </>
   )

@@ -9,7 +9,7 @@ const Pet = ({ data, deletePet, editPet }) => {
     <tr>
       <td>{id}</td>
       <td className="name">
-        <Link to={`/clientes/${customerId}`}>{name}</Link>
+        <Link to={`/clientes/${customerId}/${id}`}>{name}</Link>
       </td>
       <td>{type}</td>
       <td>{breed}</td>

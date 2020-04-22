@@ -12,6 +12,7 @@ import PetEdit from './components/pets/PetEdit'
 import Consultations from './components/consultations/Consultations'
 import ConsultationAdd from './components/consultations/ConsultationAdd'
 import ConsultationEdit from './components/consultations/ConsultationEdit'
+import Restore from './components/Restore'
 
 function App() {
   const [filter, setFilter] = useState('')
@@ -33,6 +34,7 @@ function App() {
           <Route path="/consultas" component={() => <Consultations filter={filter} />} />
           <Route path="/edit-consulta/:consultationId" exact component={ConsultationEdit} />
           <Route path="/nueva-consulta/:customerId/:petId" exact component={ConsultationAdd} />
+          <Route path="/restaurar/:table" exact component={Restore} />
         </Switch>
       </main>
     </BrowserRouter>

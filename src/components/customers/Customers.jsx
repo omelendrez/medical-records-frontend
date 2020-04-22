@@ -7,10 +7,9 @@ import { getCustomers, deleteCustomer } from '../../services/customers'
 const Customers = ({ filter }) => {
 
   const [customers, setCustomers] = useState({ rows: [] })
-  const [addCustomer, setAddCustomer] = useState(false)
-  const [editCustomer, setEditCustomer] = useState(false)
   const [showConfirm, setShowConfirm] = useState(false)
   const [selected, setSelected] = useState({})
+  const [redirect, setRedirect] = useState('')
 
   useEffect(() => {
     getCustomers(filter)
@@ -33,7 +32,15 @@ const Customers = ({ filter }) => {
   }
 
   const handleEdit = customer => {
-    setEditCustomer(`./edit-cliente/${customer.id}`)
+    setRedirect(`/edit-cliente/${customer.id}`)
+  }
+
+  const handleAdd = () => {
+    setRedirect('/nuevo-cliente')
+  }
+
+  const handleRestore = () => {
+    setRedirect('/restaurar/clientes')
   }
 
   const { rows } = customers
@@ -50,8 +57,7 @@ const Customers = ({ filter }) => {
           confirmDelete={() => confirmDelete()}
         />
       }
-      {editCustomer && <Redirect to={editCustomer} />}
-      {addCustomer && <Redirect to="./nuevo-cliente" />}
+      {redirect && <Redirect to={redirect} />}
       <div className="container-fluid">
         <table className="table">
           <thead>
@@ -63,7 +69,10 @@ const Customers = ({ filter }) => {
               <th scope="col">Email</th>
               <th scope="col">Observaciones</th>
               <th scope="col" colSpan="2">
-                <button className="btn btn-primary my-1 float-right" onClick={() => setAddCustomer(true)}>Agregar</button>
+                <button
+                  className="btn btn-primary my-1 float-right"
+                  onClick={() => handleAdd()}
+                >Agregar</button>
               </th>
             </tr>
           </thead>
@@ -79,6 +88,14 @@ const Customers = ({ filter }) => {
             )}
           </tbody>
         </table>
+        <div className="float-right">
+          <button
+            className="btn btn-warning"
+            onClick={() => handleRestore()}
+          >
+            Restaurar
+          </button>
+        </div>
       </div>
     </>
   )

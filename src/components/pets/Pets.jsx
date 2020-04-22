@@ -7,9 +7,9 @@ import { getPets, deletePet } from '../../services/pets'
 const Pets = ({ filter }) => {
 
   const [pets, setPets] = useState({ rows: [] })
-  const [editPet, setEditPet] = useState(false)
   const [showConfirm, setShowConfirm] = useState(false)
   const [selected, setSelected] = useState({})
+  const [redirect, setRedirect] = useState('')
 
   useEffect(() => {
     getPets(filter)
@@ -32,7 +32,11 @@ const Pets = ({ filter }) => {
   }
 
   const handleEdit = pet => {
-    setEditPet(`./edit-paciente/${pet.id}`)
+    setRedirect(`./edit-paciente/${pet.id}`)
+  }
+
+  const handleRestore = () => {
+    setRedirect('/restaurar/pacientes')
   }
 
   const { rows } = pets
@@ -49,7 +53,7 @@ const Pets = ({ filter }) => {
           confirmDelete={() => confirmDelete()}
         />
       }
-      {editPet && <Redirect to={editPet} />}
+      {redirect && <Redirect to={redirect} />}
       <div className="container-fluid">
         <table className="table">
           <thead>
@@ -76,6 +80,15 @@ const Pets = ({ filter }) => {
             )}
           </tbody>
         </table>
+        <div className="float-right">
+          <button
+            className="btn btn-warning"
+            onClick={() => handleRestore()}
+          >
+            Restaurar
+          </button>
+        </div>
+
       </div>
     </>
   )

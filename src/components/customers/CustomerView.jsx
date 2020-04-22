@@ -137,7 +137,7 @@ const CustomerView = props => {
   const [showConfirm, setShowConfirm] = useState(false)
 
   const setBack = () => {
-    setRedirect('/clientes')
+    props.history.goBack()
   }
 
   useEffect(() => {
@@ -169,7 +169,6 @@ const CustomerView = props => {
           setShowConfirm(false)
         }))
   }
-
 
   const handleAddPet = e => {
     e.preventDefault()
