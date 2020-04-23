@@ -5,6 +5,11 @@ export const getConsultations = async filter => {
   return response.data.consultations
 }
 
+export const getInactiveConsultations = async () => {
+  const response = await http.get(`consultations/inactive`)
+  return response.data.consultations
+}
+
 export const getConsultation = async id => {
   const response = await http.get(`consultations/${id}`)
   return response.data.consultation
@@ -24,6 +29,17 @@ export const deleteConsultation = consultation => {
   return new Promise((resolve, reject) => {
     const { id } = consultation
     http.delete(`consultations/${id}`)
+      .then(response => {
+        resolve(response.data)
+      })
+      .catch(error => reject(error))
+  })
+}
+
+export const restoreConsultation = consultation => {
+  return new Promise((resolve, reject) => {
+    const { id } = consultation
+    http.put(`consultations/${id}`)
       .then(response => {
         resolve(response.data)
       })
