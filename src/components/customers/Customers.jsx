@@ -64,7 +64,7 @@ const Customers = ({ filter }) => {
             <tr>
               <th scope="col">#</th>
               <th scope="col">Nombre</th>
-              <th scope="col">Dirección</th>
+              <th scope="col">Domicilio</th>
               <th scope="col">Teléfono</th>
               <th scope="col">Email</th>
               <th scope="col">Observaciones</th>

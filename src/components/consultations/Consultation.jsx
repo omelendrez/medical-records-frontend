@@ -8,7 +8,7 @@ const Consultation = ({ data, deleteConsultation, editConsultation }) => {
   return (
     <tr>
       <td>{id}</td>
-      <td className="date text-nowrap">
+      <td className="text-nowrap">
         <Link to={`/consultas/${id}`}>{date}</Link>
       </td>
       <td>{pet.name}</td>

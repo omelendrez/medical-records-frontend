@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { getInactiveCustomers, restoreCustomer } from '../services/customers'
 import { getInactivePets, restorePet } from '../services/pets'
 import { getInactiveConsultations, restoreConsultation } from '../services/consultations'
+import { fieldsDefault } from '../services/utils'
 
 const Restore = props => {
 
@@ -9,19 +10,7 @@ const Restore = props => {
   const [error, setError] = useState('')
   const [update, setUpdate] = useState(false)
 
-  const fieldsDefault = {
-    clientes: [
-      'id', 'name', 'address'
-    ],
-    pacientes: [
-      'id', 'name', 'type'
-    ],
-    consultas: [
-      'id', 'date', 'pet.name', 'diagnosis'
-    ]
-  }
-
-  const fields = fieldsDefault[props.match.params.table]
+  const fields = fieldsDefault[props.match.params.table].fields
 
   const handleRestore = record => {
     switch (props.match.params.table) {
@@ -70,10 +59,15 @@ const Restore = props => {
       </div>
       }
       {rows && <table className="table">
+        <thead>
+          <tr>
+            {fields.map(field => <th scope="col">{field.title}</th>)}
+          </tr>
+        </thead>
         <tbody>
           {rows.map((record, index) => (
             <tr key={index}>
-              {fields.map((field, index) => <td key={index}>{record[field]}</td>)}
+              {fields.map((field, index) => <td key={index} className={field.className || null} >{record[field.name]}</td>)}
               <td>
                 <button
                   className="btn btn-success"
