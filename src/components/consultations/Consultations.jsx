@@ -2,19 +2,34 @@ import React, { useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import Consultation from './Consultation'
 import Confirm from '../Confirm'
+import Pagination from '../Pagination'
 import { getConsultations, deleteConsultation } from '../../services/consultations'
 
 const Consultations = ({ filter }) => {
+
+  const paginationDefault = {
+    curPage: 1,
+    totRecords: 0,
+    limit: 5,
+    filter
+  }
 
   const [consultations, setConsultations] = useState({ rows: [] })
   const [showConfirm, setShowConfirm] = useState(false)
   const [selected, setSelected] = useState({})
   const [redirect, setRedirect] = useState('')
+  const [pagination, setPagination] = useState(paginationDefault)
 
   useEffect(() => {
-    getConsultations(filter)
+    const pag = pagination
+    pag.totRecords = consultations.count
+    setPagination(pag)
+  }, [consultations, pagination])
+
+  useEffect(() => {
+    getConsultations(pagination)
       .then(consultations => setConsultations(consultations))
-  }, [filter])
+  }, [pagination])
 
   const handleDelete = consultation => {
     setSelected(consultation)
@@ -23,7 +38,7 @@ const Consultations = ({ filter }) => {
 
   const confirmDelete = () => {
     deleteConsultation(selected)
-      .then(() => getConsultations(filter)
+      .then(() => getConsultations(pagination)
         .then(consultations => {
           setConsultations(consultations)
           setShowConfirm(false)
@@ -80,6 +95,7 @@ const Consultations = ({ filter }) => {
             )}
           </tbody>
         </table>
+        <Pagination pagination={pagination} />
         <div className="float-right">
           <button
             className="btn btn-warning"

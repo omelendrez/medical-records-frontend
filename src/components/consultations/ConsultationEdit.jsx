@@ -69,7 +69,7 @@ const ConsultationForm = props => {
                       className="form-control"
                       id="nextConsultation"
                       onChange={e => handleChange(e)}
-                      value={form.nextConsultation}
+                      value={form.nextConsultation || ''}
                       required
                     />
                   </div>
