@@ -3,34 +3,39 @@ import React from 'react'
 const Pagination = ({ pagination }) => {
   const { curPage, totRecords, limit } = pagination
   const totPages = Math.round(totRecords / limit)
-  console.log(totRecords)
+
+  const canGoBackward = curPage > 1
+  const canGoForward = curPage < totPages
+
+  console.log(pagination)
+
   return (
     <nav aria-label="...">
       <ul className="pagination">
-        <li className="page-item disabled">
-          <a className="page-link" href="a" tabIndex="-1" aria-disabled="true">
+        <li className={`page-item ${canGoBackward ? '' : 'disabled'}`}>
+          <button className="page-link">
+            {'<<'}
+          </button>
+        </li>
+        <li className={`page-item ${canGoBackward ? '' : 'disabled'}`}>
+          <button className="page-link">
             {'<'}
-          </a>
+          </button>
         </li>
-        <li className="page-item">
-          <a className="page-link" href="a">
-            1
-          </a>
+        <li className="page-item active">
+          <button className="page-link" >
+            {curPage}
+          </button>
         </li>
-        <li className="page-item active" aria-current="page">
-          <a className="page-link" href="c">
-            2
-          </a>
-        </li>
-        <li className="page-item">
-          <a className="page-link" href="1">
-            3
-          </a>
-        </li>
-        <li className="page-item">
-          <a className="page-link" href="1">
+        <li className={`page-item ${canGoForward ? '' : 'disabled'}`}>
+          <button className="page-link" >
             {'>'}
-          </a>
+          </button>
+        </li>
+        <li className={`page-item ${canGoForward ? '' : 'disabled'}`}>
+          <button className="page-link" >
+            {'>>'}
+          </button>
         </li>
       </ul>
     </nav>

@@ -1,8 +1,8 @@
 import http from './api'
 
 export const getConsultations = async pagination => {
-  const { filter } = pagination
-  const response = await http.get(`consultations?filter=${filter}`)
+  const { filter, limit, curPage } = pagination
+  const response = await http.get(`consultations?filter=${filter}&page=${curPage}&limit=${limit}`)
   return response.data.consultations
 }
 

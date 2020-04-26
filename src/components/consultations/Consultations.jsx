@@ -10,7 +10,7 @@ const Consultations = ({ filter }) => {
   const paginationDefault = {
     curPage: 1,
     totRecords: 0,
-    limit: 5,
+    limit: 3,
     filter
   }
 
@@ -21,15 +21,19 @@ const Consultations = ({ filter }) => {
   const [pagination, setPagination] = useState(paginationDefault)
 
   useEffect(() => {
-    const pag = pagination
-    pag.totRecords = consultations.count
-    setPagination(pag)
-  }, [consultations, pagination])
-
-  useEffect(() => {
-    getConsultations(pagination)
-      .then(consultations => setConsultations(consultations))
+    updateState()
   }, [pagination])
+
+  const updateState = () => {
+    const pag = pagination
+    getConsultations(pagination)
+      .then(consultations => {
+        pag.totRecords = consultations.count
+        setPagination(pag)
+        setConsultations(consultations)
+      })
+
+  }
 
   const handleDelete = consultation => {
     setSelected(consultation)
@@ -95,7 +99,7 @@ const Consultations = ({ filter }) => {
             )}
           </tbody>
         </table>
-        <Pagination pagination={pagination} />
+        {pagination.totRecords && <Pagination pagination={pagination} />}
         <div className="float-right">
           <button
             className="btn btn-warning"
