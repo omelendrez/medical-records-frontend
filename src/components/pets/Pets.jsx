@@ -2,19 +2,42 @@ import React, { useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import Pet from './Pet'
 import Confirm from '../Confirm'
+import Pagination from '../Pagination'
 import { getPets, deletePet } from '../../services/pets'
 
 const Pets = ({ filter }) => {
+
+  const paginationDefault = {
+    curPage: 1,
+    totRecords: 0,
+    limit: 10,
+    filter
+  }
 
   const [pets, setPets] = useState({ rows: [] })
   const [showConfirm, setShowConfirm] = useState(false)
   const [selected, setSelected] = useState({})
   const [redirect, setRedirect] = useState('')
+  const [pagination, setPagination] = useState(paginationDefault)
+
 
   useEffect(() => {
-    getPets(filter)
-      .then(pets => setPets(pets))
-  }, [filter])
+    updateState()
+  }, [pagination])
+
+  const changePage = page => {
+    setPagination({ ...pagination, curPage: page })
+  }
+
+  const updateState = () => {
+    const pag = pagination
+    getPets(pagination)
+      .then(pets => {
+        pag.totRecords = pets.count
+        setPagination(pag)
+        setPets(pets)
+      })
+  }
 
   const handleDelete = pet => {
     setSelected(pet)
@@ -23,7 +46,7 @@ const Pets = ({ filter }) => {
 
   const confirmDelete = () => {
     deletePet(selected)
-      .then(() => getPets(filter)
+      .then(() => getPets(pagination)
         .then(pets => {
           setPets(pets)
           setShowConfirm(false)
@@ -63,9 +86,7 @@ const Pets = ({ filter }) => {
               <th scope="col">Tipo</th>
               <th scope="col">Raza</th>
               <th scope="col">Observaciones</th>
-              <th scope="col" colSpan="2">
-
-              </th>
+              <th scope="col" colSpan="2"> </th>
             </tr>
           </thead>
           <tbody>
@@ -80,6 +101,7 @@ const Pets = ({ filter }) => {
             )}
           </tbody>
         </table>
+        {pagination.totRecords && <Pagination pagination={pagination} changePage={changePage} />}
         <div className="float-right">
           <button
             className="btn btn-warning"

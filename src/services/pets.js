@@ -1,7 +1,8 @@
 import http from './api'
 
-export const getPets = async filter => {
-	const response = await http.get(`pets?filter=${filter}`)
+export const getPets = async pagination => {
+	const { filter, limit, curPage } = pagination
+	const response = await http.get(`pets?filter=${filter}&page=${curPage}&limit=${limit}`)
 	return response.data.pets
 }
 
