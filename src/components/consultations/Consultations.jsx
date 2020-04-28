@@ -24,6 +24,10 @@ const Consultations = ({ filter }) => {
     updateState()
   }, [pagination])
 
+  const changePage = page => {
+    setPagination({ ...pagination, curPage: page })
+  }
+
   const updateState = () => {
     const pag = pagination
     getConsultations(pagination)
@@ -99,7 +103,7 @@ const Consultations = ({ filter }) => {
             )}
           </tbody>
         </table>
-        {pagination.totRecords && <Pagination pagination={pagination} />}
+        {pagination.totRecords && <Pagination pagination={pagination} changePage={changePage} />}
         <div className="float-right">
           <button
             className="btn btn-warning"
