@@ -1,7 +1,8 @@
 import http from './api'
 
-export const getCustomers = async filter => {
-  const response = await http.get(`customers?filter=${filter}`)
+export const getCustomers = async pagination => {
+  const { filter, limit, curPage } = pagination
+  const response = await http.get(`customers?filter=${filter}&page=${curPage}&limit=${limit}`)
   return response.data.customers
 }
 

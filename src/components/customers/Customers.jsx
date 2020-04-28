@@ -2,19 +2,41 @@ import React, { useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import Customer from './Customer'
 import Confirm from '../Confirm'
+import Pagination from '../Pagination'
 import { getCustomers, deleteCustomer } from '../../services/customers'
 
 const Customers = ({ filter }) => {
+
+  const paginationDefault = {
+    curPage: 2,
+    totRecords: 0,
+    limit: 1,
+    filter
+  }
 
   const [customers, setCustomers] = useState({ rows: [] })
   const [showConfirm, setShowConfirm] = useState(false)
   const [selected, setSelected] = useState({})
   const [redirect, setRedirect] = useState('')
+  const [pagination, setPagination] = useState(paginationDefault)
 
   useEffect(() => {
-    getCustomers(filter)
-      .then(customers => setCustomers(customers))
-  }, [filter])
+    updateState()
+  }, [pagination])
+
+  const changePage = page => {
+    setPagination({ ...pagination, curPage: page })
+  }
+
+  const updateState = () => {
+    const pag = pagination
+    getCustomers(pagination)
+      .then(customers => {
+        pag.totRecords = customers.count
+        setPagination(pag)
+        setCustomers(customers)
+      })
+  }
 
   const confirmDelete = () => {
     deleteCustomer(selected)
@@ -88,6 +110,7 @@ const Customers = ({ filter }) => {
             )}
           </tbody>
         </table>
+        {pagination.totRecords && <Pagination pagination={pagination} changePage={changePage} />}
         <div className="float-right">
           <button
             className="btn btn-warning"
