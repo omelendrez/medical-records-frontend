@@ -6,6 +6,7 @@ import Pagination from '../Pagination'
 import { getPets, deletePet } from '../../services/pets'
 
 const Pets = ({ filter }) => {
+
   const paginationDefault = {
     curPage: 1,
     totRecords: 0,
@@ -58,6 +59,7 @@ const Pets = ({ filter }) => {
   }
 
   const { rows } = pets
+  const totPages = Math.round(pagination.totRecords / pagination.limit)
 
   return (
     <>
@@ -96,7 +98,7 @@ const Pets = ({ filter }) => {
             )}
           </tbody>
         </table>
-        {pagination.totRecords && <Pagination pagination={pagination} changePage={changePage} />}
+        {totPages > 1 && <Pagination pagination={pagination} changePage={changePage} />}
         <div className="float-right">
           <button
             className="btn btn-warning"

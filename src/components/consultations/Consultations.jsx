@@ -58,6 +58,7 @@ const Consultations = ({ filter }) => {
   }
 
   const { rows } = consultations
+  const totPages = Math.round(pagination.totRecords / pagination.limit)
 
   return (
     <>
@@ -98,7 +99,7 @@ const Consultations = ({ filter }) => {
             )}
           </tbody>
         </table>
-        {pagination.totRecords && <Pagination pagination={pagination} changePage={changePage} />}
+        {totPages > 1 && <Pagination pagination={pagination} changePage={changePage} />}
         <div className="float-right">
           <button
             className="btn btn-warning"
