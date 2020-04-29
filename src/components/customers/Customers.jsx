@@ -36,7 +36,7 @@ const Customers = ({ filter }) => {
 
   const confirmDelete = () => {
     deleteCustomer(selected)
-      .then(() => getCustomers(filter)
+      .then(() => getCustomers(pagination)
         .then(customers => {
           setCustomers(customers)
           setShowConfirm(false)

@@ -61,7 +61,7 @@ const Restore = props => {
       {rows && <table className="table">
         <thead>
           <tr>
-            {fields.map(field => <th scope="col">{field.title}</th>)}
+            {fields.map((field, index) => <th scope="col" key={index}>{field.title}</th>)}
           </tr>
         </thead>
         <tbody>
