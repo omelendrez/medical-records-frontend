@@ -1,7 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { getInactiveCustomers, restoreCustomer } from '../services/customers'
-import { getInactivePets, restorePet } from '../services/pets'
-import { getInactiveConsultations, restoreConsultation } from '../services/consultations'
 import { fieldsDefault } from '../services/utils'
 
 const Restore = props => {
@@ -10,54 +7,31 @@ const Restore = props => {
   const [error, setError] = useState('')
   const [update, setUpdate] = useState(false)
 
-  const fields = fieldsDefault[props.match.params.table].fields
+  const table = props.match.params.table;
+
+  const fields = fieldsDefault[table].fields
+  const getRecords = fieldsDefault[table].getRecords
+  const restoreRecord = fieldsDefault[table].restoreRecord
 
   const handleRestore = record => {
-    switch (props.match.params.table) {
-      case 'clientes':
-        restoreCustomer(record)
-          .then(() => setUpdate(!update))
-        break;
-      case 'pacientes':
-        restorePet(record)
-          .then(() => setUpdate(!update))
-        break;
-      case 'consultas':
-        restoreConsultation(record)
-          .then(() => setUpdate(!update))
-        break;
-      default:
-        setError('No se pudo restaurar el registro')
-    }
+    restoreRecord(record)
+      .then(() => setUpdate(!update))
   }
 
   useEffect(() => {
-    switch (props.match.params.table) {
-      case 'clientes':
-        getInactiveCustomers()
-          .then(customers => setRecords(customers))
-        break;
-      case 'pacientes':
-        getInactivePets()
-          .then(pets => setRecords(pets))
-        break;
-      case 'consultas':
-        getInactiveConsultations()
-          .then(consultations => setRecords(consultations))
-        break;
-      default:
-        setError('Tabla inexistente')
-    }
-  }, [props.match.params.table, update])
+    getRecords()
+      .then(records => {
+        setRecords(records)
+        if (!records.rows.length) {
+          setError('No hay registros para recuperar')
+        }
+      })
+  }, [update])
 
   const { rows } = records
 
   return (
     <div className="restore">
-      {error && <div className="alert alert-warning">
-        {error}
-      </div>
-      }
       {rows && <table className="table">
         <thead>
           <tr>
@@ -80,6 +54,11 @@ const Restore = props => {
         </tbody>
       </table>
       }
+      {error && <div className="alert alert-warning container text-center">
+        {error}
+      </div>
+      }
+
     </div >
   )
 }

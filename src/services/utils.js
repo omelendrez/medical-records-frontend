@@ -1,3 +1,7 @@
+import { getInactiveCustomers, restoreCustomer } from '../services/customers'
+import { getInactivePets, restorePet } from '../services/pets'
+import { getInactiveConsultations, restoreConsultation } from '../services/consultations'
+
 export const fieldsDefault = {
   clientes: {
     fields: [
@@ -7,7 +11,9 @@ export const fieldsDefault = {
       { name: 'phone', title: 'Teléfono' },
       { name: 'email', title: 'Email' },
       { name: 'observations', title: 'Observaciones' }
-    ]
+    ],
+    getRecords: getInactiveCustomers,
+    restoreRecord: restoreCustomer
   },
   pacientes: {
     fields: [
@@ -16,7 +22,9 @@ export const fieldsDefault = {
       { name: 'type', title: 'Tipo' },
       { name: 'breed', title: 'Raza' },
       { name: 'observations', title: 'Observaciones' }
-    ]
+    ],
+    getRecords: getInactivePets,
+    restoreRecord: restorePet
   },
   consultas: {
     fields: [
@@ -26,6 +34,8 @@ export const fieldsDefault = {
       { name: 'diagnosis', title: 'Diagnóstico' },
       { name: 'treatment', title: 'Tratamiento' },
       { name: 'nextConsultation', title: 'Próx. Turno', className: "text-nowrap" }
-    ]
+    ],
+    getRecords: getInactiveConsultations,
+    restoreRecord: restoreConsultation
   }
 }

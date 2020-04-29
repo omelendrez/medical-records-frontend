@@ -10,7 +10,7 @@ const Customers = ({ filter }) => {
   const paginationDefault = {
     curPage: 1,
     totRecords: 0,
-    limit: 1,
+    limit: 5,
     filter
   }
 
