@@ -21,12 +21,10 @@ const Customers = ({ filter }) => {
   const [pagination, setPagination] = useState(paginationDefault)
 
   useEffect(() => {
-    const pag = pagination
     getCustomers(pagination)
       .then(customers => {
-        pag.totRecords = customers.count
-        setPagination(pag)
         setCustomers(customers)
+        setPagination({ ...pagination, totRecords: customers.count })
       })
   }, [pagination])
 
@@ -62,7 +60,7 @@ const Customers = ({ filter }) => {
   }
 
   const { rows } = customers
-  const totPages = Math.round(pagination.totRecords / pagination.limit)
+  const totPages = Math.ceil(pagination.totRecords / pagination.limit)
 
   return (
     <>

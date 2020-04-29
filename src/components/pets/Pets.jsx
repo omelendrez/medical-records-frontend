@@ -22,12 +22,10 @@ const Pets = ({ filter }) => {
 
 
   useEffect(() => {
-    const pag = pagination
     getPets(pagination)
       .then(pets => {
-        pag.totRecords = pets.count
-        setPagination(pag)
         setPets(pets)
+        setPagination({ ...pagination, totRecords: pets.count })
       })
   }, [pagination])
 
@@ -59,7 +57,7 @@ const Pets = ({ filter }) => {
   }
 
   const { rows } = pets
-  const totPages = Math.round(pagination.totRecords / pagination.limit)
+  const totPages = Math.ceil(pagination.totRecords / pagination.limit)
 
   return (
     <>
