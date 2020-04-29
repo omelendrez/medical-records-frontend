@@ -21,12 +21,18 @@ const Consultations = ({ filter }) => {
   const [pagination, setPagination] = useState(paginationDefault)
 
   useEffect(() => {
+    updateState()
+  }, [pagination])
+
+  const updateState = () => {
+    const pag = pagination
     getConsultations(pagination)
       .then(consultations => {
+        pag.totRecords = consultations.count
+        setPagination(pag)
         setConsultations(consultations)
-        setPagination({ ...pagination, totRecords: consultations.count })
       })
-  }, [pagination])
+  }
 
   const changePage = page => {
     setPagination({ ...pagination, curPage: page })

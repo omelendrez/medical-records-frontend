@@ -10,7 +10,7 @@ const Customers = ({ filter }) => {
   const paginationDefault = {
     curPage: 1,
     totRecords: 0,
-    limit: 5,
+    limit: 1,
     filter
   }
 
@@ -21,12 +21,18 @@ const Customers = ({ filter }) => {
   const [pagination, setPagination] = useState(paginationDefault)
 
   useEffect(() => {
+    updateState()
+  }, [pagination])
+
+  const updateState = () => {
+    const pag = pagination
     getCustomers(pagination)
       .then(customers => {
+        pag.totRecords = customers.count
+        setPagination(pag)
         setCustomers(customers)
-        setPagination({ ...pagination, totRecords: customers.count })
       })
-  }, [pagination])
+  }
 
   const changePage = page => {
     setPagination({ ...pagination, curPage: page })

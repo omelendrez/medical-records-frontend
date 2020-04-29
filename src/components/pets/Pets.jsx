@@ -20,14 +20,19 @@ const Pets = ({ filter }) => {
   const [redirect, setRedirect] = useState('')
   const [pagination, setPagination] = useState(paginationDefault)
 
-
   useEffect(() => {
+    updateState()
+  }, [pagination])
+
+  const updateState = () => {
+    const pag = pagination
     getPets(pagination)
       .then(pets => {
+        pag.totRecords = pets.count
+        setPagination(pag)
         setPets(pets)
-        setPagination({ ...pagination, totRecords: pets.count })
       })
-  }, [pagination])
+  }
 
   const changePage = page => {
     setPagination({ ...pagination, curPage: page })

@@ -2,7 +2,7 @@ import React from 'react'
 
 const Pagination = ({ pagination, changePage }) => {
   const { curPage, totRecords, limit } = pagination
-  const totPages = Math.round(totRecords / limit)
+  const totPages = Math.ceil(totRecords / limit)
 
   const canGoBackward = curPage > 1
   const canGoForward = curPage < totPages
