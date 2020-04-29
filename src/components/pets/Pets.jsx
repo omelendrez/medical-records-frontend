@@ -6,7 +6,6 @@ import Pagination from '../Pagination'
 import { getPets, deletePet } from '../../services/pets'
 
 const Pets = ({ filter }) => {
-
   const paginationDefault = {
     curPage: 1,
     totRecords: 0,
@@ -22,14 +21,6 @@ const Pets = ({ filter }) => {
 
 
   useEffect(() => {
-    updateState()
-  }, [pagination])
-
-  const changePage = page => {
-    setPagination({ ...pagination, curPage: page })
-  }
-
-  const updateState = () => {
     const pag = pagination
     getPets(pagination)
       .then(pets => {
@@ -37,6 +28,10 @@ const Pets = ({ filter }) => {
         setPagination(pag)
         setPets(pets)
       })
+  }, [pagination])
+
+  const changePage = page => {
+    setPagination({ ...pagination, curPage: page })
   }
 
   const handleDelete = pet => {

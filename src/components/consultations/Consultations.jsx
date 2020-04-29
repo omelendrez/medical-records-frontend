@@ -21,14 +21,6 @@ const Consultations = ({ filter }) => {
   const [pagination, setPagination] = useState(paginationDefault)
 
   useEffect(() => {
-    updateState()
-  }, [pagination])
-
-  const changePage = page => {
-    setPagination({ ...pagination, curPage: page })
-  }
-
-  const updateState = () => {
     const pag = pagination
     getConsultations(pagination)
       .then(consultations => {
@@ -36,7 +28,10 @@ const Consultations = ({ filter }) => {
         setPagination(pag)
         setConsultations(consultations)
       })
+  }, [pagination])
 
+  const changePage = page => {
+    setPagination({ ...pagination, curPage: page })
   }
 
   const handleDelete = consultation => {
