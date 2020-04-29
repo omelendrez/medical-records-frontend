@@ -6,8 +6,9 @@ export const getPets = async pagination => {
 	return response.data.pets
 }
 
-export const getInactivePets = async () => {
-	const response = await http.get(`pets/inactive`)
+export const getInactivePets = async pagination => {
+	const { filter, limit, curPage } = pagination
+	const response = await http.get(`pets/inactive?filter=${filter}&page=${curPage}&limit=${limit}`)
 	return response.data.pets
 }
 

@@ -6,8 +6,9 @@ export const getConsultations = async pagination => {
   return response.data.consultations
 }
 
-export const getInactiveConsultations = async () => {
-  const response = await http.get(`consultations/inactive`)
+export const getInactiveConsultations = async pagination => {
+  const { filter, limit, curPage } = pagination
+  const response = await http.get(`consultations/inactive?filter=${filter}&page=${curPage}&limit=${limit}`)
   return response.data.consultations
 }
 
