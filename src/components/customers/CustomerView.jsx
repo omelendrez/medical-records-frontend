@@ -70,7 +70,7 @@ const Pet = ({ pet }) => {
   )
 }
 
-const Customer = ({ customer, pet, handleAddPet, selectPet, setBack }) => {
+const Customer = ({ customer, pet, handleAddPet, loadPet, setBack }) => {
   const { name, address, phone, observations, pets } = customer
   return (
     <div className="card customer">
@@ -92,7 +92,7 @@ const Customer = ({ customer, pet, handleAddPet, selectPet, setBack }) => {
                   <li
                     className="list-group-item"
                     key={index}
-                    onClick={() => selectPet(pet)}
+                    onClick={() => loadPet(pet)}
                   >
                     {pet.name}
                   </li>
@@ -140,12 +140,18 @@ const CustomerView = props => {
     props.history.goBack()
   }
 
+  const loadPet = pet => {
+    setRedirect(`/clientes/${customer.id}/${pet.id}`)
+  }
+
   useEffect(() => {
     getCustomer(props.match.params.id)
       .then(customer => {
         setCustomer(customer)
         const pet = { id: props.match.params.petId }
-        props.match.params.petId && selectPet(pet)
+        if (props.match.params.petId) {
+          selectPet(pet)
+        }
       })
   }, [props.match.params.id, props.match.params.petId])
 
@@ -198,7 +204,7 @@ const CustomerView = props => {
           customer={customer}
           pet={pet}
           handleAddPet={handleAddPet}
-          selectPet={selectPet}
+          loadPet={loadPet}
           setBack={setBack}
         />
 

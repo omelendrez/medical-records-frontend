@@ -81,7 +81,6 @@ const Consultations = ({ filter }) => {
         <table className="table">
           <thead>
             <tr>
-              <th scope="col">#</th>
               <th scope="col">Fecha</th>
               <th scope="col">Paciente</th>
               <th scope="col">Diagnostico</th>
