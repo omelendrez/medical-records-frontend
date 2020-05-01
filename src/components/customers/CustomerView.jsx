@@ -59,73 +59,80 @@ const Consultations = ({ consultations, addConsultation, editConsultation, delet
 const Pet = ({ pet }) => {
   const { name, type, breed, observations } = pet
   return (
-    <div>
-      <div>
+    <div className="card pet">
+      <div className="card-body">
         <h5 className="card-title">{name}</h5>
+        <h6 className="card-subtitle mb-2 text-muted">{type}</h6>
+        <h6 className="card-subtitle mb-2 text-muted">{breed}</h6>
+        <p className="card-text observations">{observations}</p>
       </div>
-      <div>{type}</div>
-      <div>{breed}</div>
-      <div>{observations}</div>
     </div>
+  )
+}
+
+const PetsList = ({ pet, pets, loadPet, handleAddPet }) => {
+
+  return (
+    !pet.name &&
+    <div className="pets mt-2">
+      <div className="pets-header">
+        Pacientes
+      </div>
+      <ul className="list-group">
+        {
+          pets.map((pet, index) => {
+            return (
+              <li
+                className="list-group-item"
+                key={index}
+                onClick={() => loadPet(pet)}
+              >
+                <button className="btn btn-info btn-block">
+                  {pet.name}
+                </button>
+              </li>
+            )
+          })
+        }
+      </ul>
+      <div>
+        <button
+          type="button"
+          className="btn btn-primary mt-4 float-right"
+          onClick={e => handleAddPet(e)}
+        >Agregar</button>
+      </div>
+      {
+        !pets.length && <div className="alert alert-warning my-3">No tiene mascotas</div>
+      }
+
+    </div >
+
   )
 }
 
 const Customer = ({ customer, pet, handleAddPet, loadPet, setBack }) => {
   const { name, address, phone, observations, pets } = customer
   return (
-    <div className="card customer">
-      <div className="card-body">
-        <h5 className="card-title">{name}</h5>
-        <h6 className="card-subtitle mb-2 text-muted">{address}</h6>
-        <h6 className="card-subtitle mb-2 text-muted">{phone}</h6>
-
-        <p className="card-text observations">{observations}</p>
-
-        {!pet.name && <div className="pets">
-          <div className="pets-header">
-            Pacientes
-        </div>
-          <ul className="list-group">
-            {
-              pets.map((pet, index) => {
-                return (
-                  <li
-                    className="list-group-item"
-                    key={index}
-                    onClick={() => loadPet(pet)}
-                  >
-                    {pet.name}
-                  </li>
-                )
-              })
-            }
-          </ul>
-
-
-          <div>
-            <button
-              type="button"
-              className="btn btn-primary mt-4"
-              onClick={e => handleAddPet(e)}
-            >Agregar</button>
+    <>
+      <div className="text-center">
+        <div className="card customer">
+          <div className="card-body">
+            <h5 className="card-title">{name}</h5>
+            <h6 className="card-subtitle mb-2 text-muted">{address}</h6>
+            <h6 className="card-subtitle mb-2 text-muted">{phone}</h6>
+            <p className="card-text observations">{observations}</p>
           </div>
         </div>
-        }
         {pet.name && <Pet pet={pet} />}
-        {
-          !customer.pets.length && <div className="alert alert-warning my-3">No tiene mascotas</div>
-        }
-
-      </div>
-      <div className="container-fluid my-4">
         <button
           type="button"
-          className="btn btn-warning float-right"
+          className="btn btn-warning mt-3"
           onClick={() => setBack(true)}
         >Volver</button>
       </div>
-    </div>
-
+      <PetsList pet={pet} pets={pets} loadPet={loadPet} handleAddPet={handleAddPet} />
+    </>
   )
 }
 
@@ -137,7 +144,12 @@ const CustomerView = props => {
   const [showConfirm, setShowConfirm] = useState(false)
 
   const setBack = () => {
-    props.history.goBack()
+    setPet({})
+    if (!props.match.params.petId) {
+      setRedirect(`/clientes`)
+    } else {
+      setRedirect(`/clientes/${customer.id}`)
+    }
   }
 
   const loadPet = pet => {

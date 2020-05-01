@@ -1,7 +1,5 @@
 .main-container {
   display: flex;
-  flex-direction: row;
-  width: 100vw;
 }
 
 .customer,
@@ -9,52 +7,41 @@
   border: 0;
 }
 
-.customer {
-  margin: 0 auto;
-}
 
 .consultations .consultations-list  {
   height: 80vh;
-}
-
-.customer .card-body {
-  flex: unset;
-}
-
-.customer .container {
-  padding-bottom: 18px;
+  float: right  ;
 }
 
 .customer .observations {
   font-style: italic;
-  max-width: 240px;
-  min-width: 240px;
 }
- .customer .pets {
-  border: 1px solid #ccc;
-  border-radius: 6px;
+ .main-container .pets {
   padding: 10px;
+  width: 200px;
+  zoom: 1.5;
+  margin-left: 10vw;
 }
 
-.customer .pets .pets-header {
+.main-container .pets .pets-header {
   font-size: 1.2em;
   padding-bottom: 6px;
   font-weight: bold;
+  color: #666;
 }
 
-.customer .pets .list-group-item {
+.main-container .pets .list-group-item {
   cursor: pointer;
 }
 
-.customer .pets .pet {
+.main-container .pets button {
+  zoom: 0.7;
+}
+
+.main-container .pets .pet {
   margin-right: 20px;
 }
 
 .consultations .consultation {
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  max-width: 80vw;
-  margin-right: 4px;
   margin-bottom: 4px;
 }
