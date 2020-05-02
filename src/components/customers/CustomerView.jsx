@@ -57,7 +57,7 @@ const Consultations = ({ consultations, addConsultation, editConsultation, delet
 }
 
 const Pet = ({ pet }) => {
-  const { name, type, breed, observations } = pet
+  const { name, type, breed, observations, statusId } = pet
   return (
     <div className="card pet">
       <div className="card-body">
@@ -65,6 +65,7 @@ const Pet = ({ pet }) => {
         <h6 className="card-subtitle mb-2 text-muted">{type}</h6>
         <h6 className="card-subtitle mb-2 text-muted">{breed}</h6>
         <p className="card-text observations">{observations}</p>
+        <p className={`status ${statusId === 1 ? 'active' : 'inactive'}`}>{statusId === 1 ? 'Activo' : 'Inactivo'}</p>
       </div>
     </div>
   )
@@ -88,7 +89,7 @@ const PetsList = ({ pet, pets, loadPet, handleAddPet }) => {
                 onClick={() => loadPet(pet)}
               >
                 <button className="btn btn-info btn-block">
-                  {pet.name}
+                  {`${pet.name} (${pet.statusId === 1 ? 'activo' : 'inactivo'})`}
                 </button>
               </li>
             )
