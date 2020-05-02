@@ -13,9 +13,9 @@ const ConsultationForm = props => {
     treatment: '',
     nextConsultation: '',
     observations: '',
-    amount: '',
+    amount: '0.00',
     paymentMethod: '',
-    paid: ''
+    paid: '0.00'
   })
 
   const handleChange = (e => {
@@ -137,7 +137,7 @@ const ConsultationForm = props => {
                       value={form.paymentMethod}
                     >
                       {
-                        paymentMethods.map(method => <option value={method.id} > {method.name}</option>)
+                        paymentMethods.map(method => <option key={method.id} value={method.id} > {method.name}</option>)
                       }
                     </select>
                   </div>

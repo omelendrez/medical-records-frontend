@@ -28,9 +28,10 @@ const ConsultationForm = props => {
   const handleChange = (e => {
     e.preventDefault()
     error && setError(false)
+    let { id, value } = e.target
     setForm({
       ...form,
-      [e.target.id]: e.target.value
+      [id]: value
     })
   })
 
@@ -146,7 +147,7 @@ const ConsultationForm = props => {
                       value={form.paymentMethod}
                     >
                       {
-                        paymentMethods.map(method => <option value={method.id} > {method.name}</option>)
+                        paymentMethods.map(method => <option key={method.id} value={method.id} > {method.name}</option>)
                       }
                     </select>
                   </div>

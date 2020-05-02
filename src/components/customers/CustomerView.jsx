@@ -4,13 +4,35 @@ import Confirm from '../Confirm'
 import { getCustomer } from '../../services/customers'
 import { getPet } from '../../services/pets'
 import { deleteConsultation } from '../../services/consultations'
+import { formatNumber } from '../../services/utils'
 import './CustomerView.css'
 
+const Amount = ({ text, value }) => {
+  return <div className="amount-row">
+    <div className="amount-label">{text}</div>
+    <div className="amount">{value}</div>
+  </div>
+}
+
+const Balance = ({ amount, paid }) => {
+  const amounts = [
+    { text: 'Consulta', value: formatNumber(amount) },
+    { text: 'Pagado', value: formatNumber(paid) },
+    { text: 'Saldo', value: formatNumber(amount - paid) }]
+
+  return (
+    <div className="float-right text-right balance">
+      {amounts.map(amount => <Amount text={amount.text} value={amount.value} />)}
+    </div>
+  )
+}
+
 const Consultation = ({ consultation, editConsultation, deleteConsultation }) => {
-  const { id, date, diagnosis, treatment, nextConsultation, observations } = consultation
+  const { id, date, diagnosis, treatment, nextConsultation, observations, amount, paid } = consultation
   return (
     <div className="card consultation">
       <div className="card-body">
+        <Balance amount={amount} paid={paid} />
         <h5 className="card-title">{date}</h5>
         <h6 className="card-subtitle mb-2">Diagnóstico: {diagnosis}</h6>
         <p className="card-text">{treatment}</p>
@@ -40,7 +62,7 @@ const Consultations = ({ consultations, addConsultation, editConsultation, delet
       <div className="text-right">
         <button
           type="button"
-          className="btn btn-primary m-1"
+          className="btn btn-primary m-1 add-consultation"
           onClick={e => addConsultation(e)}
         >Agregar</button>
       </div>
@@ -212,7 +234,7 @@ const CustomerView = props => {
         />
       }
       {redirect && <Redirect to={redirect} />}
-      <div className="main-container container-fluid">
+      <div className="main-container">
         <Customer
           customer={customer}
           pet={pet}

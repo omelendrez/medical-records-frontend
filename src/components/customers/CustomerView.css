@@ -2,23 +2,31 @@
   display: flex;
 }
 
-.customer,
-.consultations {
-  border: 0;
+.main-container .customer,
+.main-container .pet {
+  width: 20vw;
 }
 
-
-.consultations .consultations-list  {
-  height: 80vh;
-  float: right  ;
+.main-container .consultations {
+  width: 79vw;
+  margin-left: 4px;
 }
 
-.customer .observations {
+.main-container .consultations .consultation .balance .amount-row {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.main-container .consultations .consultation .balance .amount-row .amount {
+  width: 5rem;
+  font-weight: bold;
+}
+
+.main-container .customer .observations {
   font-style: italic;
 }
  .main-container .pets {
   padding: 10px;
-  width: 200px;
   zoom: 1.5;
   margin-left: 10vw;
 }
@@ -52,8 +60,4 @@
 
 .main-container .pet .status.inactive {
   color: red;
-}
-
-.consultations .consultation {
-  margin-bottom: 4px;
 }

@@ -66,3 +66,5 @@ export const paymentMethods = [
     name: 'Otro'
   }
 ]
+
+export const formatNumber = amount => parseInt(amount).toFixed(2)
