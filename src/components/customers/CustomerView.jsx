@@ -96,6 +96,9 @@ const PetsList = ({ pet, pets, loadPet, handleAddPet }) => {
           })
         }
       </ul>
+      {
+        !pets.length && <div className="alert alert-warning my-3">No tiene mascotas</div>
+      }
       <div>
         <button
           type="button"
@@ -103,9 +106,6 @@ const PetsList = ({ pet, pets, loadPet, handleAddPet }) => {
           onClick={e => handleAddPet(e)}
         >Agregar</button>
       </div>
-      {
-        !pets.length && <div className="alert alert-warning my-3">No tiene mascotas</div>
-      }
 
     </div >
 

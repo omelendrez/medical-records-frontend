@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import { saveConsultation, getConsultation } from '../../services/consultations'
+import { paymentMethods } from '../../services/utils'
 
 const ConsultationForm = props => {
   const [back, setBack] = useState(false)
@@ -12,7 +13,10 @@ const ConsultationForm = props => {
     diagnosis: '',
     treatment: '',
     nextConsultation: '',
-    observations: ''
+    observations: '',
+    amount: '',
+    paymentMethod: '',
+    paid: ''
   })
 
   useEffect(() => {
@@ -100,20 +104,65 @@ const ConsultationForm = props => {
                       onChange={e => handleChange(e)}
                       value={form.treatment}
                       required
-                      rows="6"
+                      rows="2"
                     />
                   </div>
                 </div>
               </div>
-              <div className="form-group">
-                <label htmlFor="observations">Observaciones</label>
-                <textarea
-                  className="form-control"
-                  id="observations"
-                  onChange={e => handleChange(e)}
-                  value={form.observations}
-                  rows="1"
-                />
+              <div className="form-row">
+                <div className="col">
+                  <div className="form-group">
+                    <label htmlFor="observations">Observaciones</label>
+                    <textarea
+                      className="form-control"
+                      id="observations"
+                      onChange={e => handleChange(e)}
+                      value={form.observations}
+                      rows="1"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="form-row">
+                <div className="col">
+                  <div className="form-group">
+                    <label htmlFor="treatment">Valor consulta</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="amount"
+                      onChange={e => handleChange(e)}
+                      value={form.amount}
+                    />
+                  </div>
+                </div>
+                <div className="col">
+                  <div className="form-group">
+                    <label htmlFor="treatment">Forma de pago</label>
+                    <select className="form-control"
+                      id="paymentMethod"
+                      onChange={e => handleChange(e)}
+                      value={form.paymentMethod}
+                    >
+                      {
+                        paymentMethods.map(method => <option value={method.id} > {method.name}</option>)
+                      }
+                    </select>
+                  </div>
+                </div>
+                <div className="col">
+                  <div className="form-group">
+                    <label htmlFor="treatment">Pagado</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="paid"
+                      onChange={e => handleChange(e)}
+                      value={form.paid}
+                    />
+                  </div>
+                </div>
               </div>
 
               <button
