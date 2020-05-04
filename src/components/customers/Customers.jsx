@@ -10,7 +10,7 @@ const Customers = ({ filter }) => {
   const paginationDefault = {
     curPage: 1,
     totRecords: 0,
-    limit: 5,
+    limit: 6,
     filter
   }
 
@@ -85,7 +85,6 @@ const Customers = ({ filter }) => {
         <table className="table">
           <thead>
             <tr>
-              <th scope="col">#</th>
               <th scope="col">Nombre</th>
               <th scope="col">Domicilio</th>
               <th scope="col">Teléfono</th>

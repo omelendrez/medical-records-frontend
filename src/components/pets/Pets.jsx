@@ -10,7 +10,7 @@ const Pets = ({ filter }) => {
   const paginationDefault = {
     curPage: 1,
     totRecords: 0,
-    limit: 10,
+    limit: 7,
     filter
   }
 
@@ -81,7 +81,6 @@ const Pets = ({ filter }) => {
         <table className="table">
           <thead>
             <tr>
-              <th scope="col">#</th>
               <th scope="col">Nombre</th>
               <th scope="col">Tipo</th>
               <th scope="col">Raza</th>
