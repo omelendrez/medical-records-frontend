@@ -33,8 +33,8 @@ const Consultation = ({ consultation, editConsultation, deleteConsultation }) =>
     <div className="card consultation">
       <div className="card-body">
         <Balance amount={amount} paid={paid} />
-        <h5 className="card-title">{date}</h5>
-        <h6 className="card-subtitle mb-2">Diagnóstico: {diagnosis}</h6>
+        <h6 className="card-title">{date}</h6>
+        <h5 className="card-subtitle mb-2">Diagnóstico: {diagnosis}</h5>
         <p className="card-text">{treatment}</p>
         {nextConsultation && <h6 className="card-subtitle mb-2">Próxima consulta: {nextConsultation}</h6>}
         {observations && <p className="card-text">{observations}</p>}
