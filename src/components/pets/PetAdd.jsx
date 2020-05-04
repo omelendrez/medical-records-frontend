@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import { savePet } from '../../services/pets'
+import { sexList } from '../../services/utils'
 
 const PetForm = props => {
   const [back, setBack] = useState(false)
@@ -9,6 +10,7 @@ const PetForm = props => {
     customerId: props.match.params.id,
     name: '',
     type: '',
+    sex: '',
     breed: '',
     observations: ''
   })
@@ -85,14 +87,20 @@ const PetForm = props => {
                 <div className="col">
                   <div className="form-group">
                     <label htmlFor="sex">Sexo</label>
-                    <input
-                      type="text"
+                    <select
                       className="form-control"
                       id="sex"
                       onChange={e => handleChange(e)}
                       value={form.sex}
-                      required
-                    />
+                    >
+                      {sexList.map(sex => {
+                        return (
+                          <option key={sex.id} value={sex.id}>
+                            {sex.name}
+                          </option>
+                        )
+                      })}
+                    </select>
                   </div>
                 </div>
               </div>

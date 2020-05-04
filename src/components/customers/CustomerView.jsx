@@ -64,9 +64,13 @@ const Consultations = ({ consultations, addConsultation, editConsultation, delet
           type="button"
           className="btn btn-primary m-1 add-consultation"
           onClick={e => addConsultation(e)}
-        >Agregar</button>
+        >Agregar Consulta</button>
       </div>
-      <div className="consultations-list overflow-auto">
+      {!consultations.length && <div className="container text-center">
+        <div className="alert alert-warning">El paciente no registra consultas</div>
+      </div>
+      }
+      {consultations.length > 0 && <div className="consultations-list overflow-auto">
         {consultations.map((consultation, index) => <Consultation
           key={index}
           consultation={consultation}
@@ -74,6 +78,7 @@ const Consultations = ({ consultations, addConsultation, editConsultation, delet
           deleteConsultation={deleteConsultation}
         />)}
       </div>
+      }
     </div>
   )
 }

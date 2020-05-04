@@ -49,4 +49,10 @@ export const paymentMethods = [
   { id: 5, name: 'Otro' }
 ]
 
+export const sexList = [
+  { id: '', name: '' },
+  { id: 'M', name: 'Macho' },
+  { id: 'H', name: 'Hembra' }
+]
+
 export const formatNumber = amount => parseInt(amount).toFixed(2)
