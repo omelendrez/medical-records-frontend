@@ -10,7 +10,7 @@ const Consultations = ({ filter }) => {
   const paginationDefault = {
     curPage: 1,
     totRecords: 0,
-    limit: 3,
+    limit: 7,
     filter
   }
 

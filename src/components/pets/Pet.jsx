@@ -7,7 +7,6 @@ const Pet = ({ data, deletePet, editPet }) => {
 
   return (
     <tr>
-      <td>{id}</td>
       <td className="name">
         <Link to={`/clientes/${customerId}/${id}`}>{name}</Link>
       </td>

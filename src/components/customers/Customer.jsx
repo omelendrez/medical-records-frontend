@@ -9,7 +9,6 @@ const Customer = ({ data, deleteCustomer, editCustomer }) => {
 
   return (
     <tr>
-      <td>{id}</td>
       <td className="name">
         <Link to={`/clientes/${id}`}>{name}</Link>
         <div className="pet-list">
