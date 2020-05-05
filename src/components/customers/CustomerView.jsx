@@ -118,7 +118,7 @@ const PetsList = ({ pet, pets, loadPet, handleAddPet }) => {
                 key={index}
                 onClick={() => loadPet(pet)}
               >
-                <button className="btn btn-info btn-block">
+                <button className={`btn btn-${pet.statusId === 1 ? 'info': 'danger'} btn-block`}>
                   {`${pet.name} (${pet.statusId === 1 ? 'activo' : 'inactivo'})`}
                 </button>
               </li>

@@ -15,16 +15,16 @@ const Consultation = ({ data, deleteConsultation, editConsultation }) => {
           {pet.name}
         </Link>
       </td>
-      <td>{diagnosis}</td>
-      <td>{treatment}</td>
+      <td>{diagnosis.substring(0,40)}</td>
+      <td>{treatment.substring(0,60)}</td>
       <td className="text-nowrap">{nextConsultation}</td>
-      <td>
+      <td style={{width: '120px'}}>
         <button
           className="btn btn-danger"
           onClick={() => deleteConsultation(data)}
         >Eliminar</button>
       </td>
-      <td>
+      <td style={{width: '120px'}}>
         <button
           className="btn btn-info"
           onClick={() => editConsultation(data)}
