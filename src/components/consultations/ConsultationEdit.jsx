@@ -9,6 +9,8 @@ const ConsultationForm = props => {
 
   const [form, setForm] = useState({
     id: '',
+    customerId: '',
+    petId: '',
     date: '',
     diagnosis: '',
     treatment: '',
@@ -46,7 +48,7 @@ const ConsultationForm = props => {
 
   return (
     <>
-      {back && <Redirect to={`/clientes/${form.pet.customerId}/${form.petId}`} />}
+      {back && <Redirect to={`/clientes/${form.customerId}/${form.petId}`} />}
       <div className="container">
         <div className="row">
           <div className="container col-8">

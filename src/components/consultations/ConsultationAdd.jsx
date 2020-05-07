@@ -7,6 +7,7 @@ const ConsultationForm = props => {
   const [back, setBack] = useState(false)
   const [error, setError] = useState('')
   const [form, setForm] = useState({
+    customerId: props.match.params.customerId,
     petId: props.match.params.petId,
     date: '',
     diagnosis: '',
