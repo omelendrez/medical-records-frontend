@@ -31,6 +31,10 @@
   margin-left: 10vw;
 }
 
+.main-container .consultations .consultations-list {
+  height: 85vh;
+}
+
 .main-container .pets .pets-header {
   font-size: 1.2em;
   padding-bottom: 6px;
