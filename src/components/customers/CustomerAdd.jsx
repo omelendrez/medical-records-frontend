@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom'
 import { saveCustomer } from '../../services/customers'
 
 const CustomerForm = props => {
-  const [back, setBack] = useState(false)
+  const [redirect, setRedirect] = useState('')
   const [error, setError] = useState('')
   const [form, setForm] = useState({
     name: '',
@@ -24,7 +24,9 @@ const CustomerForm = props => {
 
   const handleSave = (e => {
     saveCustomer(form)
-      .then(() => setBack(true))
+      .then(resp => {
+        setRedirect(`/clientes/${resp.record.id}`)
+      })
       .catch(err => {
         setError(err.response.data.error)
       })
@@ -32,7 +34,7 @@ const CustomerForm = props => {
 
   return (
     <>
-      {back && <Redirect to="/clientes" />}
+      {redirect && <Redirect to={redirect} />}
       <div className="container">
         <div className="row">
           <div className="container col-8">
@@ -113,7 +115,7 @@ const CustomerForm = props => {
               <button
                 type="button"
                 className="btn btn-danger float-right"
-                onClick={() => setBack(true)}
+                onClick={() => setRedirect('/clientes')}
               >Volver</button>
 
               {error && <div className="alert alert-danger mt-3" role="alert">{error}</div>}

@@ -39,8 +39,8 @@ const Pagination = ({ pagination, changePage }) => {
             {'>>'}
           </button>
         </li>
-        <div class="m-1 ml-3">
-          <p class="text-secondary">{`Mostrando ${limit} registros de ${totRecords}`}</p>
+        <div className="m-1 ml-3">
+          <p className="text-secondary">{`Mostrando ${limit} registros de ${totRecords}`}</p>
         </div>
       </ul >
     </nav >
