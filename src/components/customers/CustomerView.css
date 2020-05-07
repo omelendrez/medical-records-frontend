@@ -12,19 +12,32 @@
   margin-left: 4px;
 }
 
+.main-container .consultations .consultation .texts {
+  min-height: 50px;
+}
+
+.main-container .consultations .consultation .balance {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  display: flex;
+}
+
 .main-container .consultations .consultation .balance .amount-row {
   display: flex;
   justify-content: flex-end;
 }
 
 .main-container .consultations .consultation .balance .amount-row .amount {
-  width: 5rem;
-  font-weight: bold;
+  width: 3rem;
 }
 
-.main-container .customer .observations {
+.main-container .customer .observations,
+.main-container .pet .observations,
+.main-container .consultation .observations {
   font-style: italic;
 }
+
  .main-container .pets {
   padding: 10px;
   zoom: 1.5;

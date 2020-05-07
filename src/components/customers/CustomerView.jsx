@@ -8,7 +8,7 @@ import { formatNumber } from '../../services/utils'
 import './CustomerView.css'
 
 const Amount = ({ text, value }) => {
-  return <div className="amount-row">
+  return <div className="amount-row mx-4">
     <div className="amount-label">{text}</div>
     <div className="amount">{value}</div>
   </div>
@@ -34,10 +34,10 @@ const Consultation = ({ consultation, editConsultation, deleteConsultation }) =>
       <div className="card-body">
         <Balance amount={amount} paid={paid} />
         <h6 className="card-title">{date}</h6>
-        <h5 className="card-subtitle mb-2">Diagnóstico: {diagnosis}</h5>
-        <p className="card-text">{treatment}</p>
+        {diagnosis && <h5 className="card-subtitle mb-2">Diagnóstico: {diagnosis}</h5>}
+        {treatment && <p className="card-text texts">Tratamiento: {treatment}</p>}
         {nextConsultation && <h6 className="card-subtitle mb-2">Próxima consulta: {nextConsultation}</h6>}
-        {observations && <p className="card-text">{observations}</p>}
+        {observations && <p className="card-text observations">{observations}</p>}
         <div>
           <button
             type="button"
@@ -118,7 +118,7 @@ const PetsList = ({ pet, pets, loadPet, handleAddPet }) => {
                 key={index}
                 onClick={() => loadPet(pet)}
               >
-                <button className={`btn btn-${pet.statusId === 1 ? 'info': 'danger'} btn-block`}>
+                <button className={`btn btn-${pet.statusId === 1 ? 'info' : 'danger'} btn-block`}>
                   {`${pet.name} (${pet.statusId === 1 ? 'activo' : 'inactivo'})`}
                 </button>
               </li>
