@@ -17,19 +17,21 @@
 }
 
 .main-container .consultations .consultation .balance {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 5px;
   display: flex;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 5px;
 }
 
+.main-container .consultations .consultation .balance.debt {
+  background-color: greenyellow;
+}
 .main-container .consultations .consultation .balance .amount-row {
   display: flex;
-  justify-content: flex-end;
 }
 
 .main-container .consultations .consultation .balance .amount-row .amount {
-  width: 3rem;
+  width: 6rem;
 }
 
 .main-container .customer .observations,

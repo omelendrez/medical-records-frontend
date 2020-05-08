@@ -21,8 +21,8 @@ const Balance = ({ amount, paid }) => {
     { text: 'Saldo', value: formatNumber(amount - paid) }]
 
   return (
-    <div className="float-right text-right balance">
-      {amounts.map(amount => <Amount text={amount.text} value={amount.value} />)}
+    <div className={`float-right text-right balance ${amount > paid ? 'debt' : ''}`}>
+      {amounts.map((amount, index) => <Amount key={index} text={amount.text} value={amount.value} />)}
     </div>
   )
 }
@@ -32,7 +32,7 @@ const Consultation = ({ consultation, editConsultation, deleteConsultation }) =>
   return (
     <div className="card consultation">
       <div className="card-body">
-        <Balance amount={amount} paid={paid} />
+        {amount > 0 && <Balance amount={amount} paid={paid} />}
         <h6 className="card-title">{date}</h6>
         {diagnosis && <h5 className="card-subtitle mb-2">Diagnóstico: {diagnosis}</h5>}
         {treatment && <p className="card-text texts">Tratamiento: {treatment}</p>}
