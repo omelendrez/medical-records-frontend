@@ -24,9 +24,9 @@ const Pagination = ({ pagination, changePage }) => {
             {'<'}
           </button>
         </li>
-        <li className="page-item active">
+        <li className="page-item disabled">
           <button className="page-link" >
-            {curPage}
+            {`Página ${curPage} de ${totPages}`}
           </button>
         </li>
         <li className={`page-item ${canGoForward ? '' : 'disabled'}`}>
@@ -40,7 +40,7 @@ const Pagination = ({ pagination, changePage }) => {
           </button>
         </li>
         <div className="m-1 ml-3">
-          <p className="text-secondary">{`Mostrando ${limit} registros de ${totRecords}`}</p>
+          <p className="text-secondary">{`${totRecords} registros`}</p>
         </div>
       </ul >
     </nav >

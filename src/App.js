@@ -25,7 +25,6 @@ function App() {
         <Switch>
           <Route path="/" component={Home} exact />
           <Route path="/clientes" exact component={() => <Customers filter={filter} />} />
-          <Route path="/clientes/deudores" exact component={Debtors} />
           <Route path="/clientes/:id" exact component={CustomerView} />
           <Route path="/clientes/:id/:petId" exact component={CustomerView} />
           <Route path="/nuevo-cliente" component={CustomerAdd} />
@@ -37,6 +36,7 @@ function App() {
           <Route path="/edit-consulta/:consultationId" exact component={ConsultationEdit} />
           <Route path="/nueva-consulta/:customerId/:petId" exact component={ConsultationAdd} />
           <Route path="/restaurar/:table" exact component={Restore} />
+          <Route path="/deudores" exact component={() => <Debtors filter={filter} />} />
         </Switch>
       </main>
     </BrowserRouter>

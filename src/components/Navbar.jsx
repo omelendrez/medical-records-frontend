@@ -4,7 +4,7 @@ import NavLink from './NavLink'
 
 const Navbar = ({ doSearch }) => {
   const { pathname: page } = useLocation()
-  const hasSearch = page === '/clientes' || page === '/pacientes' || page === '/consultas'
+  const hasSearch = page === '/clientes' || page === '/pacientes' || page === '/consultas' || page === '/deudores'
 
   const [search, setSearch] = useState('')
 

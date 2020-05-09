@@ -10,7 +10,7 @@ const Pets = ({ filter }) => {
   const paginationDefault = {
     curPage: 1,
     totRecords: 0,
-    limit: 7,
+    limit: 10,
     filter
   }
 
@@ -78,7 +78,7 @@ const Pets = ({ filter }) => {
       }
       {redirect && <Redirect to={redirect} />}
       <div className="container-fluid">
-        <table className="table">
+        <table className="table table-sm">
           <thead>
             <tr>
               <th scope="col">Nombre</th>
