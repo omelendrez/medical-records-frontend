@@ -7,11 +7,11 @@ const Debtors = ({ filter }) => {
   const paginationDefault = {
     curPage: 1,
     totRecords: 0,
-    limit: 2,
+    limit: 10,
     filter
   }
 
-  const [debtors, setDebtors] = useState([])
+  const [debtors, setDebtors] = useState({ rows: [] })
   const [pagination, setPagination] = useState(paginationDefault)
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const Debtors = ({ filter }) => {
     const pag = pagination
     getDebtors(pagination)
       .then(debtors => {
-        pag.totRecords = 3
+        pag.totRecords = debtors.count.length
         setPagination(pag)
         setDebtors(debtors)
       })
@@ -33,6 +33,7 @@ const Debtors = ({ filter }) => {
   }
 
   const totPages = Math.ceil(pagination.totRecords / pagination.limit)
+  const { rows } = debtors
 
   return (
     <div className="container-fluid">
@@ -46,7 +47,7 @@ const Debtors = ({ filter }) => {
           </tr>
         </thead>
         <tbody>
-          {debtors
+          {rows
             .map(debtor =>
               <tr key={debtor.id}>
                 <td>{debtor.name}</td>
