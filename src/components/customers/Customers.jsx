@@ -65,6 +65,10 @@ const Customers = ({ filter }) => {
     setRedirect('/restaurar/clientes')
   }
 
+  const handleDebtors = () => {
+    setRedirect('/clientes/deudores')
+  }
+
   const { rows } = customers
   const totPages = Math.ceil(pagination.totRecords / pagination.limit)
 
@@ -112,6 +116,12 @@ const Customers = ({ filter }) => {
         </table>
         {totPages > 1 && <Pagination pagination={pagination} changePage={changePage} />}
         <div className="float-right">
+          <button
+            className="btn btn-outline-secondary mr-2"
+            onClick={() => handleDebtors()}
+          >
+            Deudores
+          </button>
           <button
             className="btn btn-warning"
             onClick={() => handleRestore()}

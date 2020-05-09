@@ -19,13 +19,13 @@ const Customer = ({ data, deleteCustomer, editCustomer }) => {
       <td>{phone}</td>
       <td>{email}</td>
       <td>{observations}</td>
-      <td style={{width: '120px'}}>
+      <td style={{ width: '120px' }}>
         <button
           className="btn btn-danger"
           onClick={() => deleteCustomer(data)}
         >Eliminar</button>
       </td>
-      <td style={{width: '120px'}}>
+      <td style={{ width: '120px' }}>
         <button
           className="btn btn-info"
           onClick={() => editCustomer(data)}

@@ -12,6 +12,11 @@ export const getInactiveCustomers = async pagination => {
   return response.data.customers
 }
 
+export const getDebtors = async () => {
+  const response = await http.get(`customers/debtors`)
+  return response.data.debtors
+}
+
 export const getCustomer = async id => {
   const response = await http.get(`customers/${id}`)
   return response.data.customer

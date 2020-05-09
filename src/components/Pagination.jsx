@@ -12,7 +12,7 @@ const Pagination = ({ pagination, changePage }) => {
   }
 
   return (
-    <nav aria-label="...">
+    <nav aria-label="..." className="float-left">
       <ul className="pagination">
         <li className={`page-item ${canGoBackward ? '' : 'disabled'}`}>
           <button className="page-link" onClick={() => handleChangePage(1)}>

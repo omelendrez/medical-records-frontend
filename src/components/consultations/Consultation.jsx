@@ -15,7 +15,7 @@ const Consultation = ({ data, deleteConsultation, editConsultation }) => {
           {pet.name}
         </Link>
       </td>
-      <td>{diagnosis.substring(0, 40)}</td>
+      <td>{diagnosis.substring(0, 30)}</td>
       <td>{treatment.substring(0, 60)}</td>
       <td className="text-nowrap">{nextConsultation}</td>
       <td style={{ width: '120px' }}>
