@@ -25,6 +25,7 @@ const Navbar = ({ doSearch }) => {
           <NavLink to="/clientes">Clientes</NavLink>
           <NavLink to="/pacientes">Pacientes</NavLink>
           <NavLink to="/consultas">Consultas</NavLink>
+          <NavLink to="/deudores">Deudores</NavLink>
         </ul>
         {
           hasSearch &&

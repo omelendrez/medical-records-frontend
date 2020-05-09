@@ -117,12 +117,6 @@ const Customers = ({ filter }) => {
         {totPages > 1 && <Pagination pagination={pagination} changePage={changePage} />}
         <div className="float-right">
           <button
-            className="btn btn-outline-secondary mr-2"
-            onClick={() => handleDebtors()}
-          >
-            Deudores
-          </button>
-          <button
             className="btn btn-warning"
             onClick={() => handleRestore()}
           >
