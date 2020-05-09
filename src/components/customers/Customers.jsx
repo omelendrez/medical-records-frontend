@@ -65,10 +65,6 @@ const Customers = ({ filter }) => {
     setRedirect('/restaurar/clientes')
   }
 
-  const handleDebtors = () => {
-    setRedirect('/deudores')
-  }
-
   const { rows } = customers
   const totPages = Math.ceil(pagination.totRecords / pagination.limit)
 
