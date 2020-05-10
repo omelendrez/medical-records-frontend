@@ -122,16 +122,16 @@ const Customers = () => {
         <div className="row">
           <div className="col-4">
             <form className="form-inline">
-              <button
-                className="btn btn-warning"
-                onClick={e => handleClick(e)}
-              >Buscar</button>
               <input
-                className="form-control ml-sm-2"
+                className="form-control mr-sm-2"
                 type="search"
                 aria-label="Search"
                 onChange={e => handleChange(e)}
               />
+              <button
+                className="btn btn-warning"
+                onClick={e => handleClick(e)}
+              >Buscar</button>
             </form>
           </div>
           <div className="col-4">
