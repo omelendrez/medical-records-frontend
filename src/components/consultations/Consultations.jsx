@@ -81,11 +81,11 @@ const Consultations = ({ filter }) => {
         <table className="table table-sm">
           <thead>
             <tr>
-              <th scope="col">Fecha</th>
-              <th scope="col">Paciente</th>
-              <th scope="col">Diagnostico</th>
-              <th scope="col">Tratamiento</th>
-              <th scope="col" className="text-nowrap">Próx. Turno</th>
+              <th scope="col" style={{ width: '100px' }}>Fecha</th>
+              <th scope="col" style={{ width: '100px' }}>Paciente</th>
+              <th scope="col" style={{ width: '250px' }}>Diagnostico</th>
+              <th scope="col" style={{ width: '400px' }}>Tratamiento</th>
+              <th scope="col" className="text-nowrap" style={{ width: '100px' }}>Próx. Turno</th>
               <th scope="col" colSpan="2">
               </th>
             </tr>

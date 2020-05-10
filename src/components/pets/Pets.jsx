@@ -81,11 +81,11 @@ const Pets = ({ filter }) => {
         <table className="table table-sm">
           <thead>
             <tr>
-              <th scope="col">Nombre</th>
-              <th scope="col">Tipo</th>
-              <th scope="col">Raza</th>
-              <th scope="col">Sexo</th>
-              <th scope="col">Observaciones</th>
+              <th scope="col" style={{ width: '100px' }}>Nombre</th>
+              <th scope="col" style={{ width: '100px' }}>Tipo</th>
+              <th scope="col" style={{ width: '150px' }}>Raza</th>
+              <th scope="col" style={{ width: '80px' }}>Sexo</th>
+              <th scope="col" style={{ width: '200px' }}>Observaciones</th>
               <th scope="col" colSpan="2"> </th>
             </tr>
           </thead>

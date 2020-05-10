@@ -85,11 +85,11 @@ const Customers = ({ filter }) => {
         <table className="table table-sm">
           <thead>
             <tr>
-              <th scope="col" style={{ width: '200px' }}>Nombre</th>
-              <th scope="col" style={{ width: '200px' }}>Paciente</th>
+              <th scope="col" style={{ width: '250px' }}>Nombre</th>
+              <th scope="col" style={{ width: '250px' }}>Paciente</th>
               <th scope="col" style={{ width: '300px' }}>Domicilio</th>
-              <th scope="col">Teléfono</th>
-              <th scope="col">Observaciones</th>
+              <th scope="col" style={{ width: '400px' }}>Teléfono</th>
+              <th scope="col" style={{ width: '280px' }}>Observaciones</th>
               <th scope="col" colSpan="2">
                 <button
                   className="btn btn-primary my-1 float-right"
