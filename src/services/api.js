@@ -1,7 +1,5 @@
 import axios from 'axios'
 
-console.log(process.env)
-
 export default axios.create({
   headers: {
     'Accept': 'application/json',
