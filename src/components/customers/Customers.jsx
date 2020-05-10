@@ -5,8 +5,8 @@ import Confirm from '../Confirm'
 import Pagination from '../Pagination'
 import { getCustomers, deleteCustomer } from '../../services/customers'
 
-const Customers = ({ filter }) => {
-
+const Customers = () => {
+  const [filter, setFilter] = useState('')
   const paginationDefault = {
     curPage: 1,
     totRecords: 0,
@@ -65,6 +65,15 @@ const Customers = ({ filter }) => {
     setRedirect('/restaurar/clientes')
   }
 
+  const handleChange = e => {
+    setFilter(e.target.value)
+  }
+
+  const handleClick = (e) => {
+    e.preventDefault()
+    setPagination({ ...pagination, filter })
+  }
+
   const { rows } = customers
   const totPages = Math.ceil(pagination.totRecords / pagination.limit)
 
@@ -87,9 +96,9 @@ const Customers = ({ filter }) => {
             <tr>
               <th scope="col" style={{ width: '250px' }}>Nombre</th>
               <th scope="col" style={{ width: '250px' }}>Paciente</th>
-              <th scope="col" style={{ width: '300px' }}>Domicilio</th>
+              <th scope="col" style={{ width: '400px' }}>Domicilio</th>
               <th scope="col" style={{ width: '400px' }}>Teléfono</th>
-              <th scope="col" style={{ width: '280px' }}>Observaciones</th>
+              <th scope="col" style={{ width: '100px' }}>Observaciones</th>
               <th scope="col" colSpan="2">
                 <button
                   className="btn btn-primary my-1 float-right"
@@ -110,14 +119,35 @@ const Customers = ({ filter }) => {
             )}
           </tbody>
         </table>
-        {totPages > 1 && <Pagination pagination={pagination} changePage={changePage} />}
-        <div className="float-right">
-          <button
-            className="btn btn-warning"
-            onClick={() => handleRestore()}
-          >
-            Restaurar
-          </button>
+        <div className="row">
+          <div className="col-4">
+            <form className="form-inline">
+              <button
+                className="btn btn-warning"
+                onClick={e => handleClick(e)}
+              >Buscar</button>
+              <input
+                className="form-control ml-sm-2"
+                type="search"
+                aria-label="Search"
+                onChange={e => handleChange(e)}
+              />
+            </form>
+          </div>
+          <div className="col-4">
+            {totPages > 1 && <Pagination pagination={pagination} changePage={changePage} />}
+          </div>
+
+          <div className="col-4">
+            <div className="float-right">
+              <button
+                className="btn btn-outline-secondary"
+                onClick={() => handleRestore()}
+              >
+                Restaurar
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </>

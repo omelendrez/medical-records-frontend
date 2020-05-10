@@ -85,8 +85,8 @@ const Pets = ({ filter }) => {
               <th scope="col" style={{ width: '100px' }}>Tipo</th>
               <th scope="col" style={{ width: '150px' }}>Raza</th>
               <th scope="col" style={{ width: '80px' }}>Sexo</th>
-              <th scope="col" style={{ width: '200px' }}>Observaciones</th>
-              <th scope="col" colSpan="2"> </th>
+              <th scope="col" >Observaciones</th>
+              <th scope="col" colSpan="2"></th>
             </tr>
           </thead>
           <tbody>

@@ -37,7 +37,7 @@ const Debtors = ({ filter }) => {
 
   return (
     <div className="container-fluid">
-      <table className="table">
+      <table className="table table-sm">
         <thead>
           <tr>
             <th>Nombre</th>
