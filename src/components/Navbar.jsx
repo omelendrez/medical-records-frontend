@@ -1,11 +1,7 @@
 import React from 'react'
-import { useLocation } from 'react-router-dom'
 import NavLink from './NavLink'
 
 const Navbar = () => {
-  const { pathname: page } = useLocation()
-  const hasSearch = page === '/clientes' || page === '/pacientes' || page === '/consultas' || page === '/deudores'
-
   return (
     <nav className="navbar navbar-expand navbar-dark bg-dark">
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
