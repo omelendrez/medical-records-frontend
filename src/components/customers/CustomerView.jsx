@@ -143,7 +143,7 @@ const PetsList = ({ pet, pets, loadPet, handleAddPet }) => {
 }
 
 const Customer = ({ customer, pet, handleAddPet, loadPet, setBack }) => {
-  const { name, address, phone, observations, pets } = customer
+  const { name, address, phone, observations, pets, debt } = customer
   return (
     <>
       <div className="text-center">
@@ -153,6 +153,7 @@ const Customer = ({ customer, pet, handleAddPet, loadPet, setBack }) => {
             <h6 className="card-subtitle mb-2 text-muted">{address}</h6>
             <h6 className="card-subtitle mb-2 text-muted">{phone}</h6>
             <p className="card-text observations">{observations}</p>
+            {debt > 0 && <p className="card-text text-danger">Debe ${debt}</p>}
           </div>
         </div>
         {pet.name && <Pet pet={pet} />}
