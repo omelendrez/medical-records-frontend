@@ -99,6 +99,7 @@ const Pets = () => {
             <thead>
               <tr>
                 <th scope="col" style={{ width: '150px' }}>Nombre</th>
+                <th scope="col" style={{ width: '250px' }}>Cliente</th>
                 <th scope="col" style={{ width: '150px' }}>Tipo</th>
                 <th scope="col" style={{ width: '200px' }}>Raza</th>
                 <th scope="col" style={{ width: '100px' }}>Sexo</th>
