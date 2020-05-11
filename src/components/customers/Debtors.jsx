@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import Pagination from '../Pagination'
 import { getDebtors } from '../../services/customers'
 
-const Debtors = ({ filter }) => {
-
+const Debtors = () => {
+  const [filter, setFilter] = useState('')
   const paginationDefault = {
     curPage: 1,
     totRecords: 0,
@@ -26,6 +26,15 @@ const Debtors = ({ filter }) => {
         setPagination(pag)
         setDebtors(debtors)
       })
+  }
+
+  const handleChange = e => {
+    setFilter(e.target.value)
+  }
+
+  const handleClick = (e) => {
+    e.preventDefault()
+    setPagination({ ...pagination, filter })
   }
 
   const changePage = page => {
@@ -57,10 +66,21 @@ const Debtors = ({ filter }) => {
               </tr>
             )}
         </tbody>
-
       </table>
+      <form className="form-inline">
+        <input
+          className="form-control mr-sm-2"
+          type="search"
+          aria-label="Search"
+          onChange={e => handleChange(e)}
+        />
+        <button
+          className="btn btn-warning"
+          onClick={e => handleClick(e)}
+        >Buscar</button>
+      </form>
       {totPages > 1 && <Pagination pagination={pagination} changePage={changePage} />}
-
+      <div className="col-4"></div>
     </div>
   )
 }
