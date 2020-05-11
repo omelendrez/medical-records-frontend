@@ -5,8 +5,8 @@ import Confirm from '../Confirm'
 import Pagination from '../Pagination'
 import { getConsultations, deleteConsultation } from '../../services/consultations'
 
-const Consultations = ({ filter }) => {
-
+const Consultations = () => {
+  const [filter, setFilter] = useState('')
   const paginationDefault = {
     curPage: 1,
     totRecords: 0,
@@ -61,6 +61,15 @@ const Consultations = ({ filter }) => {
     setRedirect('/restaurar/consultas')
   }
 
+  const handleChange = e => {
+    setFilter(e.target.value)
+  }
+
+  const handleClick = (e) => {
+    e.preventDefault()
+    setPagination({ ...pagination, filter })
+  }
+
   const { rows } = consultations
   const totPages = Math.ceil(pagination.totRecords / pagination.limit)
 
@@ -102,16 +111,35 @@ const Consultations = ({ filter }) => {
             )}
           </tbody>
         </table>
-        {totPages > 1 && <Pagination pagination={pagination} changePage={changePage} />}
-        <div className="float-right">
-          <button
-            className="btn btn-warning"
-            onClick={() => handleRestore()}
-          >
-            Restaurar
-          </button>
-        </div>
+        <div className="row">
+          <div className="col-4">
+            <form className="form-inline">
+              <input
+                className="form-control mr-sm-2"
+                type="search"
+                aria-label="Search"
+                onChange={e => handleChange(e)}
+              />
+              <button
+                className="btn btn-warning"
+                onClick={e => handleClick(e)}
+              >Buscar</button>
+            </form>
+          </div>
+          <div className="col-4">
+            {totPages > 1 && <Pagination pagination={pagination} changePage={changePage} />}
+          </div>
 
+          <div className="col-4">
+            <div className="float-right">
+              <button
+                className="btn btn-outline-secondary"
+                onClick={() => handleRestore()}>
+                Restaurar
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   )
