@@ -152,7 +152,7 @@ const Customer = ({ customer, pet, handleAddPet, loadPet, setBack }) => {
             <h5 className="card-title">{name}</h5>
             <h6 className="card-subtitle mb-2 text-muted">{address}</h6>
             <h6 className="card-subtitle mb-2 text-muted">{phone}</h6>
-            <p className="card-text observations">{observations}</p>
+            {observations && <p className="card-text observations">{observations}</p>}
             {debt > 0 && <p className="card-text text-danger">Debe ${debt}</p>}
           </div>
         </div>
