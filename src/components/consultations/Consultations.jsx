@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom'
 import Consultation from './Consultation'
 import Confirm from '../Confirm'
 import Pagination from '../Pagination'
+import Loading from '../Loading'
 import { getConsultations, deleteConsultation } from '../../services/consultations'
 
 const Consultations = () => {
@@ -19,18 +20,21 @@ const Consultations = () => {
   const [selected, setSelected] = useState({})
   const [redirect, setRedirect] = useState('')
   const [pagination, setPagination] = useState(paginationDefault)
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     updateState()
   }, [pagination])
 
   const updateState = () => {
+    setLoading(true)
     const pag = pagination
     getConsultations(pagination)
       .then(consultations => {
         pag.totRecords = consultations.count
         setPagination(pag)
         setConsultations(consultations)
+        setLoading(false)
       })
   }
 
@@ -75,6 +79,7 @@ const Consultations = () => {
 
   return (
     <>
+      {loading && <Loading />}
       {showConfirm &&
         <Confirm
           title="Eliminando consulta"
