@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom'
 import Pet from './Pet'
 import Confirm from '../Confirm'
 import Pagination from '../Pagination'
+import Loading from '../Loading'
 import { getPets, deletePet } from '../../services/pets'
 
 const Pets = () => {
@@ -20,18 +21,21 @@ const Pets = () => {
   const [selected, setSelected] = useState({})
   const [redirect, setRedirect] = useState('')
   const [pagination, setPagination] = useState(paginationDefault)
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     updateState()
   }, [pagination])
 
   const updateState = () => {
+    setLoading(true)
     const pag = pagination
     getPets(pagination)
       .then(pets => {
         pag.totRecords = pets.count
         setPagination(pag)
         setPets(pets)
+        setLoading(false)
       })
   }
 
@@ -77,6 +81,7 @@ const Pets = () => {
 
   return (
     <>
+      {loading && <Loading />}
       {showConfirm &&
         <Confirm
           title="Eliminando paciente"
@@ -88,60 +93,62 @@ const Pets = () => {
         />
       }
       {redirect && <Redirect to={redirect} />}
-      <div className="container-fluid">
-        <table className="table table-sm">
-          <thead>
-            <tr>
-              <th scope="col" style={{ width: '100px' }}>Nombre</th>
-              <th scope="col" style={{ width: '100px' }}>Tipo</th>
-              <th scope="col" style={{ width: '150px' }}>Raza</th>
-              <th scope="col" style={{ width: '80px' }}>Sexo</th>
-              <th scope="col" >Observaciones</th>
-              <th scope="col" colSpan="2"></th>
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map((record, index) =>
-              <Pet
-                key={index}
-                indice={index + 1}
-                data={record}
-                deletePet={() => handleDelete(record)}
-                editPet={() => handleEdit(record)}
-              />
-            )}
-          </tbody>
-        </table>
-        <div className="row">
-          <div className="col-4">
-            <form className="form-inline">
-              <input
-                className="form-control mr-sm-2"
-                type="search"
-                aria-label="Search"
-                onChange={e => handleChange(e)}
-              />
-              <button
-                className="btn btn-warning"
-                onClick={e => handleClick(e)}
-              >Buscar</button>
-            </form>
-          </div>
-          <div className="col-4">
-            {totPages > 1 && <Pagination pagination={pagination} changePage={changePage} />}
-          </div>
-          <div className="col-4">
-            <div className="float-right">
-              <button
-                className="btn btn-outline-secondary"
-                onClick={() => handleRestore()}
-              >
-                Restaurar
+      {!loading &&
+        <div className="container-fluid">
+          <table className="table table-sm">
+            <thead>
+              <tr>
+                <th scope="col" style={{ width: '100px' }}>Nombre</th>
+                <th scope="col" style={{ width: '100px' }}>Tipo</th>
+                <th scope="col" style={{ width: '150px' }}>Raza</th>
+                <th scope="col" style={{ width: '80px' }}>Sexo</th>
+                <th scope="col" >Observaciones</th>
+                <th scope="col" colSpan="2"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((record, index) =>
+                <Pet
+                  key={index}
+                  indice={index + 1}
+                  data={record}
+                  deletePet={() => handleDelete(record)}
+                  editPet={() => handleEdit(record)}
+                />
+              )}
+            </tbody>
+          </table>
+          <div className="row">
+            <div className="col-4">
+              <form className="form-inline">
+                <input
+                  className="form-control mr-sm-2"
+                  type="search"
+                  aria-label="Search"
+                  onChange={e => handleChange(e)}
+                />
+                <button
+                  className="btn btn-warning"
+                  onClick={e => handleClick(e)}
+                >Buscar</button>
+              </form>
+            </div>
+            <div className="col-4">
+              {totPages > 1 && <Pagination pagination={pagination} changePage={changePage} />}
+            </div>
+            <div className="col-4">
+              <div className="float-right">
+                <button
+                  className="btn btn-outline-secondary"
+                  onClick={() => handleRestore()}
+                >
+                  Restaurar
               </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      }
     </>
   )
 }
