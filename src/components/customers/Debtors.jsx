@@ -67,20 +67,25 @@ const Debtors = () => {
             )}
         </tbody>
       </table>
-      <form className="form-inline">
-        <input
-          className="form-control mr-sm-2"
-          type="search"
-          aria-label="Search"
-          onChange={e => handleChange(e)}
-        />
-        <button
-          className="btn btn-warning"
-          onClick={e => handleClick(e)}
-        >Buscar</button>
-      </form>
-      {totPages > 1 && <Pagination pagination={pagination} changePage={changePage} />}
-      <div className="col-4"></div>
+      <div className="row">
+
+        <form className="form-inline">
+          <input
+            className="form-control mr-sm-2"
+            type="search"
+            aria-label="Search"
+            onChange={e => handleChange(e)}
+          />
+          <button
+            className="btn btn-warning"
+            onClick={e => handleClick(e)}
+          >Buscar</button>
+        </form>
+        <div className="col-4"></div>
+        {totPages > 1 && <Pagination pagination={pagination} changePage={changePage} />}
+        <div className="col-4"></div>
+      </div>
+
     </div>
   )
 }
