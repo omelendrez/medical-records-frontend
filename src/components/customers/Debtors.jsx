@@ -39,7 +39,7 @@ const Debtors = () => {
 
   const handleClick = (e) => {
     e.preventDefault()
-    setPagination({ ...pagination, filter })
+    setPagination({ ...pagination, filter, curPage: 1 })
   }
 
   const changePage = page => {

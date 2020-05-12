@@ -74,7 +74,7 @@ const Pets = () => {
 
   const handleClick = (e) => {
     e.preventDefault()
-    setPagination({ ...pagination, filter })
+    setPagination({ ...pagination, filter, curPage: 1 })
   }
 
 
