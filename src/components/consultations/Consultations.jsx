@@ -126,6 +126,7 @@ const Consultations = () => {
                 type="search"
                 aria-label="Search"
                 onChange={e => handleChange(e)}
+                value={filter}
               />
               <button
                 className="btn btn-warning"
