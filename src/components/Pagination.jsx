@@ -18,7 +18,7 @@ const Pagination = ({ pagination, changePage }) => {
 
   return (
     <nav aria-label="...">
-      <ul className="pagination pagination-sm">
+      <ul className="pagination pagination-sm  justify-content-center">
         {pages.map(page => (
           <li className={`page-item ${page === curPage ? 'active' : ''}`}>
             <button className="page-link" onClick={() => handleChangePage(page)}>
