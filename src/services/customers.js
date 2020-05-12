@@ -26,6 +26,11 @@ export const getCustomer = async id => {
   return response.data.customer
 }
 
+export const getDebt = async id => {
+  const response = await http.get(`customers/debtors/${id}`)
+  return response.data.debt
+}
+
 export const saveCustomer = customer => {
   return new Promise((resolve, reject) => {
     http.post('customers', customer)
