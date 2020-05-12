@@ -4,44 +4,28 @@ const Pagination = ({ pagination, changePage }) => {
   const { curPage, totRecords, limit } = pagination
   const totPages = Math.ceil(totRecords / limit)
 
-  const canGoBackward = curPage > 1
-  const canGoForward = curPage < totPages
+  //const canGoBackward = curPage > 1
+  //const canGoForward = curPage < totPages
+
+  const pages = []
+  for (let i = 1; i <= totPages; i++) {
+    pages.push(i)
+  }
 
   const handleChangePage = page => {
     changePage(page)
   }
 
   return (
-    <nav aria-label="..." className="float-left">
-      <ul className="pagination">
-        <li className={`page-item ${canGoBackward ? '' : 'disabled'}`}>
-          <button className="page-link" onClick={() => handleChangePage(1)}>
-            {'<<'}
-          </button>
-        </li>
-        <li className={`page-item ${canGoBackward ? '' : 'disabled'}`}>
-          <button className="page-link" onClick={() => handleChangePage(curPage - 1)}>
-            {'<'}
-          </button>
-        </li>
-        <li className="page-item disabled">
-          <button className="page-link" >
-            {`Página ${curPage} de ${totPages}`}
-          </button>
-        </li>
-        <li className={`page-item ${canGoForward ? '' : 'disabled'}`}>
-          <button className="page-link" onClick={() => handleChangePage(curPage + 1)}>
-            {'>'}
-          </button>
-        </li>
-        <li className={`page-item ${canGoForward ? '' : 'disabled'}`}>
-          <button className="page-link" onClick={() => handleChangePage(totPages)}>
-            {'>>'}
-          </button>
-        </li>
-        <div className="m-1 ml-3">
-          <p className="text-secondary">{`${totRecords} registros`}</p>
-        </div>
+    <nav aria-label="...">
+      <ul className="pagination pagination-sm">
+        {pages.map(page => (
+          <li className={`page-item ${page === curPage ? 'active' : ''}`}>
+            <button className="page-link" onClick={() => handleChangePage(page)}>
+              {page}
+            </button>
+          </li>
+        ))}
       </ul >
     </nav >
   )

@@ -21,3 +21,7 @@ table tbody tr td div.truncate {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.pagination {
+  justify-content: center;
+}
