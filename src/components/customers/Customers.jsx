@@ -110,7 +110,7 @@ const Customers = () => {
                 <button
                   className="btn btn-primary my-1 float-right"
                   onClick={() => handleAdd()}
-                >Agregar</button>
+                >Agregar Cliente</button>
               </th>
             </tr>
           </thead>
