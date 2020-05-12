@@ -71,6 +71,7 @@ const Customers = () => {
 
   const handleChange = e => {
     setFilter(e.target.value)
+    if (!e.target.value) setPagination({ ...pagination, filter: '' })
   }
 
   const handleClick = (e) => {
