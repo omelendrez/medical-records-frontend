@@ -8,8 +8,6 @@ import { getPet } from '../../services/pets'
 import { deleteConsultation } from '../../services/consultations'
 import './CustomerView.css'
 
-
-
 const CustomerView = props => {
 	const [redirect, setRedirect] = useState('')
 	const [customer, setCustomer] = useState({ pets: [] })
