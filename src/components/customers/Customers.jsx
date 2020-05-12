@@ -23,20 +23,20 @@ const Customers = () => {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
+    const updateState = () => {
+      setLoading(true)
+      const pag = pagination
+      getCustomers(pagination)
+        .then(customers => {
+          pag.totRecords = customers.count
+          setPagination(pag)
+          setCustomers(customers)
+          setLoading(false)
+        })
+    }
     updateState()
   }, [pagination])
 
-  const updateState = () => {
-    setLoading(true)
-    const pag = pagination
-    getCustomers(pagination)
-      .then(customers => {
-        pag.totRecords = customers.count
-        setPagination(pag)
-        setCustomers(customers)
-        setLoading(false)
-      })
-  }
 
   const changePage = page => {
     setPagination({ ...pagination, curPage: page })

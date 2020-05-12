@@ -24,20 +24,20 @@ const Pets = () => {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
+    const updateState = () => {
+      setLoading(true)
+      const pag = pagination
+      getPets(pagination)
+        .then(pets => {
+          pag.totRecords = pets.count
+          setPagination(pag)
+          setPets(pets)
+          setLoading(false)
+        })
+    }
     updateState()
   }, [pagination])
 
-  const updateState = () => {
-    setLoading(true)
-    const pag = pagination
-    getPets(pagination)
-      .then(pets => {
-        pag.totRecords = pets.count
-        setPagination(pag)
-        setPets(pets)
-        setLoading(false)
-      })
-  }
 
   const changePage = page => {
     setPagination({ ...pagination, curPage: page })

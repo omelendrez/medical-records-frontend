@@ -17,20 +17,20 @@ const Debtors = () => {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
+
+    const updateState = () => {
+      setLoading(true)
+      const pag = pagination
+      getDebtors(pagination)
+        .then(debtors => {
+          pag.totRecords = debtors.count.length
+          setPagination(pag)
+          setDebtors(debtors)
+          setLoading(false)
+        })
+    }
     updateState()
   }, [pagination])
-
-  const updateState = () => {
-    setLoading(true)
-    const pag = pagination
-    getDebtors(pagination)
-      .then(debtors => {
-        pag.totRecords = debtors.count.length
-        setPagination(pag)
-        setDebtors(debtors)
-        setLoading(false)
-      })
-  }
 
   const handleChange = e => {
     setFilter(e.target.value)

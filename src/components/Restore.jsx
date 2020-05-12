@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Pagination from './Pagination'
+import Loading from './Loading'
 import { fieldsDefault } from '../services/utils'
 
 const Restore = props => {
@@ -14,6 +15,7 @@ const Restore = props => {
   const [error, setError] = useState('')
   const [update, setUpdate] = useState(false)
   const [pagination, setPagination] = useState(paginationDefault)
+  const [loading, setLoading] = useState(false)
 
   const table = props.match.params.table;
 
@@ -32,18 +34,27 @@ const Restore = props => {
   }
 
   useEffect(() => {
-    getRecords(pagination)
-      .then(records => {
-        setRecords(records)
-        if (!records.count) {
-          setError('No hay registros para recuperar')
-        }
-        setPagination({ ...pagination, totRecords: records.count })
-      })
-  }, [update])
+    const updateState = () => {
+      setLoading(true)
+      const pag = pagination
+      getRecords(pagination)
+        .then(records => {
+          pag.totRecords = records.count
+          setPagination(pag)
+          setRecords(records)
+          if (!records.count) {
+            setError('No hay registros para recuperar')
+          }
+          setLoading(false)
+        })
+    }
+    updateState()
+  }, [update, pagination, getRecords])
 
   const { rows } = records
   const totPages = Math.ceil(pagination.totRecords / pagination.limit)
+
+  if (loading) return <Loading />
 
   return (
     <div className="restore">

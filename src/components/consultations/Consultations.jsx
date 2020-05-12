@@ -23,20 +23,20 @@ const Consultations = () => {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
+    const updateState = () => {
+      setLoading(true)
+      const pag = pagination
+      getConsultations(pagination)
+        .then(consultations => {
+          pag.totRecords = consultations.count
+          setPagination(pag)
+          setConsultations(consultations)
+          setLoading(false)
+        })
+    }
     updateState()
   }, [pagination])
 
-  const updateState = () => {
-    setLoading(true)
-    const pag = pagination
-    getConsultations(pagination)
-      .then(consultations => {
-        pag.totRecords = consultations.count
-        setPagination(pag)
-        setConsultations(consultations)
-        setLoading(false)
-      })
-  }
 
   const changePage = page => {
     setPagination({ ...pagination, curPage: page })
