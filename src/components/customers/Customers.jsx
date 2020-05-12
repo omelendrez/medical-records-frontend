@@ -81,9 +81,10 @@ const Customers = () => {
   const { rows } = customers
   const totPages = Math.ceil(pagination.totRecords / pagination.limit)
 
+  if (loading) return <Loading />
+
   return (
     <>
-      {loading && <Loading />}
       {showConfirm &&
         <Confirm
           title="Eliminando cliente"
@@ -95,68 +96,66 @@ const Customers = () => {
         />
       }
       {redirect && <Redirect to={redirect} />}
-      {!loading &&
-        <div className="container-fluid">
-          <table className="table table-sm">
-            <thead>
-              <tr>
-                <th scope="col" style={{ width: '250px' }}>Nombre</th>
-                <th scope="col" style={{ width: '250px' }}>Paciente</th>
-                <th scope="col" style={{ width: '400px' }}>Domicilio</th>
-                <th scope="col" style={{ width: '400px' }}>Teléfono</th>
-                <th scope="col" style={{ width: '100px' }}>Observaciones</th>
-                <th scope="col" colSpan="2">
-                  <button
-                    className="btn btn-primary my-1 float-right"
-                    onClick={() => handleAdd()}
-                  >Agregar</button>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {rows.map((record, index) =>
-                <Customer
-                  key={index}
-                  indice={index + 1}
-                  data={record}
-                  deleteCustomer={() => handleDelete(record)}
-                  editCustomer={() => handleEdit(record)}
-                />
-              )}
-            </tbody>
-          </table>
-          <div className="row">
-            <div className="col-4">
-              <form className="form-inline">
-                <input
-                  className="form-control mr-sm-2"
-                  type="search"
-                  aria-label="Search"
-                  onChange={e => handleChange(e)}
-                />
+      <div className="container-fluid">
+        <table className="table table-sm">
+          <thead>
+            <tr>
+              <th scope="col" style={{ width: '250px' }}>Nombre</th>
+              <th scope="col" style={{ width: '250px' }}>Paciente</th>
+              <th scope="col" style={{ width: '400px' }}>Domicilio</th>
+              <th scope="col" style={{ width: '400px' }}>Teléfono</th>
+              <th scope="col" style={{ width: '100px' }}>Observaciones</th>
+              <th scope="col" colSpan="2">
                 <button
-                  className="btn btn-warning"
-                  onClick={e => handleClick(e)}
-                >Buscar</button>
-              </form>
-            </div>
-            <div className="col-4">
-              {totPages > 1 && <Pagination pagination={pagination} changePage={changePage} />}
-            </div>
+                  className="btn btn-primary my-1 float-right"
+                  onClick={() => handleAdd()}
+                >Agregar</button>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((record, index) =>
+              <Customer
+                key={index}
+                indice={index + 1}
+                data={record}
+                deleteCustomer={() => handleDelete(record)}
+                editCustomer={() => handleEdit(record)}
+              />
+            )}
+          </tbody>
+        </table>
+        <div className="row">
+          <div className="col-4">
+            <form className="form-inline">
+              <input
+                className="form-control mr-sm-2"
+                type="search"
+                aria-label="Search"
+                onChange={e => handleChange(e)}
+              />
+              <button
+                className="btn btn-warning"
+                onClick={e => handleClick(e)}
+              >Buscar</button>
+            </form>
+          </div>
+          <div className="col-4">
+            {totPages > 1 && <Pagination pagination={pagination} changePage={changePage} />}
+          </div>
 
-            <div className="col-4">
-              <div className="float-right">
-                <button
-                  className="btn btn-outline-secondary"
-                  onClick={() => handleRestore()}
-                >
-                  Restaurar
+          <div className="col-4">
+            <div className="float-right">
+              <button
+                className="btn btn-outline-secondary"
+                onClick={() => handleRestore()}
+              >
+                Restaurar
               </button>
-              </div>
             </div>
           </div>
         </div>
-      }
+      </div>
     </>
   )
 }

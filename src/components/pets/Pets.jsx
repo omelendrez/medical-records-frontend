@@ -79,9 +79,10 @@ const Pets = () => {
   const { rows } = pets
   const totPages = Math.ceil(pagination.totRecords / pagination.limit)
 
+  if (loading) return <Loading />
+
   return (
     <>
-      {loading && <Loading />}
       {showConfirm &&
         <Confirm
           title="Eliminando paciente"
@@ -93,63 +94,61 @@ const Pets = () => {
         />
       }
       {redirect && <Redirect to={redirect} />}
-      {!loading &&
-        <div className="container-fluid">
-          <table className="table table-sm">
-            <thead>
-              <tr>
-                <th scope="col" style={{ width: '150px' }}>Nombre</th>
-                <th scope="col" style={{ width: '250px' }}>Cliente</th>
-                <th scope="col" style={{ width: '150px' }}>Tipo</th>
-                <th scope="col" style={{ width: '200px' }}>Raza</th>
-                <th scope="col" style={{ width: '100px' }}>Sexo</th>
-                <th scope="col" >Observaciones</th>
-                <th scope="col" colSpan="2"></th>
-              </tr>
-            </thead>
-            <tbody>
-              {rows.map((record, index) =>
-                <Pet
-                  key={index}
-                  indice={index + 1}
-                  data={record}
-                  deletePet={() => handleDelete(record)}
-                  editPet={() => handleEdit(record)}
-                />
-              )}
-            </tbody>
-          </table>
-          <div className="row">
-            <div className="col-4">
-              <form className="form-inline">
-                <input
-                  className="form-control mr-sm-2"
-                  type="search"
-                  aria-label="Search"
-                  onChange={e => handleChange(e)}
-                />
-                <button
-                  className="btn btn-warning"
-                  onClick={e => handleClick(e)}
-                >Buscar</button>
-              </form>
-            </div>
-            <div className="col-4">
-              {totPages > 1 && <Pagination pagination={pagination} changePage={changePage} />}
-            </div>
-            <div className="col-4">
-              <div className="float-right">
-                <button
-                  className="btn btn-outline-secondary"
-                  onClick={() => handleRestore()}
-                >
-                  Restaurar
+      <div className="container-fluid">
+        <table className="table table-sm">
+          <thead>
+            <tr>
+              <th scope="col" style={{ width: '150px' }}>Nombre</th>
+              <th scope="col" style={{ width: '250px' }}>Cliente</th>
+              <th scope="col" style={{ width: '150px' }}>Tipo</th>
+              <th scope="col" style={{ width: '200px' }}>Raza</th>
+              <th scope="col" style={{ width: '100px' }}>Sexo</th>
+              <th scope="col" >Observaciones</th>
+              <th scope="col" colSpan="2"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((record, index) =>
+              <Pet
+                key={index}
+                indice={index + 1}
+                data={record}
+                deletePet={() => handleDelete(record)}
+                editPet={() => handleEdit(record)}
+              />
+            )}
+          </tbody>
+        </table>
+        <div className="row">
+          <div className="col-4">
+            <form className="form-inline">
+              <input
+                className="form-control mr-sm-2"
+                type="search"
+                aria-label="Search"
+                onChange={e => handleChange(e)}
+              />
+              <button
+                className="btn btn-warning"
+                onClick={e => handleClick(e)}
+              >Buscar</button>
+            </form>
+          </div>
+          <div className="col-4">
+            {totPages > 1 && <Pagination pagination={pagination} changePage={changePage} />}
+          </div>
+          <div className="col-4">
+            <div className="float-right">
+              <button
+                className="btn btn-outline-secondary"
+                onClick={() => handleRestore()}
+              >
+                Restaurar
               </button>
-              </div>
             </div>
           </div>
         </div>
-      }
+      </div>
     </>
   )
 }

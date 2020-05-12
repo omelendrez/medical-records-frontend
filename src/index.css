@@ -15,3 +15,9 @@ table thead tr th {
   vertical-align: middle !important;
   height: 56px;
 }
+
+table tbody tr td div.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

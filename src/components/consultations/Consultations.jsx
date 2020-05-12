@@ -77,9 +77,10 @@ const Consultations = () => {
   const { rows } = consultations
   const totPages = Math.ceil(pagination.totRecords / pagination.limit)
 
+  if (loading) return <Loading />
+
   return (
     <>
-      {loading && <Loading />}
       {showConfirm &&
         <Confirm
           title="Eliminando consulta"
