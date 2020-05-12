@@ -204,7 +204,12 @@ const CustomerView = props => {
   }
 
   const handleEditConsultation = id => {
-    setRedirect(`/edit-consulta/${id}`)
+    setRedirect({
+      pathname: `/edit-consulta/${id}`,
+      state: {
+        from: `/clientes/${customer.id}/${pet.id}`
+      }
+    })
   }
 
   const handleDeleteConsultation = consultation => {

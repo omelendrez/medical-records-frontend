@@ -4,7 +4,7 @@ import { saveConsultation, getConsultation } from '../../services/consultations'
 import { paymentMethods } from '../../services/utils'
 
 const ConsultationForm = props => {
-  const [back, setBack] = useState(false)
+  const [redirect, setRedirect] = useState('')
   const [error, setError] = useState('')
 
   const [form, setForm] = useState({
@@ -40,15 +40,20 @@ const ConsultationForm = props => {
   const handleSave = (e => {
     e.preventDefault()
     saveConsultation(form)
-      .then(() => setBack(true))
+      .then(() => goBack())
       .catch(err => {
         setError(err.response.data.error)
       })
   })
 
+  const goBack = () => {
+    const { state } = props.location
+    setRedirect(state.from)
+  }
+
   return (
     <>
-      {back && <Redirect to={`/clientes/${form.customerId}/${form.petId}`} />}
+      {redirect && <Redirect to={redirect} />}
       <div className="container">
         <div className="row">
           <div className="container col-8">
@@ -177,7 +182,7 @@ const ConsultationForm = props => {
               <button
                 type="button"
                 className="btn btn-danger float-right"
-                onClick={() => setBack(true)}
+                onClick={() => goBack()}
               >Volver</button>
 
               {error && <div className="alert alert-danger mt-3" role="alert">{error}</div>}

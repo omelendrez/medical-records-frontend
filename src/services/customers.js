@@ -1,20 +1,20 @@
 import http from './api'
 
 export const getCustomers = async pagination => {
-  const { filter, limit, curPage } = pagination
-  const response = await http.get(`customers?filter=${filter}&page=${curPage}&limit=${limit}`)
+  const { filter, limit, curPage: page } = pagination
+  const response = await http.get('customers', { params: { page, filter, limit } })
   return response.data.customers
 }
 
 export const getInactiveCustomers = async pagination => {
-  const { filter, limit, curPage } = pagination
-  const response = await http.get(`customers/inactive?filter=${filter}&page=${curPage}&limit=${limit}`)
+  const { filter, limit, curPage: page } = pagination
+  const response = await http.get('customers/inactive', { params: { page, filter, limit } })
   return response.data.customers
 }
 
 export const getDebtors = async pagination => {
-  const { filter, limit, curPage } = pagination
-  const response = await http.get(`customers/debtors?filter=${filter}&page=${curPage}&limit=${limit}`)
+  const { filter, limit, curPage: page } = pagination
+  const response = await http.get('customers/debtors', { params: { page, filter, limit } })
   return response.data.debtors
 }
 

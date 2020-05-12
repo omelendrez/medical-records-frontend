@@ -57,8 +57,14 @@ const Consultations = () => {
       )
   }
 
-  const handleEdit = Consultation => {
-    setRedirect(`./edit-consulta/${Consultation.id}`)
+  const handleEdit = consultation => {
+    setRedirect({
+      pathname: `/edit-consulta/${consultation.id}`,
+      state: {
+        from: '/consultas'
+      }
+    })
+
   }
 
   const handleRestore = () => {
