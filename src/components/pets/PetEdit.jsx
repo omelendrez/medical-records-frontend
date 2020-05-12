@@ -45,7 +45,7 @@ const PetForm = props => {
 
 	return (
 		<>
-			{back && <Redirect to={`/clientes/${form.customerId}`} />}
+			{back && <Redirect to={`/pacientes`} />}
 			<div className="container">
 				<div className="row">
 					<div className="container col-8">
