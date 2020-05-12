@@ -83,8 +83,6 @@ const Pets = () => {
 
   if (loading) return <Loading />
 
-  console.log(filter)
-
   return (
     <>
       {showConfirm &&
