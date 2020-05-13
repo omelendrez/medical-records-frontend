@@ -55,4 +55,4 @@ export const sexList = [
   { id: 'H', name: 'Hembra' }
 ]
 
-export const formatNumber = amount => parseInt(amount).toFixed(2)
+export const formatNumber = amount => parseFloat(amount).toFixed(2)

@@ -16,7 +16,11 @@ const Consultation = ({ data, deleteConsultation, editConsultation }) => {
         </Link>
       </td>
       <td>{diagnosis.substring(0, 30)}</td>
-      <td>{treatment.substring(0, 60)}</td>
+      <td>
+        <div className="truncate" style={{ width: '400px' }}>
+          {treatment.substring(0, 60)}
+        </div>
+      </td>
       <td className="text-nowrap">{nextConsultation}</td>
       <td style={{ width: '120px' }}>
         <button

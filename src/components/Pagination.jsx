@@ -26,8 +26,8 @@ const Pagination = ({ pagination, changePage }) => {
             </button>
           </li>
         ))}
-      </ul >
-    </nav >
+      </ul>
+    </nav>
   )
 }
 
