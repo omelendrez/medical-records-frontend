@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import Pet from '../customers/customer-view/Pet'
+import { getPet } from '../../services/pets'
 import { Redirect } from 'react-router-dom'
 import { saveConsultation } from '../../services/consultations'
 import { paymentMethods } from '../../services/utils'
@@ -18,6 +20,13 @@ const ConsultationForm = props => {
     paymentMethod: '',
     paid: '0.00'
   })
+
+  const [pet, setPet] = useState({})
+
+  useEffect(() => {
+    getPet(props.match.params.petId)
+      .then(pet => setPet(pet))
+  }, [props.match.params.petId])
 
   const handleChange = (e => {
     e.preventDefault()
@@ -40,7 +49,10 @@ const ConsultationForm = props => {
   return (
     <>
       {back && <Redirect to={`/clientes/${props.match.params.customerId}/${props.match.params.petId}`} />}
-      <div className="container">
+      <div className="container-fluid">
+        <div className="col-2 float-left">
+          <Pet pet={pet} />
+        </div>
         <div className="row">
           <div className="container col-8">
             <h1 className="my-3">Nueva Consulta</h1>
