@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import Pet from '../customers/customer-view/Pet'
+import { getPet } from '../../services/pets'
 import { Redirect } from 'react-router-dom'
 import { saveConsultation, getConsultation } from '../../services/consultations'
 import { paymentMethods } from '../../services/utils'
@@ -21,9 +23,15 @@ const ConsultationForm = props => {
     paid: ''
   })
 
+  const [pet, setPet] = useState({})
+
   useEffect(() => {
     getConsultation(props.match.params.consultationId)
-      .then(consultation => setForm(consultation))
+      .then(consultation => {
+        setForm(consultation)
+        getPet(consultation.petId)
+          .then(pet => setPet(pet))
+      })
   }, [props.match.params.consultationId])
 
 
@@ -54,7 +62,10 @@ const ConsultationForm = props => {
   return (
     <>
       {redirect && <Redirect to={redirect} />}
-      <div className="container">
+      <div className="container-fluid">
+        <div className="col-2 float-left">
+          <Pet pet={pet} />
+        </div>
         <div className="row">
           <div className="container col-8">
             <h1 className="my-3">Editando Consulta</h1>
