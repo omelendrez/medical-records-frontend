@@ -5,7 +5,6 @@ import { getInactiveConsultations, restoreConsultation } from '../services/consu
 export const fieldsDefault = {
   clientes: {
     fields: [
-      { name: 'id', title: '#' },
       { name: 'name', title: 'Nombre' },
       { name: 'address', title: 'Domicilio' },
       { name: 'phone', title: 'Teléfono' },
@@ -17,7 +16,6 @@ export const fieldsDefault = {
   },
   pacientes: {
     fields: [
-      { name: 'id', title: '#' },
       { name: 'name', title: 'Nombre' },
       { name: 'type', title: 'Tipo' },
       { name: 'breed', title: 'Raza' },
@@ -28,7 +26,6 @@ export const fieldsDefault = {
   },
   consultas: {
     fields: [
-      { name: 'id', title: '#' },
       { name: 'date', title: 'Fecha', className: "text-nowrap" },
       { name: 'pet.name', title: 'Paciente' },
       { name: 'diagnosis', title: 'Diagnóstico' },
