@@ -80,3 +80,15 @@
 .main-container .pet .status.inactive {
   color: red;
 }
+
+.main-container .customer .status {
+  font-weight: bold;
+}
+
+.main-container .customer .status.active {
+  color: green;
+}
+
+.main-container .customer .status.inactive {
+  color: red;
+}
