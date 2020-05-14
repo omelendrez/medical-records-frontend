@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Pagination from '../Pagination'
 import Loading from '../Loading'
 import { getDebtors } from '../../services/customers'
+import { Link } from 'react-router-dom'
 
 const Debtors = () => {
   const [filter, setFilter] = useState('')
@@ -67,7 +68,9 @@ const Debtors = () => {
               {rows
                 .map(debtor =>
                   <tr key={debtor.id}>
-                    <td>{debtor.name}</td>
+                    <td className="name">
+                      <Link to={`/clientes/${debtor.id}`}>{debtor.name}</Link>
+                    </td>
                     <td>{debtor.address}</td>
                     <td>{debtor.phone}</td>
                     <td className="text-right">${debtor.debt}</td>
