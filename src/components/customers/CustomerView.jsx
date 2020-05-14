@@ -105,11 +105,11 @@ const CustomerView = props => {
 					loadPet={loadPet}
 					setBack={setBack}
 					debt={debt}
+					addConsultation={handleAddConsultation}
 				/>
 
 				{pet.name && <Consultations
 					consultations={consultations}
-					addConsultation={handleAddConsultation}
 					editConsultation={handleEditConsultation}
 					deleteConsultation={handleDeleteConsultation}
 				/>}

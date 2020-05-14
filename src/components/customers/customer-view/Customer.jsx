@@ -2,7 +2,7 @@ import React from 'react'
 import PetsList from './PetsList'
 import Pet from './Pet'
 
-const Customer = ({ customer, pet, handleAddPet, loadPet, setBack, debt }) => {
+const Customer = ({ customer, pet, handleAddPet, loadPet, setBack, debt, addConsultation }) => {
   const { name, address, phone, email, observations, pets, statusId } = customer
 
   return (
@@ -19,7 +19,19 @@ const Customer = ({ customer, pet, handleAddPet, loadPet, setBack, debt }) => {
             <p className={`status ${statusId === 1 ? 'active' : 'inactive'}`}>{statusId === 1 ? 'Activo' : 'Inactivo'}</p>
           </div>
         </div>
-        {pet.name && <Pet pet={pet} />}
+        {pet.name &&
+          <>
+            <Pet pet={pet} />
+            <div>
+              <button
+                type="button"
+                className="btn btn-primary m-1 add-consultation"
+                onClick={e => addConsultation(e)}
+              >Agregar Consulta</button>
+            </div>
+          </>
+        }
+
         <button
           type="button"
           className="btn btn-warning mt-3"
