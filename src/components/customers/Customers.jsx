@@ -108,7 +108,7 @@ const Customers = () => {
               <th scope="col" style={{ width: '100px' }}>Observaciones</th>
               <th scope="col" colSpan="2">
                 <button
-                  className="btn btn-primary my-1 float-right"
+                  className="btn btn-primary my-1 float-right text-nowrap"
                   onClick={() => handleAdd()}
                 >Agregar Cliente</button>
               </th>
