@@ -69,7 +69,7 @@ const Debtors = () => {
                 .map(debtor =>
                   <tr key={debtor.id}>
                     <td className="name">
-                      <Link to={`/clientes/${debtor.id}`}>{debtor.name}</Link>
+                      <Link to={{ pathname: `/clientes/${debtor.id}`, state: { from: '/deudores' } }}>{debtor.name}</Link>
                     </td>
                     <td>{debtor.address}</td>
                     <td>{debtor.phone}</td>
