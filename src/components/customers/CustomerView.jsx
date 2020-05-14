@@ -15,8 +15,10 @@ const CustomerView = props => {
 	const [selected, setSelected] = useState({})
 	const [showConfirm, setShowConfirm] = useState(false)
 	const [debt, setDebt] = useState({})
+	const { state } = props.location
 
 	const setBack = () => {
+		if (state) return setRedirect(state.from)
 		setPet({})
 		if (!props.match.params.petId) {
 			setRedirect(`/clientes`)
