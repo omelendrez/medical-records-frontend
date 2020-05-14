@@ -4,8 +4,8 @@ const Pagination = ({ pagination, changePage }) => {
   const { curPage, totRecords, limit } = pagination
   const totPages = Math.ceil(totRecords / limit)
 
-  //const canGoBackward = curPage > 1
-  //const canGoForward = curPage < totPages
+  const canGoBackward = curPage > 1
+  const canGoForward = curPage < totPages
 
   const pages = []
   for (let i = 1; i <= totPages; i++) {
@@ -19,13 +19,31 @@ const Pagination = ({ pagination, changePage }) => {
   return (
     <nav aria-label="...">
       <ul className="pagination pagination-sm  justify-content-center">
-        {pages.map(page => (
-          <li key={page} className={`page-item ${page === curPage ? 'active' : ''}`}>
-            <button className="page-link" onClick={() => handleChangePage(page)}>
-              {page}
-            </button>
-          </li>
-        ))}
+        <li className={`page-item ${canGoBackward ? '' : 'disabled'}`}>
+          <button className="page-link" onClick={() => handleChangePage(1)}>
+            {'<<'}
+          </button>
+        </li>
+        <li className={`page-item ${canGoBackward ? '' : 'disabled'}`}>
+          <button className="page-link" onClick={() => handleChangePage(curPage - 1)}>
+            {'<'}
+          </button>
+        </li>
+        <li className="page-item disabled">
+          <button className="page-link" >
+            {`Página ${curPage} de ${totPages}`}
+          </button>
+        </li>
+        <li className={`page-item ${canGoForward ? '' : 'disabled'}`}>
+          <button className="page-link" onClick={() => handleChangePage(curPage + 1)}>
+            {'>'}
+          </button>
+        </li>
+        <li className={`page-item ${canGoForward ? '' : 'disabled'}`}>
+          <button className="page-link" onClick={() => handleChangePage(totPages)}>
+            {'>>'}
+          </button>
+        </li>
       </ul>
     </nav>
   )
