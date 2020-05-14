@@ -93,9 +93,9 @@ const Debtors = () => {
                   onClick={e => handleClick(e)}
                 >Buscar</button>
               </form>
-              <div className="col-4">
-                {totPages > 1 && <Pagination pagination={pagination} changePage={changePage} />}
-              </div>
+            </div>
+            <div className="col-4">
+              {totPages > 1 && <Pagination pagination={pagination} changePage={changePage} />}
             </div>
           </div>
         </div>
