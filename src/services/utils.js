@@ -27,7 +27,7 @@ export const fieldsDefault = {
   consultas: {
     fields: [
       { name: 'date', title: 'Fecha', className: "text-nowrap" },
-      { name: 'pet.name', title: 'Paciente' },
+      { name: 'petName', title: 'Paciente' },
       { name: 'diagnosis', title: 'Diagnóstico' },
       { name: 'treatment', title: 'Tratamiento' },
       { name: 'nextConsultation', title: 'Próx. Turno', className: "text-nowrap" }
