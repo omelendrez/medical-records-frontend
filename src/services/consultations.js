@@ -13,7 +13,7 @@ export const getInactiveConsultations = async pagination => {
 }
 
 export const getProgrammedVisits = async () => {
-  const response = await http.get(`consultations/Programmed-Visits`)
+  const response = await http.get(`consultations/programmed-visits`)
   return response.data.consultations
 }
 

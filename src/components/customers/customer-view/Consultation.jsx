@@ -3,7 +3,7 @@ import Balance from './Balance'
 
 const Consultation = ({ consultation, editConsultation, deleteConsultation }) => {
   const { id, date, clinicalExamination, diagnosis, treatment, nextConsultation, observations, amount, paid } = consultation
-  console.log(consultation)
+
   return (
     <div className="card consultation">
       <div className="card-body">

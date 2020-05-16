@@ -4,11 +4,11 @@ import { getProgrammedVisits } from '../services/consultations'
 import ProgrammedVisits from '../components/consultations/ProgrammedVisits'
 
 const Home = () => {
-  const [consultations, setConsultations] = useState({ rows: [] })
+  const [consultations, setConsultations] = useState([])
 
   useEffect(() => {
     getProgrammedVisits()
-      .then(consultations => setConsultations(consultations))
+      .then(consultations => setConsultations(consultations.rows))
   }, [])
 
   return (
@@ -18,7 +18,10 @@ const Home = () => {
           Historias Clínicas
         </h1>
       </div>
-      {consultations.rows && <ProgrammedVisits consultations={consultations} />}
+      <div className="programmed-visits">
+
+        {consultations && <ProgrammedVisits consultations={consultations} />}
+      </div>
     </div>
   )
 }
