@@ -122,7 +122,7 @@ const PetForm = props => {
                   <div className="form-group">
                     <label htmlFor="yearBorn">Año de Nacimiento</label>
                     <input
-                      type="text"
+                      type="date"
                       className="form-control"
                       id="yearBorn"
                       onChange={e => handleChange(e)}
