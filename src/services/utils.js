@@ -52,4 +52,10 @@ export const sexList = [
   { id: 'H', name: 'Hembra' }
 ]
 
+export const getDateFromDays = () => {
+  let d = new Date();
+  d.setDate(d.getDate() - 45)
+  return d
+}
+
 export const formatNumber = amount => parseFloat(amount).toFixed(2)
