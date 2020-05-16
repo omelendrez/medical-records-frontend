@@ -12,9 +12,9 @@ export const getInactiveConsultations = async pagination => {
   return response.data.consultations
 }
 
-export const getConsultation = async id => {
-  const response = await http.get(`consultations/${id}`)
-  return response.data.consultation
+export const getProgrammedVisits = async () => {
+  const response = await http.get(`consultations/Programmed-Visits`)
+  return response.data.consultations
 }
 
 export const saveConsultation = consultation => {
@@ -25,6 +25,11 @@ export const saveConsultation = consultation => {
       })
       .catch(error => reject(error))
   })
+}
+
+export const getConsultation = async id => {
+  const response = await http.get(`consultations/${id}`)
+  return response.data.consultation
 }
 
 export const deleteConsultation = consultation => {
