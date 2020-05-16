@@ -51,10 +51,10 @@ const ConsultationForm = props => {
     <>
       {back && <Redirect to={`/clientes/${props.match.params.customerId}/${props.match.params.petId}`} />}
       <div className="container-fluid">
-        <div className="col-2 float-left">
-          <Pet pet={pet} />
-        </div>
         <div className="row">
+          <div className="container col-2 text-center mt-2">
+            <Pet pet={pet} />
+          </div>
           <div className="container col-8">
             <h1 className="my-3">Nueva Consulta</h1>
             <form>
@@ -201,6 +201,7 @@ const ConsultationForm = props => {
 
             </form>
           </div>
+          <div className="col-2 container"></div>
         </div>
       </div>
     </>

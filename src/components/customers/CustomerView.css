@@ -68,27 +68,3 @@
 .main-container .pets .pet {
   margin-right: 20px;
 }
-
-.main-container .pet .status {
-  font-weight: bold;
-}
-
-.main-container .pet .status.active {
-  color: green;
-}
-
-.main-container .pet .status.inactive {
-  color: red;
-}
-
-.main-container .customer .status {
-  font-weight: bold;
-}
-
-.main-container .customer .status.active {
-  color: green;
-}
-
-.main-container .customer .status.inactive {
-  color: red;
-}

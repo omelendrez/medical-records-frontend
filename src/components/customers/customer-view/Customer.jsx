@@ -1,6 +1,7 @@
 import React from 'react'
 import PetsList from './PetsList'
 import Pet from './Pet'
+import './Customer.css'
 
 const Customer = ({ customer, pet, handleAddPet, loadPet, setBack, debt, addConsultation }) => {
   const { name, address, phone, email, observations, pets, statusId } = customer

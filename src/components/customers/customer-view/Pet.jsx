@@ -1,4 +1,5 @@
 import React from 'react'
+import './Pet.css'
 
 const Pet = ({ pet }) => {
   const { name, type, breed, sex, weight, yearBorn, observations, statusId } = pet
