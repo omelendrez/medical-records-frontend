@@ -12,6 +12,7 @@ const ConsultationForm = props => {
     customerId: props.match.params.customerId,
     petId: props.match.params.petId,
     date: '',
+    clinicalExamination: '',
     diagnosis: '',
     treatment: '',
     nextConsultation: '',
@@ -87,6 +88,21 @@ const ConsultationForm = props => {
               <div className="form-row">
                 <div className="col">
                   <div className="form-group">
+                    <label htmlFor="clinicalExamination">Examen Clinico</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="clinicalExamination"
+                      onChange={e => handleChange(e)}
+                      value={form.clinicalExamination}
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="form-row">
+                <div className="col">
+                  <div className="form-group">
                     <label htmlFor="diagnosis">Diagnostico</label>
                     <input
                       type="text"
@@ -109,7 +125,7 @@ const ConsultationForm = props => {
                       onChange={e => handleChange(e)}
                       value={form.treatment}
                       required
-                      rows="2"
+                      rows="1"
                     />
                   </div>
                 </div>
