@@ -11,7 +11,6 @@ const Home = () => {
       .then(consultations => setConsultations(consultations))
   }, [])
 
-  console.log(consultations.count)
   return (
     <div className="image">
       <div className="logo">
