@@ -22,7 +22,9 @@
 .programmed-visits {
   background-color: #fff;
   position: absolute;
-  text-align: center;
   top: 10vh;
   left: 1vw;
+}
+.programmed-visits .header {
+  text-align: center;
 }

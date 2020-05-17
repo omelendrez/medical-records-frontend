@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const ProgrammedVisits = ({ consultations }) => {
 	return (
 		<div className="container">
-			<h5>Visitas Programadas</h5>
+			<h5 className="header">Visitas Programadas</h5>
 			<table className="table table-sm">
 				<tbody>
 					{consultations
