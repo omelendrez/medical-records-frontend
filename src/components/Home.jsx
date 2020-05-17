@@ -19,7 +19,6 @@ const Home = () => {
         </h1>
       </div>
       <div className="programmed-visits">
-
         {consultations && <ProgrammedVisits consultations={consultations} />}
       </div>
     </div>
