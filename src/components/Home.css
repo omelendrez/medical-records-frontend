@@ -15,12 +15,11 @@
 }
 
 .image .logo h1 {
-  text-align: left;
+  text-align: center;
   padding-top: 30px;
 }
 
 .programmed-visits {
   position: absolute;
   top: 10vh;
-  right: 0;
 }
