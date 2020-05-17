@@ -20,10 +20,7 @@
 }
 
 .programmed-visits {
-  border: 1px solid #ccc;
   background-color: #fff;
-  border-radius: 6px;
-  padding: 4px;
   position: absolute;
   text-align: center;
   top: 10vh;
