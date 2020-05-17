@@ -12,11 +12,11 @@ const ConsultationForm = props => {
     customerId: props.match.params.customerId,
     petId: props.match.params.petId,
     date: '',
+    anamnesis: '',
     clinicalExamination: '',
     diagnosis: '',
     treatment: '',
     nextConsultation: '',
-    observations: '',
     amount: '0.00',
     paymentMethod: '',
     paid: '0.00'
@@ -88,6 +88,21 @@ const ConsultationForm = props => {
               <div className="form-row">
                 <div className="col">
                   <div className="form-group">
+                    <label htmlFor="clinicalExamination">Anamnesis</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="anamnesis"
+                      onChange={e => handleChange(e)}
+                      value={form.anamnesis}
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="form-row">
+                <div className="col">
+                  <div className="form-group">
                     <label htmlFor="clinicalExamination">Examen Clinico</label>
                     <input
                       type="text"
@@ -125,20 +140,6 @@ const ConsultationForm = props => {
                       onChange={e => handleChange(e)}
                       value={form.treatment}
                       required
-                      rows="1"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="form-row">
-                <div className="col">
-                  <div className="form-group">
-                    <label htmlFor="observations">Observaciones</label>
-                    <textarea
-                      className="form-control"
-                      id="observations"
-                      onChange={e => handleChange(e)}
-                      value={form.observations}
                       rows="1"
                     />
                   </div>
