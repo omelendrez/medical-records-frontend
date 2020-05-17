@@ -54,6 +54,11 @@ export const sexList = [
   { id: 'Me', name: 'Macho e' }
 ]
 
+export const getSexName = sexId => { // sexId = Mc
+  const sex = sexList.find(sex => sexId === sex.id)
+  return sex ? sex.name : '???'
+}
+
 export const getDateFromDays = days => {
   if (days < 1) {
     return ''
