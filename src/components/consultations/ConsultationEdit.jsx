@@ -102,7 +102,7 @@ const ConsultationForm = props => {
               <div className="form-row">
                 <div className="col">
                   <div className="form-group">
-                    <label htmlFor="clinicalExamination">Anamnesis</label>
+                    <label htmlFor="anamnesis">Anamnesis</label>
                     <input
                       type="text"
                       className="form-control"
