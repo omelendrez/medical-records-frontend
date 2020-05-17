@@ -48,10 +48,10 @@ export const paymentMethods = [
 
 export const sexList = [
   { id: '', name: '' },
-  { id: 'Hc', name: 'Hembra castrada' },
-  { id: 'He', name: 'Hembra entera' },
-  { id: 'Mc', name: 'Macho castrado' },
-  { id: 'Me', name: 'Macho entero' }
+  { id: 'Hc', name: 'Hembra c' },
+  { id: 'He', name: 'Hembra e' },
+  { id: 'Mc', name: 'Macho c' },
+  { id: 'Me', name: 'Macho e' }
 ]
 
 export const getDateFromDays = days => {
