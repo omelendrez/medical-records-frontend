@@ -1,0 +1,9 @@
+.form-container {
+  height: 246px;
+}
+
+.nav-tabs .nav-item .active {
+  background-color:#17a2b8;
+  color: #fff;
+  border-bottom: 1px solid #17a2b8;
+}
