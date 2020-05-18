@@ -1,4 +1,5 @@
 import React from 'react'
+import { getSexName } from '../../../services/utils'
 import './Pet.css'
 
 const Pet = ({ pet }) => {
@@ -9,7 +10,7 @@ const Pet = ({ pet }) => {
         <h5 className="card-title">{name}</h5>
         <h6 className="card-subtitle mb-2 text-muted">{type}</h6>
         <h6 className="card-subtitle mb-2 text-muted">{breed}</h6>
-        <h6 className="card-subtitle mb-2 text-muted">{sex}</h6>
+        <h6 className="card-subtitle mb-2 text-muted">{getSexName(sex)}</h6>
         <h6 className="card-subtitle mb-2 text-muted">{weight}</h6>
         <h6 className="card-subtitle mb-2 text-muted">{yearBorn}</h6>
         <p className="card-text observations">{observations}</p>
