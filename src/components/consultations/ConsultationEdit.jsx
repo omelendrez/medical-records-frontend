@@ -102,9 +102,8 @@ const ConsultationForm = props => {
               <div className="form-row">
                 <div className="col">
                   <div className="form-group">
-                    <label htmlFor="anamnesis">Anamnesis</label>
                     <input
-                      type="text"
+                      placeholder="Anamnesis"
                       className="form-control"
                       id="anamnesis"
                       onChange={e => handleChange(e)}
@@ -117,9 +116,8 @@ const ConsultationForm = props => {
               <div className="form-row">
                 <div className="col">
                   <div className="form-group">
-                    <label htmlFor="clinicalExamination">Examen Clinico</label>
                     <input
-                      type="text"
+                      placeholder="Examen Clínico"
                       className="form-control"
                       id="clinicalExamination"
                       onChange={e => handleChange(e)}
@@ -132,9 +130,8 @@ const ConsultationForm = props => {
               <div className="form-row">
                 <div className="col">
                   <div className="form-group">
-                    <label htmlFor="diagnosis">Diagnostico</label>
                     <input
-                      type="text"
+                      placeholder="Diagnóstico"
                       className="form-control"
                       id="diagnosis"
                       onChange={e => handleChange(e)}
@@ -147,8 +144,8 @@ const ConsultationForm = props => {
               <div className="form-row">
                 <div className="col">
                   <div className="form-group">
-                    <label htmlFor="treatment">Tratamiento</label>
                     <textarea
+                      placeholder="Tratamiento"
                       className="form-control"
                       id="treatment"
                       onChange={e => handleChange(e)}
