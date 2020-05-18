@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import Pet from '../customers/customer-view/Pet'
 import { getPet } from '../../services/pets'
 import { Redirect } from 'react-router-dom'
 import { saveConsultation, getConsultation } from '../../services/consultations'
@@ -18,7 +17,6 @@ const ConsultationForm = props => {
     diagnosis: '',
     treatment: '',
     nextConsultation: '',
-    observations: '',
     amount: '',
     paymentMethod: '',
     paid: ''
@@ -65,11 +63,8 @@ const ConsultationForm = props => {
       {redirect && <Redirect to={redirect} />}
       <div className="container-fluid">
         <div className="row">
-          <div className="container col-2 text-center mt-2">
-            <Pet pet={pet} />
-          </div>
           <div className="container col-8">
-            <h1 className="my-3">Editando Consulta</h1>
+            <h4 className="my-3">Editando Historia Clínica de {pet.name}</h4>
             <form>
               <div className="form-row">
                 <div className="col">
