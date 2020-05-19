@@ -1,6 +1,8 @@
 import { getInactiveCustomers, restoreCustomer } from '../services/customers'
 import { getInactivePets, restorePet } from '../services/pets'
 import { getInactiveConsultations, restoreConsultation } from '../services/consultations'
+import moment from 'moment'
+import 'moment/locale/es'
 
 export const fieldsDefault = {
   clientes: {
@@ -71,3 +73,7 @@ export const getDateFromDays = days => {
 }
 
 export const formatNumber = amount => parseFloat(amount).toFixed(2)
+
+export const getAge = birthDate => moment(birthDate).toNow().replace('en ', '')
+
+export const formatDate = date => moment(date).format('L')

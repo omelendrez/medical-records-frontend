@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { formatDate } from '../../services/utils'
 
 const ProgrammedVisits = ({ consultations }) => {
 	return (
@@ -10,7 +11,7 @@ const ProgrammedVisits = ({ consultations }) => {
 					{consultations
 						.map(row =>
 							<tr key={row.id}>
-								<td>{row.nextConsultation}</td>
+								<td>{formatDate(row.nextConsultation)}</td>
 								<td className="name">
 									<Link to={{ pathname: `/clientes/${row.customerId}/${row.petId}`, state: { from: '/' } }}>
 										{row.petName}

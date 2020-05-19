@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { formatDate } from '../../services/utils'
 
 const Consultation = ({ data, deleteConsultation, editConsultation }) => {
 
@@ -8,7 +9,7 @@ const Consultation = ({ data, deleteConsultation, editConsultation }) => {
   return (
     <tr>
       <td className="text-nowrap">
-        {date}
+        {formatDate(date)}
       </td>
       <td>
         <Link to={`/clientes/${customerId}/${petId}`}>
@@ -21,7 +22,7 @@ const Consultation = ({ data, deleteConsultation, editConsultation }) => {
           {treatment.substring(0, 60)}
         </div>
       </td>
-      <td className="text-nowrap">{nextConsultation}</td>
+      <td className="text-nowrap">{nextConsultation ? formatDate(nextConsultation) : ''}</td>
       <td style={{ width: '120px' }}>
         <button
           className="btn btn-danger"

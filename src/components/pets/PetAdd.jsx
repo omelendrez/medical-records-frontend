@@ -27,10 +27,10 @@ const PetForm = props => {
 
   const handleDaysChange = e => {
     e.preventDefault()
-    const yearBorn = getDateFromDays(e.target.value)
+    const birthDate = getDateFromDays(e.target.value)
     setForm({
       ...form,
-      yearBorn
+      birthDate
     })
   }
 
@@ -130,13 +130,13 @@ const PetForm = props => {
                 </div>
                 <div className="col-5">
                   <div className="form-group">
-                    <label htmlFor="yearBorn">Nacimiento</label>
+                    <label htmlFor="birthDate">Nacimiento</label>
                     <input
                       type="date"
                       className="form-control"
-                      id="yearBorn"
+                      id="birthDate"
                       onChange={e => handleChange(e)}
-                      value={form.yearBorn}
+                      value={form.birthDate}
                       required
                     />
                   </div>
