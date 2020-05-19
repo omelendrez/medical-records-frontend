@@ -78,25 +78,22 @@ const ConsultationForm = props => {
               {/* Tab headers */}
               <ul className="nav nav-tabs">
                 <li className="nav-item">
-                  <a
+                  <button
                     className={`nav-link ${tab === 'consultation' ? 'active' : ''}`}
-                    href={() => { }}
                     onClick={e => handleChangeTab(e, 'consultation')}
-                  >Consulta</a>
+                  >Consulta</button>
                 </li>
                 <li className="nav-item">
-                  <a
+                  <button
                     className={`nav-link ${tab === 'vaccination' ? 'active' : ''}`}
                     onClick={e => handleChangeTab(e, 'vaccination')}
-                    href={() => { }}
-                  >Vacunación</a>
+                  >Vacunación</button>
                 </li>
                 <li className="nav-item">
-                  <a
+                  <button
                     className={`nav-link ${tab === 'deworming' ? 'active' : ''}`}
                     onClick={e => handleChangeTab(e, 'deworming')}
-                    href={() => { }}
-                  >Desparasitación</a>
+                  >Desparasitación</button>
                 </li>
               </ul>
 
