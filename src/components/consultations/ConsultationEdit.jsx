@@ -21,7 +21,9 @@ const ConsultationForm = props => {
     nextConsultation: '',
     amount: '',
     paymentMethod: '',
-    paid: ''
+    paid: '',
+    deworming: '',
+    vaccination: ''
   })
 
   const [pet, setPet] = useState({})
@@ -60,7 +62,8 @@ const ConsultationForm = props => {
     setRedirect(state.from)
   }
 
-  const handleChangeTab = tab => {
+  const handleChangeTab = (e, tab) => {
+    e.preventDefault()
     setTab(tab)
   }
 
@@ -72,43 +75,46 @@ const ConsultationForm = props => {
           <div className="container">
             <h5 className="my-3">Editando Historia Clínica de {pet.name}</h5>
             <form>
-
-              <ul class="nav nav-tabs">
+              {/* Tab headers */}
+              <ul className="nav nav-tabs">
                 <li className="nav-item">
                   <a
                     className={`nav-link ${tab === 'consultation' ? 'active' : ''}`}
                     href="#"
-                    onClick={() => handleChangeTab('consultation')}
+                    onClick={e => handleChangeTab(e, 'consultation')}
                   >Consulta</a>
                 </li>
                 <li className="nav-item">
                   <a
                     className={`nav-link ${tab === 'vaccination' ? 'active' : ''}`}
-                    onClick={() => handleChangeTab('vaccination')}
+                    onClick={e => handleChangeTab(e, 'vaccination')}
                     href="#"
                   >Vacunación</a>
                 </li>
                 <li className="nav-item">
                   <a
                     className={`nav-link ${tab === 'deworming' ? 'active' : ''}`}
-                    onClick={() => handleChangeTab('deworming')}
+                    onClick={e => handleChangeTab(e, 'deworming')}
                     href="#"
                   >Desparasitación</a>
                 </li>
               </ul>
+
+              {/* Tab bodies */}
+
               <div className="p-3 mb-3 bg-info form-container">
                 {tab === 'consultation' &&
                   <>
                     <div className="form-row">
                       <div className="col">
                         <div className="form-group">
-                          <input
+                          <textarea
                             placeholder="Anamnesis"
                             className="form-control"
                             id="anamnesis"
                             onChange={e => handleChange(e)}
                             value={form.anamnesis}
-                            required
+                            rows="1"
                           />
                         </div>
                       </div>
@@ -116,13 +122,13 @@ const ConsultationForm = props => {
                     <div className="form-row">
                       <div className="col">
                         <div className="form-group">
-                          <input
+                          <textarea
                             placeholder="Examen Clínico"
                             className="form-control"
                             id="clinicalExamination"
                             onChange={e => handleChange(e)}
                             value={form.clinicalExamination}
-                            required
+                            rows="1"
                           />
                         </div>
                       </div>
@@ -136,7 +142,6 @@ const ConsultationForm = props => {
                             id="diagnosis"
                             onChange={e => handleChange(e)}
                             value={form.diagnosis}
-                            required
                           />
                         </div>
                       </div>
@@ -150,7 +155,6 @@ const ConsultationForm = props => {
                             id="treatment"
                             onChange={e => handleChange(e)}
                             value={form.treatment}
-                            required
                             rows="1"
                           />
                         </div>
@@ -166,10 +170,10 @@ const ConsultationForm = props => {
                         <textarea
                           placeholder="Vacunación"
                           className="form-control"
-                          id="anamnesis"
+                          id="vaccination"
                           onChange={e => handleChange(e)}
-                          value={form.anamnesis}
-                          rows="2"
+                          value={form.vaccination}
+                          rows="3"
                         />
                       </div>
                     </div>
@@ -183,26 +187,20 @@ const ConsultationForm = props => {
                         <textarea
                           placeholder="Desparasitación"
                           className="form-control"
-                          id="anamnesis"
+                          id="deworming"
                           onChange={e => handleChange(e)}
-                          value={form.anamnesis}
-                          rows="2"
+                          value={form.deworming}
+                          rows="3"
                         />
                       </div>
                     </div>
                   </div>
                 }
-
-
-
-
-
-
               </div>
 
               <div className="card p-3 mb-3 bg-info text-white">
                 <div className="form-row">
-                  <div className="col">
+                  <div className="col-12 col-sm">
                     <div className="form-group">
                       <label htmlFor="date">Fecha consulta</label>
                       <input
@@ -215,7 +213,7 @@ const ConsultationForm = props => {
                       />
                     </div>
                   </div>
-                  <div className="col">
+                  <div className="col-12 col-sm">
                     <div className="form-group">
                       <label htmlFor="nextConsultation">Proxima consulta</label>
                       <input
@@ -228,24 +226,19 @@ const ConsultationForm = props => {
                       />
                     </div>
                   </div>
-                </div>
-              </div>
-
-              <div className="card p-3 mb-3 bg-info text-white">
-                <div className="form-row">
-                  <div className="col">
+                  <div className="col-12 col-sm">
                     <div className="form-group">
                       <label htmlFor="treatment">Valor consulta</label>
                       <input
                         type="text"
-                        className="form-control"
+                        className="form-control text-right"
                         id="amount"
                         onChange={e => handleChange(e)}
-                        value={form.amount}
+                        value={parseFloat(form.amount).toFixed(2)}
                       />
                     </div>
                   </div>
-                  <div className="col">
+                  <div className="col-12 col-sm">
                     <div className="form-group">
                       <label htmlFor="treatment">Forma de pago</label>
                       <select className="form-control"
@@ -259,15 +252,15 @@ const ConsultationForm = props => {
                       </select>
                     </div>
                   </div>
-                  <div className="col">
+                  <div className="col-12 col-sm">
                     <div className="form-group">
                       <label htmlFor="treatment">Pagado</label>
                       <input
                         type="text"
-                        className="form-control"
+                        className="form-control text-right"
                         id="paid"
                         onChange={e => handleChange(e)}
-                        value={form.paid}
+                        value={parseFloat(form.paid).toFixed(2)}
                       />
                     </div>
                   </div>
