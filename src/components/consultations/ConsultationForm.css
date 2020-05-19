@@ -1,9 +1,25 @@
 .form-container {
   height: 246px;
+  background-color: #99CDC5;
+  padding: 15px;
+  margin-bottom: 30px;
+  border-radius: 0px 5px 5px 5px;
+}
+.nav-tabs .nav-item {
+  font-size: 17px;
+}
+.nav-tabs .nav-item .active {
+  background-color: #99CDC5;
+  border-bottom: 3px solid #59958C;
 }
 
-.nav-tabs .nav-item .active {
-  background-color:#17a2b8;
-  color: #fff;
-  border-bottom: 1px solid #17a2b8;
+.nav-tabs .nav-link {
+  color: #59958C;
+}
+
+.record {
+  background-color: #A7DEC6;
+  padding: 15px;
+  margin-bottom: 30px;
+  border-radius: 5px;
 }

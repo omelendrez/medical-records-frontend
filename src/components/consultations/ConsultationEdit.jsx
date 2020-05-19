@@ -80,7 +80,7 @@ const ConsultationForm = props => {
                 <li className="nav-item">
                   <a
                     className={`nav-link ${tab === 'consultation' ? 'active' : ''}`}
-                    href="#"
+                    href={() => { }}
                     onClick={e => handleChangeTab(e, 'consultation')}
                   >Consulta</a>
                 </li>
@@ -88,21 +88,21 @@ const ConsultationForm = props => {
                   <a
                     className={`nav-link ${tab === 'vaccination' ? 'active' : ''}`}
                     onClick={e => handleChangeTab(e, 'vaccination')}
-                    href="#"
+                    href={() => { }}
                   >Vacunación</a>
                 </li>
                 <li className="nav-item">
                   <a
                     className={`nav-link ${tab === 'deworming' ? 'active' : ''}`}
                     onClick={e => handleChangeTab(e, 'deworming')}
-                    href="#"
+                    href={() => { }}
                   >Desparasitación</a>
                 </li>
               </ul>
 
               {/* Tab bodies */}
 
-              <div className="p-3 mb-3 bg-info form-container">
+              <div className="form-container">
                 {tab === 'consultation' &&
                   <>
                     <div className="form-row">
@@ -198,7 +198,7 @@ const ConsultationForm = props => {
                 }
               </div>
 
-              <div className="card p-3 mb-3 bg-info text-white">
+              <div className="record">
                 <div className="form-row">
                   <div className="col-12 col-sm">
                     <div className="form-group">
