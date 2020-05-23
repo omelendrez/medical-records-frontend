@@ -35,6 +35,8 @@ function App() {
           <Route path="/nueva-consulta/:customerId/:petId" exact component={ConsultationAdd} />
           <Route path="/restaurar/:table" exact component={Restore} />
           <Route path="/deudores" exact component={Debtors} />
+          <Route path="/vacunas" exact component={() => <h1>Vacunaciones</h1>} />
+          <Route path="/desparasitaciones" exact component={() => <h1>Desparasitaciones</h1>} />
         </Switch>
       </main>
     </BrowserRouter>
