@@ -8,6 +8,7 @@ import './ConsultationForm.css'
 const ConsultationForm = props => {
   const [redirect, setRedirect] = useState('')
   const [error, setError] = useState('')
+  const [tab, setTab] = useState('consultation')
 
   const [form, setForm] = useState({
     id: '',
@@ -69,59 +70,52 @@ const ConsultationForm = props => {
             <form>
 
               <div className="form-container">
-                <div className="form-row">
-                  <div className="col">
-                    <div className="form-group">
-                      <textarea
-                        placeholder="Anamnesis"
-                        className="form-control"
-                        id="anamnesis"
-                        onChange={e => handleChange(e)}
-                        value={form.anamnesis}
-                        rows="1"
-                      />
-                    </div>
+                <div className="form-group row">
+                  <label htmlFor="anamnesis" className="col-sm-2 col-form-label">Anamnesis</label>
+                  <div className="col-sm-10">
+                    <textarea
+                      className="form-control"
+                      id="anamnesis"
+                      onChange={e => handleChange(e)}
+                      value={form.anamnesis}
+                      rows="1"
+                    />
                   </div>
                 </div>
-                <div className="form-row">
-                  <div className="col">
-                    <div className="form-group">
-                      <textarea
-                        placeholder="Examen Clínico"
-                        className="form-control"
-                        id="clinicalExamination"
-                        onChange={e => handleChange(e)}
-                        value={form.clinicalExamination}
-                        rows="1"
-                      />
-                    </div>
+                <div className="form-group row">
+                  <label htmlFor="clinicalExamination" className="col-sm-2 col-form-label">Examen clínico</label>
+                  <div className="col-sm-10">
+                    <textarea
+                      className="form-control"
+                      id="clinicalExamination"
+                      onChange={e => handleChange(e)}
+                      value={form.clinicalExamination}
+                      rows="1"
+                    />
                   </div>
                 </div>
-                <div className="form-row">
-                  <div className="col">
-                    <div className="form-group">
-                      <input
-                        placeholder="Diagnóstico"
-                        className="form-control"
-                        id="diagnosis"
-                        onChange={e => handleChange(e)}
-                        value={form.diagnosis}
-                      />
-                    </div>
+                <div className="form-group row">
+                  <label htmlFor="diagnosis" className="col-sm-2 col-form-label">Diagnóstico</label>
+                  <div className="col-sm-10">
+                    <input
+                      placeholder="Diagnóstico"
+                      className="form-control"
+                      id="diagnosis"
+                      onChange={e => handleChange(e)}
+                      value={form.diagnosis}
+                    />
                   </div>
                 </div>
-                <div className="form-row">
-                  <div className="col">
-                    <div className="form-group">
-                      <textarea
-                        placeholder="Tratamiento"
-                        className="form-control"
-                        id="treatment"
-                        onChange={e => handleChange(e)}
-                        value={form.treatment}
-                        rows="1"
-                      />
-                    </div>
+                <div className="form-group row">
+                  <label htmlFor="treatment" className="col-sm-2 col-form-label">Tratamiento</label>
+                  <div className="col-sm-10">
+                    <textarea
+                      className="form-control"
+                      id="treatment"
+                      onChange={e => handleChange(e)}
+                      value={form.treatment}
+                      rows="1"
+                    />
                   </div>
                 </div>
               </div>

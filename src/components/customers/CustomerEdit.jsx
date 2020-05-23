@@ -6,13 +6,20 @@ const CustomerForm = props => {
   const [back, setBack] = useState(false)
   const [error, setError] = useState('')
 
-  const [form, setForm] = useState({})
+  const formDefault = {
+    name: '',
+    address: '',
+    phone: '',
+    email: '',
+    observations: ''
+  }
+
+  const [form, setForm] = useState(formDefault)
 
   useEffect(() => {
     getCustomer(props.match.params.id)
       .then(customer => setForm(customer))
   }, [props.match.params.id])
-
 
   const handleChange = (e => {
     e.preventDefault()
@@ -22,7 +29,6 @@ const CustomerForm = props => {
       [e.target.id]: e.target.value
     })
   })
-
 
   const handleSave = (e => {
     e.preventDefault()
