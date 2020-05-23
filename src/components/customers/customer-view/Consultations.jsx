@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom'
 import Consultation from './Consultation'
 import Confirm from '../../Confirm'
 import { getConsultationsByPet, deleteConsultation } from '../../../services/consultations'
+import { formatDate } from '../../../services/utils'
 
 const Consultations = ({ pet }) => {
 	const [redirect, setRedirect] = useState('')
@@ -50,7 +51,7 @@ const Consultations = ({ pet }) => {
 				{showConfirm &&
 					<Confirm
 						title="Eliminando consulta"
-						question={`Desea eliminar consulta del ${selected.date} del paciente ${pet.name}?`}
+						question={`Desea eliminar consulta del ${formatDate(selected.date)} del paciente ${pet.name}?`}
 						okButton="Eliminar"
 						cancelButton="Cancelar"
 						cancelDelete={() => setShowConfirm(false)}

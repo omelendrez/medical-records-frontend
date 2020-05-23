@@ -91,7 +91,7 @@ const Consultations = () => {
       {showConfirm &&
         <Confirm
           title="Eliminando consulta"
-          question={`Desea eliminar consulta del ${selected.date} del paciente ${selected.pet.name}?`}
+          question={`Desea eliminar consulta del ${selected.date} del paciente ${selected.petName}?`}
           okButton="Eliminar"
           cancelButton="Cancelar"
           cancelDelete={() => setShowConfirm(false)}

@@ -1,31 +1,7 @@
 .form-container {
   background-color: #99CDC5;
-  padding: 15px;
-  margin-bottom: 30px;
-  border-radius: 0px 5px 5px 5px;
-}
-.nav-tabs .nav-item {
-  font-size: 17px;
-}
-
-.nav-tabs .nav-item button {
-  background-color: #fff;
-  border: 0;
-  outline: none;
-}
-
-.nav-tabs .nav-item .active {
-  background-color: #99CDC5;
-  border-bottom: 3px solid #59958C;
-}
-
-.nav-tabs .nav-link {
-  color: #59958C;
 }
 
 .record {
   background-color: #A7DEC6;
-  padding: 15px;
-  margin-bottom: 30px;
-  border-radius: 5px;
 }

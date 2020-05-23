@@ -79,7 +79,7 @@ const Debtors = () => {
                     <td>{debtor.phone}</td>
                     <td className="text-right">$ {debtor.balance.toFixed(2)}</td>
                     <td className="text-right">
-                      <button className="btn btn-primary">Cancelar</button>
+                      <button className="btn btn-success">Registrar pago</button>
                     </td>
                   </tr>
                 )}

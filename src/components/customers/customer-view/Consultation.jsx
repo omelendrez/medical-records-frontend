@@ -14,7 +14,7 @@ const Consultation = ({ consultation, editConsultation, deleteConsultation }) =>
         {clinicalExamination && <h6 className="card-subtitle mb-2">Examen Clinico: {clinicalExamination}</h6>}
         {diagnosis && <h6 className="card-subtitle mb-2">Diagnóstico: {diagnosis}</h6>}
         {treatment && <p className="card-text texts">Tratamiento: {treatment}</p>}
-        {nextAppointment && <h6 className="card-subtitle mb-2">Próxima consulta: {nextAppointment}</h6>}
+        {nextAppointment && <h6 className="card-subtitle mb-2">Próxima consulta: {formatDate(nextAppointment)}</h6>}
         <div>
           <button
             type="button"

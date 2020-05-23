@@ -69,7 +69,7 @@ const ConsultationForm = props => {
             <h5 className="my-3">Editando Historia Clínica de {pet.name}</h5>
             <form>
 
-              <div className="form-container">
+              <div className="form-container card p-3 mb-3">
                 <div className="form-group row">
                   <label htmlFor="anamnesis" className="col-sm-2 col-form-label">Anamnesis</label>
                   <div className="col-sm-10">
@@ -78,7 +78,7 @@ const ConsultationForm = props => {
                       id="anamnesis"
                       onChange={e => handleChange(e)}
                       value={form.anamnesis}
-                      rows="1"
+                      rows="2"
                     />
                   </div>
                 </div>
@@ -90,19 +90,19 @@ const ConsultationForm = props => {
                       id="clinicalExamination"
                       onChange={e => handleChange(e)}
                       value={form.clinicalExamination}
-                      rows="1"
+                      rows="2"
                     />
                   </div>
                 </div>
                 <div className="form-group row">
                   <label htmlFor="diagnosis" className="col-sm-2 col-form-label">Diagnóstico</label>
                   <div className="col-sm-10">
-                    <input
-                      placeholder="Diagnóstico"
+                    <textarea
                       className="form-control"
                       id="diagnosis"
                       onChange={e => handleChange(e)}
                       value={form.diagnosis}
+                      rows="2"
                     />
                   </div>
                 </div>
@@ -114,13 +114,13 @@ const ConsultationForm = props => {
                       id="treatment"
                       onChange={e => handleChange(e)}
                       value={form.treatment}
-                      rows="1"
+                      rows="2"
                     />
                   </div>
                 </div>
               </div>
 
-              <div className="record">
+              <div className="record card p-3 mb-3">
                 <div className="form-row">
                   <div className="col-12 col-sm">
                     <div className="form-group">
@@ -137,7 +137,7 @@ const ConsultationForm = props => {
                   </div>
                   <div className="col-12 col-sm">
                     <div className="form-group">
-                      <label htmlFor="nextAppointment">Proxima consulta</label>
+                      <label htmlFor="nextAppointment">Próximo turno</label>
                       <input
                         type="date"
                         className="form-control"
@@ -188,6 +188,7 @@ const ConsultationForm = props => {
                   </div>
                 </div>
               </div>
+
               <button
                 type="submit"
                 className="btn btn-primary"
