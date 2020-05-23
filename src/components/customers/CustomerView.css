@@ -19,6 +19,7 @@
 .main-container .consultations .consultation .balance {
   display: flex;
   border: 1px solid #ccc;
+  flex-direction: column;
   border-radius: 3px;
   padding: 5px;
 }
@@ -31,7 +32,7 @@
 }
 
 .main-container .consultations .consultation .balance .amount-row .amount {
-  width: 6rem;
+  width: 100%;
 }
 
 .main-container .customer .observations,
