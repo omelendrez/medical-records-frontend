@@ -15,7 +15,7 @@ const ConsultationForm = props => {
     clinicalExamination: '',
     diagnosis: '',
     treatment: '',
-    nextConsultation: '',
+    nextAppointment: '',
     amount: '0.00',
     paymentMethod: '',
     paid: '0.00'
@@ -70,13 +70,13 @@ const ConsultationForm = props => {
                 </div>
                 <div className="col">
                   <div className="form-group">
-                    <label htmlFor="nextConsultation">Próxima consulta</label>
+                    <label htmlFor="nextAppointment">Próxima consulta</label>
                     <input
                       type="date"
                       className="form-control"
-                      id="nextConsultation"
+                      id="nextAppointment"
                       onChange={e => handleChange(e)}
-                      value={form.nextConsultation}
+                      value={form.nextAppointment}
                     />
                   </div>
                 </div>

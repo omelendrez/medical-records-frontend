@@ -58,10 +58,13 @@ const Debtors = () => {
           <table className="table table-sm">
             <thead>
               <tr>
-                <th>Nombre</th>
-                <th>Domicilio</th>
-                <th>Teléfono</th>
-                <th className="text-right">Debe</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Paciente</th>
+                <th scope="col">Domicilio</th>
+                <th scope="col">Teléfono</th>
+                <th scope="col" className="text-right">Deuda</th>
+                <th scope="col" style={{ minWidth: '120px' }} colSpan="2">
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -71,9 +74,13 @@ const Debtors = () => {
                     <td className="name">
                       <Link to={{ pathname: `/clientes/${debtor.id}`, state: { from: '/deudores' } }}>{debtor.name}</Link>
                     </td>
+                    <td>{debtor.pets.map(pet => pet.name).join(', ')}</td>
                     <td>{debtor.address}</td>
                     <td>{debtor.phone}</td>
-                    <td className="text-right">${debtor.debt}</td>
+                    <td className="text-right">$ {debtor.balance.toFixed(2)}</td>
+                    <td className="text-right">
+                      <button className="btn btn-primary">Cancelar</button>
+                    </td>
                   </tr>
                 )}
             </tbody>

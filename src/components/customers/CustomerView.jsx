@@ -2,18 +2,14 @@ import React, { useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import Customer from './customer-view/Customer'
 import Consultations from './customer-view/Consultations'
-import Confirm from '../Confirm'
 import { getCustomer, getDebt } from '../../services/customers'
 import { getPet } from '../../services/pets'
-import { deleteConsultation } from '../../services/consultations'
 import './CustomerView.css'
 
 const CustomerView = props => {
 	const [redirect, setRedirect] = useState('')
 	const [customer, setCustomer] = useState({ pets: [] })
 	const [pet, setPet] = useState({})
-	const [selected, setSelected] = useState({})
-	const [showConfirm, setShowConfirm] = useState(false)
 	const [debt, setDebt] = useState({})
 	const { state } = props.location
 
@@ -51,28 +47,6 @@ const CustomerView = props => {
 		setRedirect(`/nueva-consulta/${customer.id}/${pet.id}`)
 	}
 
-	const handleEditConsultation = id => {
-		setRedirect({
-			pathname: `/edit-consulta/${id}`,
-			state: {
-				from: `/clientes/${customer.id}/${pet.id}`
-			}
-		})
-	}
-
-	const handleDeleteConsultation = consultation => {
-		setSelected(consultation)
-		setShowConfirm(true)
-	}
-	const confirmDelete = () => {
-		deleteConsultation(selected)
-			.then(() => getPet(pet.id)
-				.then(pet => {
-					setPet(pet)
-					setShowConfirm(false)
-				}))
-	}
-
 	const handleAddPet = e => {
 		e.preventDefault()
 		setRedirect(`/nuevo-paciente/${customer.id}`)
@@ -82,20 +56,9 @@ const CustomerView = props => {
 		getPet(pet.id)
 			.then(pet => setPet(pet))
 	}
-	const { consultations } = pet
 
 	return (
 		<>
-			{showConfirm &&
-				<Confirm
-					title="Eliminando consulta"
-					question={`Desea eliminar consulta del ${selected.date} del paciente ${pet.name}?`}
-					okButton="Eliminar"
-					cancelButton="Cancelar"
-					cancelDelete={() => setShowConfirm(false)}
-					confirmDelete={() => confirmDelete()}
-				/>
-			}
 			{redirect && <Redirect to={redirect} />}
 			<div className="main-container">
 				<Customer
@@ -108,11 +71,7 @@ const CustomerView = props => {
 					addConsultation={handleAddConsultation}
 				/>
 
-				{pet.name && <Consultations
-					consultations={consultations}
-					editConsultation={handleEditConsultation}
-					deleteConsultation={handleDeleteConsultation}
-				/>}
+				<Consultations pet={pet} />
 			</div>
 
 		</>

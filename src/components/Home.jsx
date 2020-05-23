@@ -8,8 +8,10 @@ const Home = () => {
 
   useEffect(() => {
     getProgrammedVisits()
-      .then(consultations => setConsultations(consultations.rows))
+      .then(consultations => setConsultations(consultations))
   }, [])
+
+  const { rows } = consultations
 
   return (
     <div className="image">
@@ -19,7 +21,7 @@ const Home = () => {
         </h1>
       </div>
       <div className="programmed-visits">
-        {consultations && <ProgrammedVisits consultations={consultations} />}
+        {rows && <ProgrammedVisits consultations={rows} />}
       </div>
     </div>
   )

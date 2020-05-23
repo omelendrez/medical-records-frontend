@@ -17,6 +17,11 @@ export const getProgrammedVisits = async () => {
   return response.data.consultations
 }
 
+export const getConsultationsByPet = async id => {
+  const response = await http.get(`consultations/by-pet/${id}`)
+  return response.data.consultations
+}
+
 export const saveConsultation = consultation => {
   return new Promise((resolve, reject) => {
     http.post('consultations', consultation)

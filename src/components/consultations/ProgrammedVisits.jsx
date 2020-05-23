@@ -9,17 +9,21 @@ const ProgrammedVisits = ({ consultations }) => {
 			<table className="table table-sm">
 				<tbody>
 					{consultations
-						.map(row =>
-							<tr key={row.id}>
-								<td>{formatDate(row.nextConsultation)}</td>
-								<td className="name">
-									<Link to={{ pathname: `/clientes/${row.customerId}/${row.petId}`, state: { from: '/' } }}>
-										{row.petName}
-									</Link>
-								</td>
-								<td>{row.customerName}</td>
-							</tr>
-						)}
+						.map(consultation => {
+							const { id, customerId, petId, customerName, petName, nextAppointment } = consultation
+							return (
+								<tr key={id}>
+									<td>{formatDate(nextAppointment)}</td>
+									<td className="name">
+										<Link to={{ pathname: `/clientes/${customerId}/${petId}`, state: { from: '/' } }}>
+											{petName}
+										</Link>
+									</td>
+									<td>{customerName}</td>
+								</tr>
+							)
+						})
+					}
 				</tbody>
 			</table>
 		</div>

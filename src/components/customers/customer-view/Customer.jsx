@@ -16,7 +16,7 @@ const Customer = ({ customer, pet, handleAddPet, loadPet, setBack, debt, addCons
             <h6 className="card-subtitle mb-2 text-muted">{phone}</h6>
             <h6 className="card-subtitle mb-2 text-muted">{email}</h6>
             {observations && <p className="card-text observations">{observations}</p>}
-            {debt.debt > 0 && <p className="card-text text-danger">Debe ${debt.debt}</p>}
+            {debt.balance > 0 && <p className="card-text text-danger">Debe ${debt.balance}</p>}
             <p className={`status ${statusId === 1 ? 'active' : 'inactive'}`}>{statusId === 1 ? 'Activo' : 'Inactivo'}</p>
           </div>
         </div>

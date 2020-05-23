@@ -8,7 +8,6 @@ import './ConsultationForm.css'
 const ConsultationForm = props => {
   const [redirect, setRedirect] = useState('')
   const [error, setError] = useState('')
-  const [tab, setTab] = useState('consultation')
 
   const [form, setForm] = useState({
     id: '',
@@ -18,12 +17,10 @@ const ConsultationForm = props => {
     anamnesis: '',
     diagnosis: '',
     treatment: '',
-    nextConsultation: '',
+    nextAppointment: '',
     amount: '',
     paymentMethod: '',
-    paid: '',
-    deworming: '',
-    vaccination: ''
+    paid: ''
   })
 
   const [pet, setPet] = useState({})
@@ -62,11 +59,6 @@ const ConsultationForm = props => {
     setRedirect(state.from)
   }
 
-  const handleChangeTab = (e, tab) => {
-    e.preventDefault()
-    setTab(tab)
-  }
-
   return (
     <>
       {redirect && <Redirect to={redirect} />}
@@ -75,124 +67,63 @@ const ConsultationForm = props => {
           <div className="container">
             <h5 className="my-3">Editando Historia Clínica de {pet.name}</h5>
             <form>
-              {/* Tab headers */}
-              <ul className="nav nav-tabs">
-                <li className="nav-item">
-                  <button
-                    className={`nav-link ${tab === 'consultation' ? 'active' : ''}`}
-                    onClick={e => handleChangeTab(e, 'consultation')}
-                  >Consulta</button>
-                </li>
-                <li className="nav-item">
-                  <button
-                    className={`nav-link ${tab === 'vaccination' ? 'active' : ''}`}
-                    onClick={e => handleChangeTab(e, 'vaccination')}
-                  >Vacunación</button>
-                </li>
-                <li className="nav-item">
-                  <button
-                    className={`nav-link ${tab === 'deworming' ? 'active' : ''}`}
-                    onClick={e => handleChangeTab(e, 'deworming')}
-                  >Desparasitación</button>
-                </li>
-              </ul>
-
-              {/* Tab bodies */}
 
               <div className="form-container">
-                {tab === 'consultation' &&
-                  <>
-                    <div className="form-row">
-                      <div className="col">
-                        <div className="form-group">
-                          <textarea
-                            placeholder="Anamnesis"
-                            className="form-control"
-                            id="anamnesis"
-                            onChange={e => handleChange(e)}
-                            value={form.anamnesis}
-                            rows="1"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="form-row">
-                      <div className="col">
-                        <div className="form-group">
-                          <textarea
-                            placeholder="Examen Clínico"
-                            className="form-control"
-                            id="clinicalExamination"
-                            onChange={e => handleChange(e)}
-                            value={form.clinicalExamination}
-                            rows="1"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="form-row">
-                      <div className="col">
-                        <div className="form-group">
-                          <input
-                            placeholder="Diagnóstico"
-                            className="form-control"
-                            id="diagnosis"
-                            onChange={e => handleChange(e)}
-                            value={form.diagnosis}
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="form-row">
-                      <div className="col">
-                        <div className="form-group">
-                          <textarea
-                            placeholder="Tratamiento"
-                            className="form-control"
-                            id="treatment"
-                            onChange={e => handleChange(e)}
-                            value={form.treatment}
-                            rows="1"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </>
-                }
-
-                {tab === 'vaccination' &&
-                  <div className="form-row">
-                    <div className="col">
-                      <div className="form-group">
-                        <textarea
-                          placeholder="Vacunación"
-                          className="form-control"
-                          id="vaccination"
-                          onChange={e => handleChange(e)}
-                          value={form.vaccination}
-                          rows="3"
-                        />
-                      </div>
+                <div className="form-row">
+                  <div className="col">
+                    <div className="form-group">
+                      <textarea
+                        placeholder="Anamnesis"
+                        className="form-control"
+                        id="anamnesis"
+                        onChange={e => handleChange(e)}
+                        value={form.anamnesis}
+                        rows="1"
+                      />
                     </div>
                   </div>
-                }
-
-                {tab === 'deworming' &&
-                  <div className="form-row">
-                    <div className="col">
-                      <div className="form-group">
-                        <textarea
-                          placeholder="Desparasitación"
-                          className="form-control"
-                          id="deworming"
-                          onChange={e => handleChange(e)}
-                          value={form.deworming}
-                          rows="3"
-                        />
-                      </div>
+                </div>
+                <div className="form-row">
+                  <div className="col">
+                    <div className="form-group">
+                      <textarea
+                        placeholder="Examen Clínico"
+                        className="form-control"
+                        id="clinicalExamination"
+                        onChange={e => handleChange(e)}
+                        value={form.clinicalExamination}
+                        rows="1"
+                      />
                     </div>
                   </div>
-                }
+                </div>
+                <div className="form-row">
+                  <div className="col">
+                    <div className="form-group">
+                      <input
+                        placeholder="Diagnóstico"
+                        className="form-control"
+                        id="diagnosis"
+                        onChange={e => handleChange(e)}
+                        value={form.diagnosis}
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="form-row">
+                  <div className="col">
+                    <div className="form-group">
+                      <textarea
+                        placeholder="Tratamiento"
+                        className="form-control"
+                        id="treatment"
+                        onChange={e => handleChange(e)}
+                        value={form.treatment}
+                        rows="1"
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <div className="record">
@@ -212,13 +143,13 @@ const ConsultationForm = props => {
                   </div>
                   <div className="col-12 col-sm">
                     <div className="form-group">
-                      <label htmlFor="nextConsultation">Proxima consulta</label>
+                      <label htmlFor="nextAppointment">Proxima consulta</label>
                       <input
                         type="date"
                         className="form-control"
-                        id="nextConsultation"
+                        id="nextAppointment"
                         onChange={e => handleChange(e)}
-                        value={form.nextConsultation || ''}
+                        value={form.nextAppointment || ''}
                         required
                       />
                     </div>

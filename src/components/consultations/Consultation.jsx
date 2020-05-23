@@ -4,7 +4,7 @@ import { formatDate } from '../../services/utils'
 
 const Consultation = ({ data, deleteConsultation, editConsultation }) => {
 
-  const { date, diagnosis, nextConsultation, petId, customerId, pet } = data
+  const { date, petName, customerName, diagnosis, nextAppointment, petId, customerId } = data
 
   return (
     <tr>
@@ -13,11 +13,12 @@ const Consultation = ({ data, deleteConsultation, editConsultation }) => {
       </td>
       <td>
         <Link to={`/clientes/${customerId}/${petId}`}>
-          {pet.name}
+          {petName}
         </Link>
       </td>
-      <td>{diagnosis.substring(0, 30)}</td>
-      <td className="text-nowrap">{nextConsultation ? formatDate(nextConsultation) : ''}</td>
+      <td>{customerName}</td>
+      <td>{diagnosis}</td>
+      <td className="text-nowrap">{nextAppointment ? formatDate(nextAppointment) : ''}</td>
       <td style={{ width: '120px' }}>
         <button
           className="btn btn-danger"

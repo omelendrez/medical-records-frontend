@@ -1,19 +1,20 @@
 import React from 'react'
 import Balance from './Balance'
+import { formatDate } from '../../../services/utils'
 
 const Consultation = ({ consultation, editConsultation, deleteConsultation }) => {
-  const { id, date, clinicalExamination, diagnosis, treatment, nextConsultation, anamnesis, amount, paid } = consultation
+  const { id, date, anamnesis, clinicalExamination, diagnosis, treatment, nextAppointment, amount, paid } = consultation
 
   return (
     <div className="card consultation">
       <div className="card-body">
         {amount > 0 && <Balance amount={amount} paid={paid} />}
-        <h6 className="card-title">{date}</h6>
+        <h6 className="card-title">{formatDate(date)}</h6>
         {anamnesis && <p className="card-text anamnesis ">{anamnesis}</p>}
         {clinicalExamination && <h6 className="card-subtitle mb-2">Examen Clinico: {clinicalExamination}</h6>}
         {diagnosis && <h6 className="card-subtitle mb-2">Diagnóstico: {diagnosis}</h6>}
         {treatment && <p className="card-text texts">Tratamiento: {treatment}</p>}
-        {nextConsultation && <h6 className="card-subtitle mb-2">Próxima consulta: {nextConsultation}</h6>}
+        {nextAppointment && <h6 className="card-subtitle mb-2">Próxima consulta: {nextAppointment}</h6>}
         <div>
           <button
             type="button"

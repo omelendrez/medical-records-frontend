@@ -32,7 +32,7 @@ export const fieldsDefault = {
       { name: 'petName', title: 'Paciente' },
       { name: 'diagnosis', title: 'Diagnóstico' },
       { name: 'treatment', title: 'Tratamiento' },
-      { name: 'nextConsultation', title: 'Próx. Turno', className: "text-nowrap" }
+      { name: 'nextAppointment', title: 'Próx. Turno', className: "text-nowrap" }
     ],
     getRecords: getInactiveConsultations,
     restoreRecord: restoreConsultation
