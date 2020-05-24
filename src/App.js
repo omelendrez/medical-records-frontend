@@ -14,6 +14,7 @@ import Consultations from './components/consultations/Consultations'
 import ConsultationAdd from './components/consultations/ConsultationAdd'
 import ConsultationEdit from './components/consultations/ConsultationEdit'
 import Dewormings from './components/dewormings/Dewormings'
+import Vaccinations from './components/vaccinations/Vaccinations'
 import Restore from './components/Restore'
 
 function App() {
@@ -36,8 +37,8 @@ function App() {
           <Route path="/nueva-consulta/:customerId/:petId" exact component={ConsultationAdd} />
           <Route path="/restaurar/:table" exact component={Restore} />
           <Route path="/deudores" exact component={Debtors} />
-          <Route path="/vacunas" exact component={() => <h1>Vacunaciones</h1>} />
           <Route path="/desparasitaciones" exact component={Dewormings} />
+          <Route path="/vacunas" exact component={Vaccinations} />
         </Switch>
       </main>
     </BrowserRouter>
