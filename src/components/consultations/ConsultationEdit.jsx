@@ -8,8 +8,6 @@ import './ConsultationForm.css'
 const ConsultationForm = props => {
   const [redirect, setRedirect] = useState('')
   const [error, setError] = useState('')
-  const [tab, setTab] = useState('consultation')
-
   const [form, setForm] = useState({
     id: '',
     customerId: '',

@@ -71,7 +71,7 @@ const CustomerView = props => {
 					addConsultation={handleAddConsultation}
 				/>
 
-				<Consultations pet={pet} />
+				{pet.id && <Consultations pet={pet} />}
 			</div>
 
 		</>

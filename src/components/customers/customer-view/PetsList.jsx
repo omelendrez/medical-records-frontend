@@ -33,7 +33,7 @@ const PetsList = ({ pet, pets, loadPet, handleAddPet }) => {
           type="button"
           className="btn btn-primary mt-4 float-right"
           onClick={e => handleAddPet(e)}
-        >Agregar</button>
+        >Agregar paciente</button>
       </div>
 
     </div >
