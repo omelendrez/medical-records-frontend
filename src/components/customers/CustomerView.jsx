@@ -44,7 +44,12 @@ const CustomerView = props => {
 	}, [props.match.params.id])
 
 	const handleAddConsultation = e => {
-		setRedirect(`/nueva-consulta/${customer.id}/${pet.id}`)
+		setRedirect({
+			pathname: `/nueva-consulta/${customer.id}/${pet.id}`,
+			state: {
+				from: `/clientes/${customer.id}/${pet.id}`
+			}
+		})
 	}
 
 	const handleAddPet = e => {
