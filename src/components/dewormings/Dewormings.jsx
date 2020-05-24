@@ -61,14 +61,14 @@ const Dewormings = () => {
     setRedirect({
       pathname: `/edit-desparasitacion/${deworming.id}`,
       state: {
-        from: '/desparasitacion'
+        from: '/desparasitaciones'
       }
     })
 
   }
 
   const handleRestore = () => {
-    setRedirect('/restaurar/desparasitacion')
+    setRedirect('/restaurar/desparasitaciones')
   }
 
   const handleChange = e => {

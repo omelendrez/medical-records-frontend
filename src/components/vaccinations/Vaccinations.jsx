@@ -50,7 +50,7 @@ const Vaccinations = () => {
 	const confirmDelete = () => {
 		deleteVaccination(selected)
 			.then(() => getVaccinations(pagination)
-				.then(consultations => {
+				.then(vaccinations => {
 					setVaccinations(vaccinations)
 					setShowConfirm(false)
 				})
@@ -68,7 +68,7 @@ const Vaccinations = () => {
 	}
 
 	const handleRestore = () => {
-		setRedirect('/restaurar/Vacunaciones')
+		setRedirect('/restaurar/vacunaciones')
 	}
 
 	const handleChange = e => {
