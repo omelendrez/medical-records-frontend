@@ -13,6 +13,7 @@ import PetEdit from './components/pets/PetEdit'
 import Consultations from './components/consultations/Consultations'
 import ConsultationAdd from './components/consultations/ConsultationAdd'
 import ConsultationEdit from './components/consultations/ConsultationEdit'
+import Dewormings from './components/dewormings/Dewormings'
 import Vaccinations from './components/vaccinations/Vaccinations'
 import Restore from './components/Restore'
 
@@ -36,8 +37,8 @@ function App() {
           <Route path="/nueva-consulta/:customerId/:petId" exact component={ConsultationAdd} />
           <Route path="/restaurar/:table" exact component={Restore} />
           <Route path="/deudores" exact component={Debtors} />
+          <Route path="/desparasitaciones" exact component={Dewormings} />
           <Route path="/vacunas" exact component={Vaccinations} />
-          <Route path="/desparasitaciones" exact component={() => <h1>Desparasitaciones</h1>} />
         </Switch>
       </main>
     </BrowserRouter>
