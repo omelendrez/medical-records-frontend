@@ -4,7 +4,7 @@ import { formatDate } from '../../services/utils'
 
 const Deworming = ({ data, deleteDeworming, editDeworming }) => {
 
-  const { date, petName, customerName, diagnosis, nextAppointment, petId, customerId } = data
+  const { date, petName, customerName, deworming, nextAppointment, petId, customerId } = data
 
   return (
     <tr>
@@ -17,7 +17,7 @@ const Deworming = ({ data, deleteDeworming, editDeworming }) => {
         </Link>
       </td>
       <td>{customerName}</td>
-      <td>{diagnosis}</td>
+      <td>{deworming}</td>
       <td className="text-nowrap">{nextAppointment ? formatDate(nextAppointment) : ''}</td>
       <td style={{ width: '120px' }}>
         <button
