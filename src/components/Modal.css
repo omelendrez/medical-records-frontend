@@ -55,7 +55,9 @@
   padding: 2px 16px;
 }
 
-.local-modal-body {padding: 2px 16px;}
+.local-modal-body {
+  padding: 2px 16px;
+}
 
 .local-modal-footer {
   padding: 2px 16px;

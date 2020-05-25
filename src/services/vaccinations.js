@@ -34,7 +34,7 @@ export const saveVaccination = vaccination => {
 
 export const getVaccination = async id => {
     const response = await http.get(`vaccinations/${id}`)
-    return response.data.consultation
+    return response.data.vaccination
 }
 
 export const deleteVaccination = vaccination => {
