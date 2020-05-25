@@ -10,9 +10,12 @@ const TabItem = ({ option, title, current, setCurrent }) => {
 	return (
 		<li className="nav-item">
 			<a
-				href="javascript:void()"
+				href="/"
 				className={`nav-link ${option === current ? 'active' : ''}`}
-				onClick={() => setCurrent(option)}
+				onClick={e => {
+					e.preventDefault()
+					setCurrent(option)
+				}}
 			>{title}</a>
 		</li>
 	)
