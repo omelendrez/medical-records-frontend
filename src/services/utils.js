@@ -99,3 +99,5 @@ export const formatNumber = amount => parseFloat(amount).toFixed(2)
 export const getAge = birthDate => moment(birthDate).toNow().replace('en ', '')
 
 export const formatDate = date => moment(date).format('L')
+
+export const setToday = () => moment(new Date()).format('YYYY-MM-DD')
