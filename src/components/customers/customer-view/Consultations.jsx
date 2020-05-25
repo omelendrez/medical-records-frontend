@@ -38,8 +38,22 @@ const Consultations = ({ pet, current }) => {
 	}, [pet.id, current])
 
 	const handleEditConsultation = id => {
+		let pathName = ''
+		switch (current) {
+			case 'consultas':
+				pathName = `/edit-consulta/${id}`
+				break;
+			case 'vacunaciones':
+				pathName = `/edit-vacunacion/${id}`
+				break;
+			case 'desparasitaciones':
+				pathName = `/edit-desparasitacion/${id}`
+				break;
+			default:
+		}
+
 		setRedirect({
-			pathname: `/edit-consulta/${id}`,
+			pathname: pathName,
 			state: {
 				from: `/clientes/${pet.customerId}/${pet.id}`
 			}

@@ -3,7 +3,7 @@ import PetsList from './PetsList'
 import Pet from './Pet'
 import './Customer.css'
 
-const Customer = ({ customer, pet, handleAddPet, loadPet, setBack, debt, addConsultation, current, addVaccination }) => {
+const Customer = ({ customer, pet, handleAddPet, loadPet, setBack, debt, addConsultation, current, addVaccination, addDeworming }) => {
   const { name, address, phone, email, observations, pets, statusId } = customer
 
   return (
@@ -42,7 +42,7 @@ const Customer = ({ customer, pet, handleAddPet, loadPet, setBack, debt, addCons
                 <button
                   type="button"
                   className="btn btn-primary btn-block"
-                //onClick={e => addConsultation(e)}
+                  onClick={e => addDeworming(e)}
                 >+ Desparasitación</button>
               }
             </div>
