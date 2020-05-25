@@ -68,6 +68,15 @@ const CustomerView = props => {
 		})
 	}
 
+	const handleAddVaccination = e => {
+		setRedirect({
+			pathname: `/nueva-vacunacion/${customer.id}/${pet.id}`,
+			state: {
+				from: `/clientes/${customer.id}/${pet.id}`
+			}
+		})
+	}
+
 	const handleAddPet = e => {
 		e.preventDefault()
 		setRedirect(`/nuevo-paciente/${customer.id}`)
@@ -90,6 +99,7 @@ const CustomerView = props => {
 					setBack={setBack}
 					debt={debt}
 					addConsultation={handleAddConsultation}
+					addVaccination={handleAddVaccination}
 				/>
 				{pet.id &&
 					<div className="flex-column mt-1 w-100 ">
