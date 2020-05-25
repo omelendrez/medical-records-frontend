@@ -3,7 +3,7 @@ import PetsList from './PetsList'
 import Pet from './Pet'
 import './Customer.css'
 
-const Customer = ({ customer, pet, handleAddPet, loadPet, setBack, debt, addConsultation }) => {
+const Customer = ({ customer, pet, handleAddPet, loadPet, setBack, debt, addConsultation, current }) => {
   const { name, address, phone, email, observations, pets, statusId } = customer
 
   return (
@@ -24,21 +24,27 @@ const Customer = ({ customer, pet, handleAddPet, loadPet, setBack, debt, addCons
           <>
             <Pet pet={pet} />
             <div className="container button-container mt-3">
-              <button
-                type="button"
-                className="btn btn-primary btn-block"
-                onClick={e => addConsultation(e)}
-              >+ Consulta</button>
-              <button
-                type="button"
-                className="btn btn-primary btn-block"
-              //onClick={e => addConsultation(e)}
-              >+ Vacunación</button>
-              <button
-                type="button"
-                className="btn btn-primary btn-block"
-              //onClick={e => addConsultation(e)}
-              >+ Desparasitación</button>
+              {current === 'consultas' &&
+                <button
+                  type="button"
+                  className="btn btn-primary btn-block"
+                  onClick={e => addConsultation(e)}
+                >+ Consulta</button>
+              }
+              {current === 'vacunaciones' &&
+                <button
+                  type="button"
+                  className="btn btn-primary btn-block"
+                //onClick={e => addConsultation(e)}
+                >+ Vacunación</button>
+              }
+              {current === 'desparasitaciones' &&
+                <button
+                  type="button"
+                  className="btn btn-primary btn-block"
+                //onClick={e => addConsultation(e)}
+                >+ Desparasitación</button>
+              }
             </div>
           </>
         }

@@ -89,6 +89,7 @@ const CustomerView = props => {
 					loadPet={loadPet}
 					setBack={setBack}
 					debt={debt}
+					current={current}
 					addConsultation={handleAddConsultation}
 				/>
 				{pet.id &&
