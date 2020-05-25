@@ -24,6 +24,7 @@ const Vaccinations = () => {
 
 	useEffect(() => {
 		const updateState = () => {
+			console.log('useEffect')
 			setLoading(true)
 			const pag = pagination
 			getVaccinations(pagination)
@@ -57,9 +58,9 @@ const Vaccinations = () => {
 			)
 	}
 
-	const handleEdit = Vaccination => {
+	const handleEdit = vaccination => {
 		setRedirect({
-			pathname: `/edit-vaccination/${Vaccination.id}`,
+			pathname: `/edit-vacunacion/${vaccination.id}`,
 			state: {
 				from: '/vacunaciones'
 			}

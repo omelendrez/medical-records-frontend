@@ -14,7 +14,11 @@ import Consultations from './components/consultations/Consultations'
 import ConsultationAdd from './components/consultations/ConsultationAdd'
 import ConsultationEdit from './components/consultations/ConsultationEdit'
 import Dewormings from './components/dewormings/Dewormings'
+import DewormingAdd from './components/dewormings/DewormingAdd'
+import DewormingEdit from './components/dewormings/DewormingEdit'
 import Vaccinations from './components/vaccinations/Vaccinations'
+import VaccinationAdd from './components/vaccinations/VaccinationAdd'
+import VaccinationEdit from './components/vaccinations/VaccinationEdit'
 import Restore from './components/Restore'
 
 function App() {
@@ -38,7 +42,11 @@ function App() {
           <Route path="/restaurar/:table" exact component={Restore} />
           <Route path="/deudores" exact component={Debtors} />
           <Route path="/desparasitaciones" exact component={Dewormings} />
-          <Route path="/vacunas" exact component={Vaccinations} />
+          <Route path="/edit-desparasitacion/:dewormingId" exact component={DewormingEdit} />
+          <Route path="/nueva-desparasitacion/:dewormingId/:petId" exact component={DewormingAdd} />
+          <Route path="/vacunaciones" exact component={Vaccinations} />
+          <Route path="/edit-vacunacion/:vaccinationId" exact component={VaccinationEdit} />
+          <Route path="/nueva-vacunacion/:customerId/:petId" exact component={VaccinationAdd} />
         </Switch>
       </main>
     </BrowserRouter>
