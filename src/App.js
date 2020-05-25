@@ -43,7 +43,7 @@ function App() {
           <Route path="/deudores" exact component={Debtors} />
           <Route path="/desparasitaciones" exact component={Dewormings} />
           <Route path="/edit-desparasitacion/:dewormingId" exact component={DewormingEdit} />
-          <Route path="/nueva-desparasitacion/:dewormingId/:petId" exact component={DewormingAdd} />
+          <Route path="/nueva-desparasitacion/:customerId/:petId" exact component={DewormingAdd} />
           <Route path="/vacunaciones" exact component={Vaccinations} />
           <Route path="/edit-vacunacion/:vaccinationId" exact component={VaccinationEdit} />
           <Route path="/nueva-vacunacion/:customerId/:petId" exact component={VaccinationAdd} />
