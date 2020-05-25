@@ -23,21 +23,33 @@ const Customer = ({ customer, pet, handleAddPet, loadPet, setBack, debt, addCons
         {pet.name &&
           <>
             <Pet pet={pet} />
-            <div>
+            <div className="container button-container mt-3">
               <button
                 type="button"
-                className="btn btn-primary m-1 add-consultation"
+                className="btn btn-primary btn-block"
                 onClick={e => addConsultation(e)}
-              >Agregar Consulta</button>
+              >+ Consulta</button>
+              <button
+                type="button"
+                className="btn btn-primary btn-block"
+              //onClick={e => addConsultation(e)}
+              >+ Vacunación</button>
+              <button
+                type="button"
+                className="btn btn-primary btn-block"
+              //onClick={e => addConsultation(e)}
+              >+ Desparasitación</button>
             </div>
           </>
         }
 
-        <button
-          type="button"
-          className="btn btn-warning mt-3"
-          onClick={() => setBack(true)}
-        >Volver</button>
+        <div className="container mt-3 button-container">
+          <button
+            type="button"
+            className="btn btn-warning btn-block"
+            onClick={() => setBack(true)}
+          >Volver</button>
+        </div>
       </div>
       <PetsList pet={pet} pets={pets} loadPet={loadPet} handleAddPet={handleAddPet} />
     </>

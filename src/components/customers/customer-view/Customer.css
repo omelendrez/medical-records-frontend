@@ -10,3 +10,7 @@
 .customer .status.inactive {
   color: red;
 }
+
+.button-container {
+  max-width: 190px;
+}
