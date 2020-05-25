@@ -3,6 +3,13 @@ const serveStatic = require('serve-static')
 const app = express()
 
 app.use(serveStatic(__dirname + '/build'))
+app.use((req, res, next) => {
+  if (req.header('x-forwarded-proto') !== 'https') {
+    res.redirect(`https://${req.header('host')}${req.url}`)
+  } else {
+    next()
+  }
+})
 
 const port = process.env.PORT || 5000
 app.listen(port)
