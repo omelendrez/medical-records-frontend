@@ -2,6 +2,7 @@ import { getInactiveCustomers, restoreCustomer } from '../services/customers'
 import { getInactivePets, restorePet } from '../services/pets'
 import { getInactiveConsultations, restoreConsultation } from '../services/consultations'
 import { getInactiveDewormings, restoreDeworming } from '../services/dewormings'
+import { getInactiveVaccinations, restoreVaccination } from '../services/vaccinations'
 import moment from 'moment'
 import 'moment/locale/es'
 
@@ -26,6 +27,16 @@ export const fieldsDefault = {
     ],
     getRecords: getInactivePets,
     restoreRecord: restorePet
+  },
+  vacunaciones: {
+    fields: [
+      { name: 'date', title: 'Fecha', className: "text-nowrap" },
+      { name: 'petName', title: 'Paciente' },
+      { name: 'vaccination', title: 'Desparasitación' },
+      { name: 'nextAppointment', title: 'Próx. Turno', className: "text-nowrap" }
+    ],
+    getRecords: getInactiveVaccinations,
+    restoreRecord: restoreVaccination
   },
   consultas: {
     fields: [
