@@ -7,11 +7,6 @@
   width: 20vw;
 }
 
-.main-container .consultations {
-  width: 79vw;
-  margin-left: 4px;
-}
-
 .main-container .consultations .consultation .texts {
   min-height: 50px;
 }
@@ -48,7 +43,7 @@
 }
 
 .main-container .consultations .consultations-list {
-  height: 91vh;
+  max-height: 84vh;
 }
 
 .main-container .pets .pets-header {

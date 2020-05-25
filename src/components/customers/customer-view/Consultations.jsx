@@ -3,20 +3,39 @@ import { Redirect } from 'react-router-dom'
 import Consultation from './Consultation'
 import Confirm from '../../Confirm'
 import { getConsultationsByPet, deleteConsultation } from '../../../services/consultations'
+import { getVaccinationsByPet, deleteVaccination } from '../../../services/vaccinations'
+import { getDewormingsByPet, deleteDeworming } from '../../../services/dewormings'
 import { formatDate } from '../../../services/utils'
 
-const Consultations = ({ pet }) => {
+const Consultations = ({ pet, current }) => {
 	const [redirect, setRedirect] = useState('')
 	const [selected, setSelected] = useState({})
 	const [showConfirm, setShowConfirm] = useState(false)
 	const [consultations, setConsultations] = useState({ rows: [], count: 0 })
 
 	useEffect(() => {
-		getConsultationsByPet(pet.id)
-			.then(consultations => {
-				setConsultations(consultations)
-			})
-	}, [pet.id])
+		switch (current) {
+			case 'consultas':
+				getConsultationsByPet(pet.id)
+					.then(consultations => {
+						setConsultations(consultations)
+					})
+				break;
+			case 'vacunaciones':
+				getVaccinationsByPet(pet.id)
+					.then(consultations => {
+						setConsultations(consultations)
+					})
+				break;
+			case 'desparasitaciones':
+				getDewormingsByPet(pet.id)
+					.then(consultations => {
+						setConsultations(consultations)
+					})
+				break;
+			default:
+		}
+	}, [pet.id, current])
 
 	const handleEditConsultation = id => {
 		setRedirect({
@@ -33,12 +52,33 @@ const Consultations = ({ pet }) => {
 	}
 
 	const confirmDelete = () => {
-		deleteConsultation(selected)
-			.then(() => getConsultationsByPet(pet.id)
-				.then(consultations => {
-					setConsultations(consultations)
-					setShowConfirm(false)
-				}))
+		switch (current) {
+			case 'consultas':
+				deleteConsultation(selected)
+					.then(() => getConsultationsByPet(pet.id)
+						.then(consultations => {
+							setConsultations(consultations)
+							setShowConfirm(false)
+						}))
+				break;
+			case 'vacunaciones':
+				deleteVaccination(selected)
+					.then(() => getVaccinationsByPet(pet.id)
+						.then(consultations => {
+							setConsultations(consultations)
+							setShowConfirm(false)
+						}))
+				break;
+			case 'desparasitaciones':
+				deleteDeworming(selected)
+					.then(() => getDewormingsByPet(pet.id)
+						.then(consultations => {
+							setConsultations(consultations)
+							setShowConfirm(false)
+						}))
+				break;
+			default:
+		}
 	}
 
 	const { count, rows } = consultations
@@ -58,8 +98,8 @@ const Consultations = ({ pet }) => {
 						confirmDelete={() => confirmDelete()}
 					/>
 				}
-				{!count && <div className="container text-center">
-					<div className="alert alert-warning">El paciente no registra consultas</div>
+				{!count && current && <div className="container text-center">
+					<div className="alert alert-warning">{`El paciente no registra ${current}`}</div>
 				</div>
 				}
 				<div className="consultations-list overflow-auto">

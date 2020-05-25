@@ -6,12 +6,25 @@ import { getCustomer, getDebt } from '../../services/customers'
 import { getPet } from '../../services/pets'
 import './CustomerView.css'
 
+const TabItem = ({ option, title, current, setCurrent }) => {
+	return (
+		<li className="nav-item">
+			<a
+				href="javascript:void()"
+				className={`nav-link ${option === current ? 'active' : ''}`}
+				onClick={() => setCurrent(option)}
+			>{title}</a>
+		</li>
+	)
+}
+
 const CustomerView = props => {
 	const [redirect, setRedirect] = useState('')
 	const [customer, setCustomer] = useState({ pets: [] })
 	const [pet, setPet] = useState({})
 	const [debt, setDebt] = useState({})
 	const { state } = props.location
+	const [current, setCurrent] = useState('consultas')
 
 	const setBack = () => {
 		if (state) return setRedirect(state.from)
@@ -75,8 +88,33 @@ const CustomerView = props => {
 					debt={debt}
 					addConsultation={handleAddConsultation}
 				/>
-
-				{pet.id && <Consultations pet={pet} />}
+				{pet.id &&
+					<div className="flex-column mt-1 w-100 ">
+						<ul className="nav nav-tabs">
+							<TabItem
+								option={'consultas'}
+								title={'Consultas'}
+								current={current}
+								setCurrent={setCurrent}
+							/>
+							<TabItem
+								option={'vacunaciones'}
+								title={'Vacunaciones'}
+								current={current}
+								setCurrent={setCurrent}
+							/>
+							<TabItem
+								option={'desparasitaciones'}
+								title={'Desparasitaciones'}
+								current={current}
+								setCurrent={setCurrent}
+							/>
+						</ul>
+						<div className="mt-1">
+							<Consultations pet={pet} current={current} />
+						</div>
+					</div>
+				}
 			</div>
 
 		</>
