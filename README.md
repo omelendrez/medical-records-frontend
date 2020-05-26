@@ -16,8 +16,7 @@ Description
 const success = true
 const vmr = success
 
-console.log(check(vmr))
-
 const check = param => param ? 'we can make it!' : 'no way'
 
+console.log(check(vmr))
 ```
