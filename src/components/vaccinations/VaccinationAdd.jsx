@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { getPet } from '../../services/pets'
 import { Redirect } from 'react-router-dom'
 import { saveVaccination } from '../../services/vaccinations'
-import { paymentMethods } from '../../services/utils'
+import { paymentMethods, vaccines } from '../../services/utils'
 import './VaccinationForm.css'
 
 const VaccinationAdd = props => {
@@ -19,7 +19,8 @@ const VaccinationAdd = props => {
     nextAppointment: '',
     amount: '0.00',
     paymentMethod: '',
-    paid: '0.00'
+    paid: '0.00',
+    vaccines: []
   })
 
   const [pet, setPet] = useState({})
@@ -32,6 +33,7 @@ const VaccinationAdd = props => {
   const handleChange = (e => {
     e.preventDefault()
     error && setError(false)
+    console.log(e.target.value)
     setForm({
       ...form,
       [e.target.id]: e.target.value
@@ -75,7 +77,24 @@ const VaccinationAdd = props => {
                   </div>
                 </div>
               </div>
-
+              <div className="form-container card p-3 mb-3">
+                <div className="form-group row">
+                  <label htmlFor="vaccines" className="col-sm-2 col-form-label">Vacunas</label>
+                  <div className="col-sm-10">
+                    <select
+                      multiple
+                      className="form-control"
+                      id="vaccines"
+                      onChange={e => handleChange(e)}
+                      value={form.vaccines}
+                    >
+                      {
+                        vaccines.map(vaccine => <option key={vaccine.id} value={vaccine.id} > {vaccine.name}</option>)
+                      }
+                    </select>
+                  </div>
+                </div>
+              </div>
               <div className="record card p-3 mb-3">
                 <div className="form-row">
                   <div className="col-12 col-sm">
