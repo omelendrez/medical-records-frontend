@@ -70,6 +70,12 @@ export const paymentMethods = [
   { id: 5, name: 'Otro' }
 ]
 
+export const treatmentStage = [
+  { id: 1, name: 'Inicio' },
+  { id: 2, name: 'Continuación' },
+  { id: 3, name: 'Fin / Alta' }
+]
+
 export const sexList = [
   { id: '', name: '' },
   { id: 'Hc', name: 'Hembra c' },

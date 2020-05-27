@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { getPet } from '../../services/pets'
 import { Redirect } from 'react-router-dom'
 import { saveConsultation } from '../../services/consultations'
+import { treatmentStage } from '../../services/utils'
 import { paymentMethods } from '../../services/utils'
 import './ConsultationForm.css'
 
@@ -16,6 +17,7 @@ const ConsultationForm = props => {
     clinicalExamination: '',
     diagnosis: '',
     treatment: '',
+    treatmentStage: '{}',
     nextAppointment: '',
     amount: '0.00',
     paymentMethod: '',
@@ -108,6 +110,37 @@ const ConsultationForm = props => {
                       value={form.treatment}
                       rows="2"
                     />
+                  </div>
+                </div>
+                <div className="form-group row">
+                  <label htmlFor="treatment" className="col-sm-2 col-form-label">Tratamiento</label>
+                  <div className="col-sm-10">
+                    <textarea
+                      className="form-control"
+                      id="treatment"
+                      onChange={e => handleChange(e)}
+                      value={form.treatment}
+                      rows="2"
+                    />
+                  </div>
+                </div>
+                <div className="form-group row">
+                  <label htmlFor="treatmentStage" className="col-sm-2 col-form-label">Etapa tratamiento</label>
+                  <div className="col-sm-10">
+                    <select
+                      className="form-control"
+                      id="treatmentStage"
+                      onChange={e => handleChange(e)}
+                      value={form.treatmentStage}
+                    >
+                      {treatmentStage.map(treatmentStage => {
+                        return (
+                          <option key={treatmentStage.id} value={treatmentStage.id}>
+                            {treatmentStage.name}
+                          </option>
+                        )
+                      })}
+                    </select>
                   </div>
                 </div>
               </div>
