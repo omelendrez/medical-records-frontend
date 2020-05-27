@@ -78,6 +78,11 @@ export const vaccines = [
   { id: 4, name: 'Puppy DP' },
   { id: 5, name: 'Antirrábica' }
 ]
+export const treatmentStage = [
+  { id: 1, name: 'Inicio' },
+  { id: 2, name: 'Continuación' },
+  { id: 3, name: 'Fin / Alta' }
+]
 
 export const sexList = [
   { id: '', name: '' },
