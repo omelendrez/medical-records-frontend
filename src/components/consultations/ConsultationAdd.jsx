@@ -3,7 +3,7 @@ import FormFooter from '../FormFooter'
 import { getPet } from '../../services/pets'
 import { Redirect } from 'react-router-dom'
 import { saveConsultation } from '../../services/consultations'
-import { treatmentStage } from '../../services/utils'
+import { treatmentStage, setToday } from '../../services/utils'
 import './ConsultationForm.css'
 
 const ConsultationForm = props => {
@@ -12,7 +12,7 @@ const ConsultationForm = props => {
   const [form, setForm] = useState({
     customerId: props.match.params.customerId,
     petId: props.match.params.petId,
-    date: '',
+    date: setToday(),
     anamnesis: '',
     clinicalExamination: '',
     diagnosis: '',

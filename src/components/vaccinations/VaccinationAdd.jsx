@@ -3,7 +3,7 @@ import FormFooter from '../FormFooter'
 import { getPet } from '../../services/pets'
 import { Redirect } from 'react-router-dom'
 import { saveVaccination } from '../../services/vaccinations'
-import { vaccines } from '../../services/utils'
+import { vaccines, setToday } from '../../services/utils'
 import './VaccinationForm.css'
 
 const VaccinationAdd = props => {
@@ -12,7 +12,7 @@ const VaccinationAdd = props => {
   const [form, setForm] = useState({
     customerId: props.match.params.customerId,
     petId: props.match.params.petId,
-    date: '',
+    date: setToday(),
     vaccination: '',
     clinicalExamination: '',
     diagnosis: '',

@@ -3,6 +3,7 @@ import FormFooter from '../FormFooter'
 import { getPet } from '../../services/pets'
 import { Redirect } from 'react-router-dom'
 import { saveDeworming } from '../../services/dewormings'
+import { setToday } from '../../services/utils'
 import './DewormingForm.css'
 
 const DewormingForm = props => {
@@ -11,7 +12,7 @@ const DewormingForm = props => {
   const [form, setForm] = useState({
     customerId: props.match.params.customerId,
     petId: props.match.params.petId,
-    date: '',
+    date: setToday(),
     deworming: '',
     nextAppointment: '',
     amount: '0.00',
