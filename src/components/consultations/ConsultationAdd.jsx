@@ -4,7 +4,6 @@ import { getPet } from '../../services/pets'
 import { Redirect } from 'react-router-dom'
 import { saveConsultation } from '../../services/consultations'
 import { treatmentStage } from '../../services/utils'
-import { paymentMethods } from '../../services/utils'
 import './ConsultationForm.css'
 
 const ConsultationForm = props => {

@@ -3,7 +3,7 @@ import FormFooter from '../FormFooter'
 import { getPet } from '../../services/pets'
 import { Redirect } from 'react-router-dom'
 import { saveVaccination } from '../../services/vaccinations'
-import { paymentMethods, vaccines } from '../../services/utils'
+import { vaccines } from '../../services/utils'
 import './VaccinationForm.css'
 
 const VaccinationAdd = props => {
