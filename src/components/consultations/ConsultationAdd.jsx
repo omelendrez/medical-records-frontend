@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import FormFooter from '../FormFooter'
 import { getPet } from '../../services/pets'
 import { Redirect } from 'react-router-dom'
 import { saveConsultation } from '../../services/consultations'
@@ -201,6 +202,8 @@ const ConsultationForm = props => {
                   </div>
                 </div>
               </div>
+
+              <FormFooter form={form} handleChange={handleChange} />
 
               <button
                 type="submit"
