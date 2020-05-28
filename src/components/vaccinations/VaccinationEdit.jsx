@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import FormFooter from '../FormFooter'
 import { getPet } from '../../services/pets'
 import { Redirect } from 'react-router-dom'
 import { saveVaccination, getVaccination } from '../../services/vaccinations'
@@ -169,6 +170,8 @@ const VaccinationEdit = props => {
                   </div>
                 </div>
               </div>
+
+              <FormFooter form={form} handleChange={handleChange} />
 
               <button
                 type="submit"
