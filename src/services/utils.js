@@ -103,9 +103,7 @@ export const getDateFromDays = days => {
   }
   let d = new Date();
   d.setDate(d.getDate() - days)
-  const date = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`.split('-')
-  const newDate = date.map(part => part.length === 1 ? part = `0${part}` : part)
-  return newDate.join('-')
+  return moment(d).format('YYY-MM-DD');
 }
 
 export const formatNumber = amount => parseFloat(amount).toFixed(2)
