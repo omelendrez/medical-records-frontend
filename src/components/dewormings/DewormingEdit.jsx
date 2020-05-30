@@ -3,6 +3,7 @@ import FormFooter from '../FormFooter'
 import { getPet } from '../../services/pets'
 import { Redirect } from 'react-router-dom'
 import { saveDeworming, getDeworming } from '../../services/dewormings'
+import FormActions from '../FormActions'
 import './DewormingForm.css'
 
 const DewormingForm = props => {
@@ -80,19 +81,11 @@ const DewormingForm = props => {
               </div>
               <FormFooter form={form} handleChange={handleChange} />
 
-              <button
-                type="submit"
-                className="btn btn-primary"
-                onClick={e => handleSave(e)}
-              >Guardar</button>
-
-              <button
-                type="button"
-                className="btn btn-danger float-right"
-                onClick={() => goBack()}
-              >Volver</button>
-
-              {error && <div className="alert alert-danger mt-3" role="alert">{error}</div>}
+              <FormActions
+                doSave={e => handleSave(e)}
+                cancelSave={() => goBack()}
+                error={error}
+              />
 
             </form>
           </div>
