@@ -4,9 +4,7 @@ import { formatNumber } from '../../../services/utils'
 
 const Balance = ({ amount, paid }) => {
   const amounts = [
-    { text: 'Consulta', value: formatNumber(amount) },
-    { text: 'Pagado', value: formatNumber(paid) },
-    { text: 'Saldo', value: formatNumber(amount - paid) }]
+    { text: 'Consulta', value: formatNumber(amount) }]
 
   return (
     <div className={`float-right text-right balance ${amount > paid ? 'debt' : ''}`}>
