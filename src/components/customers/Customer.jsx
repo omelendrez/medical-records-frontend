@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './Customer.css'
+import TableActions from '../TableActions'
 
 const Customer = ({ data, deleteCustomer, editCustomer }) => {
 
@@ -20,18 +21,13 @@ const Customer = ({ data, deleteCustomer, editCustomer }) => {
       <td>{address}</td>
       <td>{phone}</td>
       <td>{observations}</td>
-      <td style={{ width: '120px' }}>
-        <button
-          className="btn btn-danger"
-          onClick={() => deleteCustomer(data)}
-        >Eliminar</button>
-      </td>
-      <td style={{ width: '120px' }}>
-        <button
-          className="btn btn-info"
-          onClick={() => editCustomer(data)}
-        >Modificar</button>
-      </td>
+
+      <TableActions
+        actionDelete={deleteCustomer}
+        actionEdit={editCustomer}
+        data={data}
+      />
+
     </tr>
   )
 }
