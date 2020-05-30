@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom'
 import { saveCustomer } from '../../services/customers'
 import FormActions from '../FormActions'
 
-const CustomerForm = props => {
+const CustomerForm = () => {
   const [redirect, setRedirect] = useState('')
   const [error, setError] = useState('')
   const [form, setForm] = useState({

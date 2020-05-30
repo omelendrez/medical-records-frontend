@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import { savePet, getPet } from '../../services/pets'
 import { sexList, getDateFromDays } from '../../services/utils'
+import FormActions from '../FormActions'
 
 const PetForm = props => {
 	const [back, setBack] = useState(false)
@@ -171,19 +172,11 @@ const PetForm = props => {
 								/>
 							</div>
 
-							<button
-								type="submit"
-								className="btn btn-primary"
-								onClick={e => handleSave(e)}
-							>Guardar</button>
-
-							<button
-								type="button"
-								className="btn btn-danger float-right"
-								onClick={() => setBack(true)}
-							>Volver</button>
-
-							{error && <div className="alert alert-danger mt-3" role="alert">{error}</div>}
+							<FormActions
+								doSave={e => handleSave(e)}
+								cancelSave={() => setBack(true)}
+								error={error}
+							/>
 
 						</form>
 					</div>
