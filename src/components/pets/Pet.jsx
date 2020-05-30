@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { getSexName, getAge } from '../../services/utils'
 import './Pet.css'
+import TableActions from '../TableActions'
 
 const Pet = ({ data, deletePet, editPet }) => {
 
@@ -17,18 +18,11 @@ const Pet = ({ data, deletePet, editPet }) => {
       <td>{getSexName(sex)}</td>
       <td>{getAge(birthDate)}</td>
 
-      <td style={{ width: '120px' }}>
-        <button
-          className="btn btn-danger"
-          onClick={() => deletePet(data)}
-        >Eliminar</button>
-      </td>
-      <td style={{ width: '120px' }}>
-        <button
-          className="btn btn-info"
-          onClick={() => editPet(data)}
-        >Modificar</button>
-      </td>
+      <TableActions
+        actionDelete={deletePet}
+        actionEdit={editPet}
+        data={data}
+      />
     </tr>
   )
 }
