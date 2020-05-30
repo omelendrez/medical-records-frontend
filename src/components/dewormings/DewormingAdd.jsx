@@ -4,6 +4,7 @@ import { getPet } from '../../services/pets'
 import { Redirect } from 'react-router-dom'
 import { saveDeworming } from '../../services/dewormings'
 import { setToday } from '../../services/utils'
+import FormActions from '../FormActions'
 import './DewormingForm.css'
 
 const DewormingForm = props => {
@@ -75,19 +76,11 @@ const DewormingForm = props => {
 
               <FormFooter form={form} handleChange={handleChange} />
 
-              <button
-                type="submit"
-                className="btn btn-primary"
-                onClick={e => handleSave(e)}
-              >Guardar</button>
-
-              <button
-                type="button"
-                className="btn btn-danger float-right"
-                onClick={() => goBack()}
-              >Volver</button>
-
-              {error && <div className="alert alert-danger mt-3" role="alert">{error}</div>}
+              <FormActions
+                doSave={e => handleSave(e)}
+                cancelSave={() => goBack()}
+                error={error}
+              />
 
             </form>
           </div>
