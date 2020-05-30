@@ -17,22 +17,17 @@ const VaccinationEdit = props => {
     vaccination: '',
     nextAppointment: '',
     amount: '',
-    paymentMethod: '',
-    paid: '',
     vaccines: []
   })
 
   const [pet, setPet] = useState({})
 
   useEffect(() => {
-    console.log('entro', props.match.params.vaccinationId)
     getVaccination(props.match.params.vaccinationId)
       .then(vaccination => {
-        console.log(vaccination)
         setForm(vaccination)
         getPet(vaccination.petId)
           .then(pet => setPet(pet))
-        console.log(vaccination)
       })
   }, [props.match.params.vaccinationId])
 

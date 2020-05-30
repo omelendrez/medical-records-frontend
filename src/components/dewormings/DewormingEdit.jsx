@@ -15,8 +15,7 @@ const DewormingForm = props => {
     date: '',
     deworming: '',
     nextAppointment: '',
-    amount: '',
-    paid: ''
+    amount: ''
   })
 
   const [pet, setPet] = useState({})

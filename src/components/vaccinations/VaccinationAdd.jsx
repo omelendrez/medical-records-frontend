@@ -14,13 +14,8 @@ const VaccinationAdd = props => {
     petId: props.match.params.petId,
     date: setToday(),
     vaccination: '',
-    clinicalExamination: '',
-    diagnosis: '',
-    treatment: '',
     nextAppointment: '',
     amount: '0.00',
-    paymentMethod: '',
-    paid: '0.00',
     vaccines: []
   })
 
@@ -34,7 +29,6 @@ const VaccinationAdd = props => {
   const handleChange = (e => {
     e.preventDefault()
     error && setError(false)
-    console.log(e.target.value)
     setForm({
       ...form,
       [e.target.id]: e.target.value

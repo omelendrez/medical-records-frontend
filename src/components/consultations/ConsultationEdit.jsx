@@ -19,9 +19,7 @@ const ConsultationForm = props => {
     treatment: '',
     treatmentStage: '{}',
     nextAppointment: '',
-    amount: '',
-    paymentMethod: '',
-    paid: ''
+    amount: ''
   })
 
   const [pet, setPet] = useState({})

@@ -24,7 +24,6 @@ const Vaccinations = () => {
 
 	useEffect(() => {
 		const updateState = () => {
-			console.log('useEffect')
 			setLoading(true)
 			const pag = pagination
 			getVaccinations(pagination)
