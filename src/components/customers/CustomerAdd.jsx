@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import { saveCustomer } from '../../services/customers'
+import FormActions from '../FormActions'
 
 const CustomerForm = props => {
   const [redirect, setRedirect] = useState('')
@@ -106,19 +107,11 @@ const CustomerForm = props => {
                 />
               </div>
 
-              <button
-                type="submit"
-                className="btn btn-primary"
-                onClick={() => handleSave()}
-              >Guardar</button>
-
-              <button
-                type="button"
-                className="btn btn-danger float-right"
-                onClick={() => setRedirect('/clientes')}
-              >Volver</button>
-
-              {error && <div className="alert alert-danger mt-3" role="alert">{error}</div>}
+              <FormActions
+                doSave={e => handleSave(e)}
+                cancelSave={() => setRedirect('/clientes')}
+                error={error}
+              />
 
             </form>
           </div>

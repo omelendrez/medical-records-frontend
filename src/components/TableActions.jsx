@@ -1,8 +1,6 @@
 import React from 'react'
 
-const TableActions = props => {
-
-  const { data, actionDelete, actionEdit } = props
+const TableActions = ({ data, actionDelete, actionEdit }) => {
 
   return (
     <>
