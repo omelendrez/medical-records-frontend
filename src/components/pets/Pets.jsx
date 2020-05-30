@@ -100,12 +100,12 @@ const Pets = () => {
         <table className="table table-sm">
           <thead>
             <tr>
-              <th scope="col" style={{ width: '150px' }}>Nombre</th>
-              <th scope="col" style={{ width: '250px' }}>Cliente</th>
-              <th scope="col" style={{ width: '150px' }}>Tipo</th>
-              <th scope="col" style={{ width: '200px' }}>Raza</th>
-              <th scope="col" style={{ width: '100px' }}>Sexo</th>
-              <th scope="col" style={{ width: '100px' }}>Edad</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Cliente</th>
+              <th scope="col">Tipo</th>
+              <th scope="col">Raza</th>
+              <th scope="col">Sexo</th>
+              <th scope="col">Edad</th>
               <th scope="col" colSpan="2"></th>
             </tr>
           </thead>
