@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { formatDate } from '../../services/utils'
+import TableActions from '../TableActions'
 
 const Consultation = ({ data, deleteConsultation, editConsultation }) => {
 
@@ -19,18 +20,13 @@ const Consultation = ({ data, deleteConsultation, editConsultation }) => {
       <td>{customerName}</td>
       <td>{diagnosis}</td>
       <td className="text-nowrap">{nextAppointment ? formatDate(nextAppointment) : ''}</td>
-      <td style={{ width: '120px' }}>
-        <button
-          className="btn btn-danger"
-          onClick={() => deleteConsultation(data)}
-        >Eliminar</button>
-      </td>
-      <td style={{ width: '120px' }}>
-        <button
-          className="btn btn-info"
-          onClick={() => editConsultation(data)}
-        >Modificar</button>
-      </td>
+
+      <TableActions
+        actionDelete={deleteConsultation}
+        actionEdit={editConsultation}
+        data={data}
+      />
+
     </tr>
   )
 }
