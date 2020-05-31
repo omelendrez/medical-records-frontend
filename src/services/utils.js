@@ -70,8 +70,7 @@ export const paymentMethods = [
   { id: 5, name: 'Otro' }
 ]
 
-export const vaccines = [
-  { id: 0, name: 'N/A' },
+export const vaccinesList = [
   { id: 1, name: 'Triple felina' },
   { id: 2, name: 'Quíntuple' },
   { id: 3, name: 'Séxtuple' },

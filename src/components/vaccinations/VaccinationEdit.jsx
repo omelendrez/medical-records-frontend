@@ -1,37 +1,41 @@
 import React, { useState, useEffect } from 'react'
 import FormFooter from '../FormFooter'
 import FormActions from '../FormActions'
+import Checkbox from '../Checkbox'
 import { getPet } from '../../services/pets'
 import { Redirect } from 'react-router-dom'
 import { saveVaccination, getVaccination } from '../../services/vaccinations'
-import { vaccines } from '../../services/utils'
+import { vaccinesList } from '../../services/utils'
 import './VaccinationForm.css'
 
 const VaccinationEdit = props => {
   const [redirect, setRedirect] = useState('')
   const [error, setError] = useState('')
+  const [pet, setPet] = useState({})
+  const vaccinesState = vaccinesList.map(vaccine => {
+    vaccine.checked = false
+    return vaccine
+  })
+
   const [form, setForm] = useState({
     id: '',
     customerId: '',
     petId: '',
     date: '',
-    vaccination: '',
     nextAppointment: '',
     amount: '',
-    vaccines: []
+    vaccinesState
   })
 
-  const [pet, setPet] = useState({})
 
   useEffect(() => {
     getVaccination(props.match.params.vaccinationId)
       .then(vaccination => {
-        setForm(vaccination)
+        setForm({ ...vaccination, vaccinesState })
         getPet(vaccination.petId)
           .then(pet => setPet(pet))
       })
   }, [props.match.params.vaccinationId])
-
 
   const handleChange = (e => {
     e.preventDefault()
@@ -40,6 +44,20 @@ const VaccinationEdit = props => {
     setForm({
       ...form,
       [id]: value
+    })
+  })
+
+  const handleCheckbox = (e => {
+    error && setError(false)
+    let { id } = e.target
+    const { vaccinesState } = form
+    const newState = vaccinesState.map(vaccine => {
+      vaccine.checked = (vaccine.id === parseInt(id)) ? !vaccine.checked : vaccine.checked
+      return vaccine
+    })
+    setForm({
+      ...form,
+      vaccinesState: newState
     })
   })
 
@@ -67,36 +85,13 @@ const VaccinationEdit = props => {
             <form>
 
               <div className="form-container card p-3 mb-3">
-                <div className="form-group row">
-                  <label htmlFor="vaccination" className="col-sm-2 col-form-label">Vacunacion</label>
-                  <div className="col-sm-10">
-                    <textarea
-                      className="form-control"
-                      id="vaccination"
-                      onChange={e => handleChange(e)}
-                      value={form.vaccination}
-                      rows="2"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="form-container card p-3 mb-3">
-                <div className="form-group row">
-                  <label htmlFor="vaccines" className="col-sm-2 col-form-label">Vacunas</label>
-                  <div className="col-sm-10">
-                    <select
-                      multiple
-                      className="form-control"
-                      id="vaccines"
-                      onChange={e => handleChange(e)}
-                      value={form.vaccines}
-                    >
-                      {
-                        vaccines.map(vaccine => <option key={vaccine.id} value={vaccine.id} > {vaccine.name}</option>)
-                      }
-                    </select>
-                  </div>
-                </div>
+                {vaccinesList.map(vaccine => <Checkbox
+                  key={vaccine.id}
+                  id={`chk${vaccine.id}`}
+                  label={vaccine.name}
+                  handleChange={handleCheckbox}
+                  checked={form.vaccinesState.find(item => vaccine.id === item.id).checked}
+                />)}
               </div>
 
               <FormFooter form={form} handleChange={handleChange} />
