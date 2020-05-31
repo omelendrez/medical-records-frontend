@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import { savePet } from '../../services/pets'
-import { sexList, getDateFromDays } from '../../services/utils'
+import { sexList, getDateFromDays, getDateFromMonths } from '../../services/utils'
 import FormActions from '../FormActions'
 
 const PetForm = props => {
@@ -26,12 +26,25 @@ const PetForm = props => {
     })
   })
 
+  const handleMonthsChange = e => {
+    e.preventDefault()
+    const birthDate = getDateFromMonths(e.target.value)
+    setForm({
+      ...form,
+      birthDate,
+      months: e.target.value,
+      days: ''
+    })
+  }
+
   const handleDaysChange = e => {
     e.preventDefault()
     const birthDate = getDateFromDays(e.target.value)
     setForm({
       ...form,
-      birthDate
+      birthDate,
+      days: e.target.value,
+      months: ''
     })
   }
 
@@ -116,7 +129,7 @@ const PetForm = props => {
                 </div>
               </div>
               <div className="form-row">
-                <div className="col-5">
+                <div className="col">
                   <div className="form-group">
                     <label htmlFor="weight">Peso</label>
                     <input
@@ -129,7 +142,7 @@ const PetForm = props => {
                     />
                   </div>
                 </div>
-                <div className="col-5">
+                <div className="col">
                   <div className="form-group">
                     <label htmlFor="birthDate">Nacimiento</label>
                     <input
@@ -142,13 +155,26 @@ const PetForm = props => {
                     />
                   </div>
                 </div>
-                <div className="col-2">
+                <div className="col">
+                  <div className="form-group">
+                    <label htmlFor="months">Meses</label>
+                    <input
+                      type="number"
+                      id="months"
+                      className="form-control"
+                      value={form.months}
+                      onChange={e => handleMonthsChange(e)}
+                    />
+                  </div>
+                </div>
+                <div className="col">
                   <div className="form-group">
                     <label htmlFor="days">Días</label>
                     <input
                       type="number"
                       id="days"
                       className="form-control"
+                      value={form.days}
                       onChange={e => handleDaysChange(e)}
                     />
                   </div>
