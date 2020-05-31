@@ -102,7 +102,17 @@ export const getDateFromDays = days => {
   }
   let d = new Date();
   d.setDate(d.getDate() - days)
-  return moment(d).format('YYY-MM-DD');
+  return moment(d).format('YYYY-MM-DD');
+}
+
+
+export const getDateFromMonths = months => {
+  if (months < 1) {
+    return ''
+  }
+  let d = new Date();
+  d.setMonth(d.getMonth() - months)
+  return moment(d).format('YYYY-MM-DD');
 }
 
 export const formatNumber = amount => parseFloat(amount).toFixed(2)
