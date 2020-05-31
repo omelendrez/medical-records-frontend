@@ -102,7 +102,16 @@ export const getDateFromDays = days => {
   }
   let d = new Date();
   d.setDate(d.getDate() - days)
-  return moment(d).format('YYY-MM-DD');
+  return moment(d).format('YYYY-MM-DD');
+}
+
+export const getApointmentFromDays = days => {
+  if (days < 1) {
+    return ''
+  }
+  let d = new Date();
+  d.setDate(d.getDate() + days)
+  return moment(d).format('YYYY-MM-DD');
 }
 
 export const formatNumber = amount => parseFloat(amount).toFixed(2)

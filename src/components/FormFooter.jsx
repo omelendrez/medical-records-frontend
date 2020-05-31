@@ -1,6 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { getApointmentFromDays } from '../services/utils'
 
 const FormFooter = ({ form, handleChange }) => {
+  const [days, setDays] = useState('')
+
+  const handleDaysChange = e => {
+    setDays(e.target.value)
+    const event = {
+      target: {
+        name: 'nextAppointment',
+        value: getApointmentFromDays(e.target.value),
+      },
+      preventDefault: () => { }
+    }
+    handleChange(event)
+  }
 
   return (
     <div>
@@ -16,6 +30,18 @@ const FormFooter = ({ form, handleChange }) => {
                 onChange={e => handleChange(e)}
                 value={form.date}
                 required
+              />
+            </div>
+          </div>
+          <div className="col-12 col-sm">
+            <div className="form-group">
+              <label htmlFor="days">Días</label>
+              <input
+                type="number"
+                className="form-control"
+                id="days"
+                onChange={e => handleDaysChange(e)}
+                value={days}
               />
             </div>
           </div>

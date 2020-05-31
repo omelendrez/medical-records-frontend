@@ -39,11 +39,14 @@ const ConsultationForm = props => {
     e.preventDefault()
     error && setError(false)
     let { id, value } = e.target
+    console.log(e.target)
     setForm({
       ...form,
       [id]: value
     })
   })
+
+  console.log(form)
 
   const handleSave = (e => {
     e.preventDefault()
