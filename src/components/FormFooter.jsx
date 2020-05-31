@@ -8,7 +8,7 @@ const FormFooter = ({ form, handleChange }) => {
     setDays(e.target.value)
     const event = {
       target: {
-        name: 'nextAppointment',
+        id: 'nextAppointment',
         value: getApointmentFromDays(e.target.value),
       },
       preventDefault: () => { }

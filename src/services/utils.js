@@ -110,21 +110,23 @@ export const getApointmentFromDays = days => {
     return ''
   }
   let d = new Date();
-  d.setDate(d.getDate() + days)
+  d.setDate(d.getDate() + parseInt(days))
+  return moment(d).format('YYYY-MM-DD');
+}
 
-  export const getDateFromMonths = months => {
-    if (months < 1) {
-      return ''
-    }
-    let d = new Date();
-    d.setMonth(d.getMonth() - months)
-    return moment(d).format('YYYY-MM-DD');
+export const getDateFromMonths = months => {
+  if (months < 1) {
+    return ''
   }
+  let d = new Date();
+  d.setMonth(d.getMonth() - months)
+  return moment(d).format('YYYY-MM-DD');
+}
 
-  export const formatNumber = amount => parseFloat(amount).toFixed(2)
+export const formatNumber = amount => parseFloat(amount).toFixed(2)
 
-  export const getAge = birthDate => moment(birthDate).toNow().replace('en ', '')
+export const getAge = birthDate => moment(birthDate).toNow().replace('en ', '')
 
-  export const formatDate = date => moment(date).format('L')
+export const formatDate = date => moment(date).format('L')
 
-  export const setToday = () => moment(new Date()).format('YYYY-MM-DD')
+export const setToday = () => moment(new Date()).format('YYYY-MM-DD')
