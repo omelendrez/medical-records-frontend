@@ -44,6 +44,10 @@ const CustomerView = props => {
 	}
 
 	useEffect(() => {
+		if (props.location.state.current) {
+			setCurrent(props.location.state.current)
+		}
+
 		getCustomer(props.match.params.id)
 			.then(customer => {
 				setCustomer(customer)

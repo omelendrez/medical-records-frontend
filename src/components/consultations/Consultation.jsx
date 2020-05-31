@@ -13,9 +13,7 @@ const Consultation = ({ data, deleteConsultation, editConsultation }) => {
         {formatDate(date)}
       </td>
       <td>
-        <Link to={`/clientes/${customerId}/${petId}`}>
-          {petName}
-        </Link>
+        <Link to={{ pathname: `/clientes/${customerId}/${petId}`, state: { current: 'consultas' } }}>{petName}</Link>
       </td>
       <td>{customerName}</td>
       <td>{diagnosis}</td>

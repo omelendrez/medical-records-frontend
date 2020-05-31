@@ -13,9 +13,8 @@ const Vaccination = ({ data, deleteVaccination, editVaccination }) => {
                 {formatDate(date)}
             </td>
             <td>
-                <Link to={`/clientes/${customerId}/${petId}`}>
-                    {petName}
-                </Link>
+                <Link to={{ pathname: `/clientes/${customerId}/${petId}`, state: { current: 'vacunaciones' } }}>{petName}</Link>
+
             </td>
             <td>{customerName}</td>
             <td>{vaccination}</td>
