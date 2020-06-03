@@ -44,8 +44,10 @@ const CustomerView = props => {
 	}
 
 	useEffect(() => {
-		if (props.location.state.current) {
+		if (props.location.state && props.location.state.current) {
 			setCurrent(props.location.state.current)
+		} else {
+			setCurrent('consultas')
 		}
 
 		getCustomer(props.match.params.id)
@@ -56,7 +58,7 @@ const CustomerView = props => {
 					selectPet(pet)
 				}
 			})
-	}, [props.match.params.id, props.match.params.petId])
+	}, [props])
 
 	useEffect(() => {
 		getDebt(props.match.params.id)

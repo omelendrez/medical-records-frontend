@@ -50,7 +50,7 @@ const ConsultationForm = props => {
 
   const goBack = () => {
     const { state } = props.location
-    setRedirect(state.from)
+    setRedirect({ pathname: `${state.from}`, state: { current: 'consultas' } })
   }
 
   return (
