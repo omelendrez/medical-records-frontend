@@ -4,7 +4,7 @@ import { getProgrammedVisits } from '../services/consultations'
 import ProgrammedVisits from '../components/consultations/ProgrammedVisits'
 
 const Home = () => {
-  const [consultations, setConsultations] = useState([])
+  const [consultations, setConsultations] = useState({ rows: [] })
 
   useEffect(() => {
     getProgrammedVisits()
@@ -21,7 +21,7 @@ const Home = () => {
         </h1>
       </div>
       <div className="programmed-visits">
-        {rows && <ProgrammedVisits consultations={rows} />}
+        {rows.length > 0 && <ProgrammedVisits consultations={rows} />}
       </div>
     </div>
   )

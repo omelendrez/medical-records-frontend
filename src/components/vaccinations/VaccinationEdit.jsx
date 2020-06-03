@@ -41,7 +41,7 @@ const VaccinationEdit = props => {
         getPet(vaccination.petId)
           .then(pet => setPet(pet))
       })
-  }, [props.match.params.vaccinationId])
+  }, [props.match.params.vaccinationId, vaccinesState])
 
   const handleChange = (e => {
     e.preventDefault()
