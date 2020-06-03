@@ -42,10 +42,13 @@ const VaccinationAdd = props => {
 
   const handleCheckbox = (e => {
     error && setError(false)
-    let { id } = e.target
+    const { id } = e.target
     const { vaccinesState } = form
     const newState = vaccinesState.map(vaccine => {
-      vaccine.checked = (vaccine.id === parseInt(id)) ? !vaccine.checked : vaccine.checked
+      if (vaccine.id === parseInt(id)) {
+        const { checked } = vaccine
+        vaccine = { ...vaccine, checked: !checked }
+      }
       return vaccine
     })
     setForm({
@@ -56,6 +59,11 @@ const VaccinationAdd = props => {
 
   const handleSave = (e => {
     e.preventDefault()
+    const vaccines = form.vaccinesState.filter(vaccine => vaccine.checked).map(vaccine => vaccine.name)
+    if (!vaccines.length) {
+      return setError('Debe seleccionar por lo menos una vacuna')
+    }
+    form.vaccination = vaccines.join(', ')
     saveVaccination(form)
       .then(() => goBack())
       .catch(err => {
@@ -78,13 +86,18 @@ const VaccinationAdd = props => {
             <form>
 
               <div className="form-container card p-3 mb-3">
-                {vaccinesList.map(vaccine => <Checkbox
-                  key={vaccine.id}
-                  id={vaccine.id}
-                  label={vaccine.name}
-                  handleChange={handleCheckbox}
-                  checked={form.vaccinesState.find(item => vaccine.id === item.id).checked}
-                />)}
+                <div className="form-group row">
+                  <label htmlFor="deworming" className="col-sm-2 col-form-label">Vacunas</label>
+                  <div className="col-sm-10">
+                    {vaccinesList.map(vaccine => <Checkbox
+                      key={vaccine.id}
+                      id={vaccine.id}
+                      label={vaccine.name}
+                      handleChange={handleCheckbox}
+                    />)}
+                  </div>
+                </div>
+
               </div>
 
               <FormFooter form={form} handleChange={handleChange} />

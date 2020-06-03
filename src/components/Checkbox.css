@@ -16,6 +16,6 @@ input[type="checkbox"] + label::before {
 }
 
 input[type="checkbox"]:checked+label::before {
-  box-shadow: inset 0px 0px 0px 4px #fff;
+  box-shadow: inset 0px 0px 0px 1px #000;
   background-color: #99CDC5;
 }
