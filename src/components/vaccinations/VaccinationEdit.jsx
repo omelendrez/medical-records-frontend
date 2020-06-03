@@ -41,7 +41,8 @@ const VaccinationEdit = props => {
         getPet(vaccination.petId)
           .then(pet => setPet(pet))
       })
-  }, [props.match.params.vaccinationId, vaccinesState])
+    // eslint-disable-next-line
+  }, [props.match.params.vaccinationId])
 
   const handleChange = (e => {
     e.preventDefault()
