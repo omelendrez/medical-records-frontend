@@ -1,17 +1,45 @@
 import React, { useEffect, useState } from 'react'
 import './Home.css'
-import { getProgrammedVisits } from '../services/consultations'
-import ProgrammedVisits from '../components/consultations/ProgrammedVisits'
+import { getProgrammedVisits as con } from '../services/consultations'
+import { getProgrammedVisits as vac } from '../services/vaccinations'
+import { getProgrammedVisits as dew } from '../services/dewormings'
+import ProgrammedVisits from '../components/ProgrammedVisits'
+
 
 const Home = () => {
-  const [consultations, setConsultations] = useState({ rows: [] })
+  const [appointments, setAppointments] = useState([])
+
+  const updateData = (data, type) => {
+    return data.rows.map(item => {
+      item = { ...item, type }
+      return item
+    })
+  }
 
   useEffect(() => {
-    getProgrammedVisits()
-      .then(consultations => setConsultations(consultations))
+    const updateState = () => {
+      let records = []
+      con()
+        .then(data => {
+          records = [...records, ...updateData(data, 'Consulta')]
+          vac()
+            .then(data => {
+              records = [...records, ...updateData(data, 'Vacunación')]
+            })
+          dew()
+            .then(data => {
+              records = [...records, ...updateData(data, 'Desparasitación')]
+              records.sort((a, b) => {
+                if (a.nextAppointment > b.nextAppointment) return 1
+                if (a.nextAppointment < b.nextAppointment) return -1
+                return 0
+              })
+              setAppointments(records)
+            })
+        })
+    }
+    updateState()
   }, [])
-
-  const { rows } = consultations
 
   return (
     <div className="image">
@@ -21,7 +49,7 @@ const Home = () => {
         </h1>
       </div>
       <div className="programmed-visits">
-        {rows.length > 0 && <ProgrammedVisits consultations={rows} />}
+        {appointments.length > 0 && <ProgrammedVisits appointments={appointments} />}
       </div>
     </div>
   )

@@ -1,18 +1,19 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { formatDate } from '../../services/utils'
+import { formatDate } from '../services/utils'
 
-const ProgrammedVisits = ({ consultations }) => {
+const ProgrammedVisits = ({ appointments }) => {
 	return (
 		<div className="container">
 			<h5 className="header">Visitas Programadas</h5>
 			<table className="table table-sm">
 				<tbody>
-					{consultations
-						.map(consultation => {
-							const { id, customerId, petId, customerName, petName, nextAppointment } = consultation
+					{appointments
+						.map((appointment, index) => {
+							const { customerId, petId, customerName, petName, nextAppointment, type } = appointment
 							return (
-								<tr key={id}>
+								<tr key={index}>
+									<td>{type}</td>
 									<td>{formatDate(nextAppointment)}</td>
 									<td className="name">
 										<Link to={{ pathname: `/clientes/${customerId}/${petId}`, state: { from: '/' } }}>
