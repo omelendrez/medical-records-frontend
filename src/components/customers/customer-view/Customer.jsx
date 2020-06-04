@@ -8,7 +8,7 @@ const Customer = ({ customer, pet, handleAddPet, loadPet, setBack, debt, addCons
 
   return (
     <>
-      <div className="text-center d-none d-sm-block">
+      <div className="text-center d-none d-md-block">
         <div className="card customer">
           <div className="card-body">
             <h5 className="card-title">{name}</h5>
