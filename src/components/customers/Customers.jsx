@@ -88,9 +88,9 @@ const Customers = () => {
     <>
       {showConfirm &&
         <Confirm
-          title="Eliminando cliente"
-          question={`Desea eliminar cliente ${selected.name}?`}
-          okButton="Eliminar"
+          title="Desactivando cliente"
+          question={`¿Desea desactivar cliente ${selected.name}?`}
+          okButton="Desactivar"
           cancelButton="Cancelar"
           cancelDelete={() => setShowConfirm(false)}
           confirmDelete={() => confirmDelete()}

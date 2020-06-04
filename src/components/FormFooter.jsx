@@ -22,7 +22,7 @@ const FormFooter = ({ form, handleChange }) => {
         <div className="form-row">
           <div className="col-12 col-sm">
             <div className="form-group">
-              <label htmlFor="date">Fecha consulta</label>
+              <label htmlFor="date">Fecha visita</label>
               <input
                 type="date"
                 className="form-control"
@@ -35,7 +35,7 @@ const FormFooter = ({ form, handleChange }) => {
           </div>
           <div className="col-12 col-sm">
             <div className="form-group">
-              <label htmlFor="days">Días</label>
+              <label htmlFor="days">Días para próx. turno</label>
               <input
                 type="number"
                 className="form-control"
@@ -60,7 +60,7 @@ const FormFooter = ({ form, handleChange }) => {
           </div>
           <div className="col-12 col-sm">
             <div className="form-group">
-              <label htmlFor="treatment">Valor consulta</label>
+              <label htmlFor="treatment">Valor visita</label>
               <input
                 type="text"
                 className="form-control text-right"

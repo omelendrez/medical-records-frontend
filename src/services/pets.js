@@ -30,7 +30,7 @@ export const savePet = pet => {
 export const deletePet = pet => {
 	return new Promise((resolve, reject) => {
 		const { id } = pet
-		http.delete(`pets/${id}`)
+		http.put(`pets/${id}`)
 			.then(response => {
 				resolve(response.data)
 			})
@@ -41,7 +41,18 @@ export const deletePet = pet => {
 export const restorePet = pet => {
 	return new Promise((resolve, reject) => {
 		const { id } = pet
-		http.put(`pets/${id}`)
+		http.put(`pets/${id}/restore`)
+			.then(response => {
+				resolve(response.data)
+			})
+			.catch(error => reject(error))
+	})
+}
+
+export const destroyPet = pet => {
+	return new Promise((resolve, reject) => {
+		const { id } = pet
+		http.delete(`pets/${id}`)
 			.then(response => {
 				resolve(response.data)
 			})

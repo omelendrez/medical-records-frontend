@@ -40,7 +40,7 @@ export const getVaccination = async id => {
 export const deleteVaccination = vaccination => {
     return new Promise((resolve, reject) => {
         const { id } = vaccination
-        http.delete(`vaccinations/${id}`)
+        http.put(`vaccinations/${id}`)
             .then(response => {
                 resolve(response.data)
             })
@@ -51,7 +51,18 @@ export const deleteVaccination = vaccination => {
 export const restoreVaccination = vaccination => {
     return new Promise((resolve, reject) => {
         const { id } = vaccination
-        http.put(`vaccinations/${id}`)
+        http.put(`vaccinations/${id}/restore`)
+            .then(response => {
+                resolve(response.data)
+            })
+            .catch(error => reject(error))
+    })
+}
+
+export const destroyVaccination = vaccination => {
+    return new Promise((resolve, reject) => {
+        const { id } = vaccination
+        http.delete(`vaccinations/${id}`)
             .then(response => {
                 resolve(response.data)
             })

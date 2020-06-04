@@ -8,7 +8,7 @@ const TableActions = ({ data, actionDelete, actionEdit }) => {
         <button
           className="btn btn-danger"
           onClick={() => actionDelete(data)}
-        >Eliminar</button>
+        >Desactivar</button>
       </td>
       <td style={{ width: '120px' }}>
         <button

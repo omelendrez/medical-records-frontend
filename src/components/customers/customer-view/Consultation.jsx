@@ -29,7 +29,7 @@ const Consultation = ({ consultation, editConsultation, deleteConsultation }) =>
           type="button"
           className="btn btn-danger m-1 float-right"
           onClick={() => deleteConsultation(consultation)}
-        >Eliminar</button>
+        >Desactivar</button>
       </div>
     </div>
   )

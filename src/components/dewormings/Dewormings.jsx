@@ -90,9 +90,9 @@ const Dewormings = () => {
     <>
       {showConfirm &&
         <Confirm
-          title="Eliminando desparasitación"
-          question={`Desea eliminar desparasitación del ${selected.date} del paciente ${selected.petName}?`}
-          okButton="Eliminar"
+          title="Desactivando desparasitación"
+          question={`¿Desea desactivar la desparasitación del ${selected.date} del paciente ${selected.petName}?`}
+          okButton="Desactivar"
           cancelButton="Cancelar"
           cancelDelete={() => setShowConfirm(false)}
           confirmDelete={() => confirmDelete()}

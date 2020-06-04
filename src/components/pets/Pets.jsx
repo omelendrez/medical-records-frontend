@@ -87,9 +87,9 @@ const Pets = () => {
     <>
       {showConfirm &&
         <Confirm
-          title="Eliminando paciente"
-          question={`Desea eliminar paciente ${selected.name}?`}
-          okButton="Eliminar"
+          title="Desactivando paciente"
+          question={`¿Desea desactivar paciente ${selected.name}?`}
+          okButton="Desactivar"
           cancelButton="Cancelar"
           cancelDelete={() => setShowConfirm(false)}
           confirmDelete={() => confirmDelete()}

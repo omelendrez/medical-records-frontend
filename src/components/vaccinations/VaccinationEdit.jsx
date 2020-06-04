@@ -96,12 +96,12 @@ const VaccinationEdit = props => {
       <div className="container-fluid">
         <div className="row">
           <div className="container">
-            <h5 className="my-3">Editando Vacunacion de {pet.name}</h5>
+            <h5 className="my-3">Editando Vacunación de {pet.name}</h5>
             <form>
 
               <div className="form-container card p-3 mb-3">
                 <div className="form-group row">
-                  <label htmlFor="deworming" className="col-sm-2 col-form-label">Vacunas</label>
+                  <label htmlFor="vaccination" className="col-sm-2 col-form-label">Vacunas</label>
                   <div className="col-sm-10">
                     {vaccinesList.map(vaccine => <Checkbox
                       key={vaccine.id}

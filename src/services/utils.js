@@ -1,8 +1,8 @@
-import { getInactiveCustomers, restoreCustomer } from '../services/customers'
-import { getInactivePets, restorePet } from '../services/pets'
-import { getInactiveConsultations, restoreConsultation } from '../services/consultations'
-import { getInactiveDewormings, restoreDeworming } from '../services/dewormings'
-import { getInactiveVaccinations, restoreVaccination } from '../services/vaccinations'
+import { getInactiveCustomers, restoreCustomer, destroyCustomer } from '../services/customers'
+import { getInactivePets, restorePet, destroyPet } from '../services/pets'
+import { getInactiveConsultations, restoreConsultation, destroyConsultation } from '../services/consultations'
+import { getInactiveDewormings, restoreDeworming, destroyDeworming } from '../services/dewormings'
+import { getInactiveVaccinations, restoreVaccination, destroyVaccination } from '../services/vaccinations'
 import moment from 'moment'
 import 'moment/locale/es'
 
@@ -16,7 +16,8 @@ export const fieldsDefault = {
       { name: 'observations', title: 'Observaciones' }
     ],
     getRecords: getInactiveCustomers,
-    restoreRecord: restoreCustomer
+    restoreRecord: restoreCustomer,
+    deleteRecord: destroyCustomer
   },
   pacientes: {
     fields: [
@@ -26,7 +27,8 @@ export const fieldsDefault = {
       { name: 'observations', title: 'Observaciones' }
     ],
     getRecords: getInactivePets,
-    restoreRecord: restorePet
+    restoreRecord: restorePet,
+    deleteRecord: destroyPet
   },
   vacunaciones: {
     fields: [
@@ -36,7 +38,8 @@ export const fieldsDefault = {
       { name: 'nextAppointment', title: 'Próx. Turno', className: "text-nowrap" }
     ],
     getRecords: getInactiveVaccinations,
-    restoreRecord: restoreVaccination
+    restoreRecord: restoreVaccination,
+    deleteRecord: destroyVaccination
   },
   consultas: {
     fields: [
@@ -47,7 +50,8 @@ export const fieldsDefault = {
       { name: 'nextAppointment', title: 'Próx. Turno', className: "text-nowrap" }
     ],
     getRecords: getInactiveConsultations,
-    restoreRecord: restoreConsultation
+    restoreRecord: restoreConsultation,
+    deleteRecord: destroyConsultation
   },
   desparasitaciones: {
     fields: [
@@ -57,7 +61,8 @@ export const fieldsDefault = {
       { name: 'nextAppointment', title: 'Próx. Turno', className: "text-nowrap" }
     ],
     getRecords: getInactiveDewormings,
-    restoreRecord: restoreDeworming
+    restoreRecord: restoreDeworming,
+    deleteRecord: destroyDeworming
   }
 }
 

@@ -104,9 +104,9 @@ const Consultations = ({ pet, current }) => {
 			<div className="consultations">
 				{showConfirm &&
 					<Confirm
-						title="Eliminando consulta"
-						question={`Desea eliminar consulta del ${formatDate(selected.date)} del paciente ${pet.name}?`}
-						okButton="Eliminar"
+						title="Desactivando visita"
+						question={`¿Desea desactivar visita del ${formatDate(selected.date)} del paciente ${pet.name}?`}
+						okButton="Desactivar"
 						cancelButton="Cancelar"
 						cancelDelete={() => setShowConfirm(false)}
 						confirmDelete={() => confirmDelete()}

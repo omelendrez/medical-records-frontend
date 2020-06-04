@@ -164,7 +164,7 @@ const PetForm = props => {
 								</div>
 								<div className="col">
 									<div className="form-group">
-										<label htmlFor="months">Meses</label>
+										<label htmlFor="months">Edad en meses</label>
 										<input
 											type="number"
 											id="months"
@@ -177,7 +177,7 @@ const PetForm = props => {
 
 								<div className="col">
 									<div className="form-group">
-										<label htmlFor="days">Días</label>
+										<label htmlFor="days">Edad en días</label>
 										<input
 											type="number"
 											id="days"

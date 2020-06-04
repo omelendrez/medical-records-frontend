@@ -40,7 +40,7 @@ export const getConsultation = async id => {
 export const deleteConsultation = consultation => {
   return new Promise((resolve, reject) => {
     const { id } = consultation
-    http.delete(`consultations/${id}`)
+    http.put(`consultations/${id}`)
       .then(response => {
         resolve(response.data)
       })
@@ -51,7 +51,18 @@ export const deleteConsultation = consultation => {
 export const restoreConsultation = consultation => {
   return new Promise((resolve, reject) => {
     const { id } = consultation
-    http.put(`consultations/${id}`)
+    http.put(`consultations/${id}/restore`)
+      .then(response => {
+        resolve(response.data)
+      })
+      .catch(error => reject(error))
+  })
+}
+
+export const destroyConsultation = consultation => {
+  return new Promise((resolve, reject) => {
+    const { id } = consultation
+    http.delete(`consultations/${id}`)
       .then(response => {
         resolve(response.data)
       })

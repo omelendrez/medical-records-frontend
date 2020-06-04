@@ -59,7 +59,7 @@ const ConsultationForm = props => {
       <div className="container-fluid">
         <div className="row">
           <div className="container">
-            <h5 className="my-3">Agregando Historia Clínica de {pet.name}</h5>
+            <h5 className="my-3">Agregando Consulta de {pet.name}</h5>
             <form>
 
               <div className="form-container card p-3 mb-3">

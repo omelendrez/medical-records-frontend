@@ -40,7 +40,7 @@ export const getDeworming = async id => {
 export const deleteDeworming = deworming => {
   return new Promise((resolve, reject) => {
     const { id } = deworming
-    http.delete(`dewormings/${id}`)
+    http.put(`dewormings/${id}`)
       .then(response => {
         resolve(response.data)
       })
@@ -51,7 +51,18 @@ export const deleteDeworming = deworming => {
 export const restoreDeworming = deworming => {
   return new Promise((resolve, reject) => {
     const { id } = deworming
-    http.put(`dewormings/${id}`)
+    http.put(`dewormings/${id}/restore`)
+      .then(response => {
+        resolve(response.data)
+      })
+      .catch(error => reject(error))
+  })
+}
+
+export const destroyDeworming = deworming => {
+  return new Promise((resolve, reject) => {
+    const { id } = deworming
+    http.delete(`dewormings/${id}`)
       .then(response => {
         resolve(response.data)
       })

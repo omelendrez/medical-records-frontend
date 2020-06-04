@@ -22,9 +22,15 @@ const Restore = props => {
   const fields = fieldsDefault[table].fields
   const getRecords = fieldsDefault[table].getRecords
   const restoreRecord = fieldsDefault[table].restoreRecord
+  const deleteRecord = fieldsDefault[table].deleteRecord
 
   const handleRestore = record => {
     restoreRecord(record)
+      .then(() => setUpdate(!update))
+  }
+
+  const handleDelete = record => {
+    deleteRecord(record)
       .then(() => setUpdate(!update))
   }
 
@@ -73,6 +79,12 @@ const Restore = props => {
                   className="btn btn-success"
                   onClick={() => handleRestore(record)}
                 >Restaurar</button>
+              </td>
+              <td>
+                <button
+                  className="btn btn-danger"
+                  onClick={() => handleDelete(record)}
+                >Eliminar</button>
               </td>
             </tr>
           ))

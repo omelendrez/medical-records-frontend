@@ -90,9 +90,9 @@ const Vaccinations = () => {
 		<>
 			{showConfirm &&
 				<Confirm
-					title="Eliminando consulta"
-					question={`Desea eliminar vacunacion del ${selected.date} del paciente ${selected.petName}?`}
-					okButton="Eliminar"
+					title="Desactivando vacunación"
+					question={`¿Desea desactivar la vacunación del ${selected.date} del paciente ${selected.petName}?`}
+					okButton="Desactivar"
 					cancelButton="Cancelar"
 					cancelDelete={() => setShowConfirm(false)}
 					confirmDelete={() => confirmDelete()}
@@ -106,7 +106,7 @@ const Vaccinations = () => {
 							<th scope="col">Fecha</th>
 							<th scope="col">Paciente</th>
 							<th scope="col">Cliente</th>
-							<th scope="col">Vacunacion</th>
+							<th scope="col">Vacunación</th>
 							<th scope="col" className="text-nowrap">Próx. Turno</th>
 							<th scope="col" colSpan="2">
 							</th>
