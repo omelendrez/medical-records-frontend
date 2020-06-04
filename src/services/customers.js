@@ -44,7 +44,7 @@ export const saveCustomer = customer => {
 export const deleteCustomer = customer => {
   return new Promise((resolve, reject) => {
     const { id } = customer
-    http.delete(`customers/${id}`)
+    http.put(`customers/${id}`)
       .then(response => {
         resolve(response.data)
       })
@@ -55,7 +55,18 @@ export const deleteCustomer = customer => {
 export const restoreCustomer = customer => {
   return new Promise((resolve, reject) => {
     const { id } = customer
-    http.put(`customers/${id}`)
+    http.put(`customers/${id}/restore`)
+      .then(response => {
+        resolve(response.data)
+      })
+      .catch(error => reject(error))
+  })
+}
+
+export const destroyCustomer = customer => {
+  return new Promise((resolve, reject) => {
+    const { id } = customer
+    http.delete(`customers/${id}`)
       .then(response => {
         resolve(response.data)
       })
