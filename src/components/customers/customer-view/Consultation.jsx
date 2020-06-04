@@ -10,15 +10,14 @@ const Consultation = ({ consultation, editConsultation, deleteConsultation }) =>
       <div className="card-body">
         {amount > 0 && <Balance amount={amount} paid={paid} />}
         <h6 className="card-title">{formatDate(date)}</h6>
-        {anamnesis && <p className="card-text">Anamnesis: {anamnesis}</p>}
-        {clinicalExamination && <p className="card-text">Examen Clinico: {clinicalExamination}</p>}
-        {diagnosis && <p className="card-text">Diagnóstico: {diagnosis}</p>}
-        {treatment && <p className="card-text">Tratamiento: {treatment}</p>}
-        {vaccination && <p className="card-text">Vacunación: {vaccination}</p>}
-        {deworming && <p className="card-text">Desparasitación: {deworming}</p>}
-        {deworming && <p className="card-text">Desparasitación: {deworming}</p>}
-        {treatmentStage && <p className="card-text">Tipo consulta: {getTreatmentStage(treatmentStage)}</p>}
-        {nextAppointment && <h6 className="card-text">Etapa tratamiento: {formatDate(nextAppointment)}</h6>}
+        {anamnesis && <p className="card-text"><b>Anamnesis</b>: {anamnesis}</p>}
+        {clinicalExamination && <p className="card-text"><b>Examen Clinico</b>: {clinicalExamination}</p>}
+        {diagnosis && <p className="card-text"><b>Diagnóstico</b>: {diagnosis}</p>}
+        {treatment && <p className="card-text"><b>Tratamiento</b>: {treatment}</p>}
+        {vaccination && <p className="card-text"><b>Vacunación</b>: {vaccination}</p>}
+        {deworming && <p className="card-text"><b>Desparasitación</b>: {deworming}</p>}
+        {treatmentStage && <p className="card-text"><b>Etapa tratamiento</b>: {getTreatmentStage(treatmentStage)}</p>}
+        {nextAppointment && <h6 className="card-text">Próximo turno: {formatDate(nextAppointment)}</h6>}
       </div>
       <div className="mx-3">
         <button
