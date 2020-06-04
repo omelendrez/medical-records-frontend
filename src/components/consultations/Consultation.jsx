@@ -1,11 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { formatDate } from '../../services/utils'
+import { formatDate, getTreatmentStage } from '../../services/utils'
 import TableActions from '../TableActions'
 
 const Consultation = ({ data, deleteConsultation, editConsultation }) => {
 
-  const { date, petName, customerName, diagnosis, nextAppointment, petId, customerId } = data
+  const { date, petName, customerName, diagnosis, nextAppointment, petId, customerId, treatmentStage } = data
 
   return (
     <tr>
@@ -17,6 +17,7 @@ const Consultation = ({ data, deleteConsultation, editConsultation }) => {
       </td>
       <td>{customerName}</td>
       <td>{diagnosis}</td>
+      <td>{getTreatmentStage(treatmentStage)}</td>
       <td className="text-nowrap">{nextAppointment ? formatDate(nextAppointment) : ''}</td>
 
       <TableActions

@@ -96,6 +96,11 @@ export const getSexName = sexId => { // sexId = Mc
   return sex ? sex.name : '???'
 }
 
+export const getTreatmentStage = stageId => {
+  const stage = treatmentStage.find(stage => parseInt(stageId) === stage.id)
+  return stage ? stage.name : '???'
+}
+
 export const getDateFromDays = days => {
   if (days < 1) {
     return ''

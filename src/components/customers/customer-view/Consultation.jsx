@@ -1,9 +1,9 @@
 import React from 'react'
 import Balance from './Balance'
-import { formatDate } from '../../../services/utils'
+import { formatDate, getTreatmentStage } from '../../../services/utils'
 
 const Consultation = ({ consultation, editConsultation, deleteConsultation }) => {
-  const { id, date, anamnesis, clinicalExamination, diagnosis, treatment, nextAppointment, amount, paid, vaccination, deworming } = consultation
+  const { id, date, anamnesis, clinicalExamination, diagnosis, treatment, nextAppointment, amount, paid, vaccination, deworming, treatmentStage } = consultation
 
   return (
     <div className="card consultation pb-2">
@@ -16,7 +16,9 @@ const Consultation = ({ consultation, editConsultation, deleteConsultation }) =>
         {treatment && <p className="card-text">Tratamiento: {treatment}</p>}
         {vaccination && <p className="card-text">Vacunación: {vaccination}</p>}
         {deworming && <p className="card-text">Desparasitación: {deworming}</p>}
-        {nextAppointment && <h6 className="card-text">Próxima consulta: {formatDate(nextAppointment)}</h6>}
+        {deworming && <p className="card-text">Desparasitación: {deworming}</p>}
+        {treatmentStage && <p className="card-text">Tipo consulta: {getTreatmentStage(treatmentStage)}</p>}
+        {nextAppointment && <h6 className="card-text">Etapa tratamiento: {formatDate(nextAppointment)}</h6>}
       </div>
       <div className="mx-3">
         <button

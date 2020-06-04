@@ -107,6 +107,7 @@ const Consultations = () => {
               <th scope="col">Paciente</th>
               <th scope="col">Cliente</th>
               <th scope="col">Diagnostico</th>
+              <th scope="col">Etapa tratamiento</th>
               <th scope="col" className="text-nowrap">Próx. Turno</th>
               <th scope="col" colSpan="2">
               </th>
