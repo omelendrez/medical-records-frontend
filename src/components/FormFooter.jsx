@@ -20,7 +20,7 @@ const FormFooter = ({ form, handleChange }) => {
     <div>
       <div className="record card p-3 mb-3">
         <div className="form-row">
-          <div className="col-12 col-sm">
+          <div className="col-12 col-md">
             <div className="form-group">
               <label htmlFor="date">Fecha visita</label>
               <input
@@ -33,9 +33,9 @@ const FormFooter = ({ form, handleChange }) => {
               />
             </div>
           </div>
-          <div className="col-12 col-sm">
+          <div className="col-12 col-md">
             <div className="form-group">
-              <label htmlFor="days">Días para próx. turno</label>
+              <label htmlFor="days">Días próx. turno</label>
               <input
                 type="number"
                 className="form-control"
@@ -45,7 +45,7 @@ const FormFooter = ({ form, handleChange }) => {
               />
             </div>
           </div>
-          <div className="col-12 col-sm">
+          <div className="col-12 col-md">
             <div className="form-group">
               <label htmlFor="nextAppointment">Próximo turno</label>
               <input
@@ -58,7 +58,7 @@ const FormFooter = ({ form, handleChange }) => {
               />
             </div>
           </div>
-          <div className="col-12 col-sm">
+          <div className="col-12 col-md">
             <div className="form-group">
               <label htmlFor="treatment">Valor visita</label>
               <input
