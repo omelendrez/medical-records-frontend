@@ -152,5 +152,5 @@ export const saveUser = user => {
 }
 
 export const getUser = () => {
-  return localStorage.getItem('user')
+  return JSON.parse(localStorage.getItem('user'))
 }

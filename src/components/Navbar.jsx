@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import NavLink from './NavLink'
-import { logout } from '../services/utils'
+import { logout, getUser } from '../services/utils'
 
 const Navbar = () => {
+  const [user, setUser] = useState({})
+  useEffect(() => {
+    setUser(getUser())
+  }, [])
+
   const handleLogout = e => {
     e.preventDefault()
     logout()
@@ -19,6 +24,7 @@ const Navbar = () => {
           <NavLink to="/desparasitaciones">Desparasitaciones</NavLink>
           <NavLink to="/deudores">Deudores</NavLink>
         </ul>
+        <div className="text-white mr-2 text-capitalize">{user.name}</div>
         <button
           className="btn btn-warning btn-sm"
           onClick={e => handleLogout(e)}
