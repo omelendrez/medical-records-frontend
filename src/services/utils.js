@@ -115,11 +115,16 @@ export const getDateFromDays = days => {
   return moment(d).format('YYYY-MM-DD')
 }
 
-export const getApointmentFromDays = days => {
+export const getApointmentFromDays = (days, date) => {
   if (days < 1) {
     return ''
   }
   let d = new Date()
+  const arrayDate = date.split('-')
+
+  d.setFullYear(arrayDate[0])
+  d.setDate(arrayDate[2])
+  d.setMonth(parseInt(arrayDate[1]) - 1)
   d.setDate(d.getDate() + parseInt(days))
   return moment(d).format('YYYY-MM-DD')
 }
