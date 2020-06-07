@@ -17,26 +17,25 @@ const Home = () => {
   }
 
   useEffect(() => {
-    const updateState = () => {
+    const updateState = async () => {
       let records = []
-      con()
-        .then(data => {
-          records = [...records, ...updateData(data, 'Consulta')]
-          vac()
-            .then(data => {
-              records = [...records, ...updateData(data, 'Vacunación')]
-            })
-          dew()
-            .then(data => {
-              records = [...records, ...updateData(data, 'Desparasitación')]
-              records.sort((a, b) => {
-                if (a.nextAppointment > b.nextAppointment) return 1
-                if (a.nextAppointment < b.nextAppointment) return -1
-                return 0
-              })
-              setAppointments(records)
-            })
-        })
+
+      let data = await con()
+      records = [...records, ...updateData(data, 'Consulta')]
+
+      data = await vac()
+      records = [...records, ...updateData(data, 'Vacunación')]
+
+      data = await dew()
+      records = [...records, ...updateData(data, 'Desparasitación')]
+
+      records.sort((a, b) => {
+        if (a.nextAppointment > b.nextAppointment) return 1
+        if (a.nextAppointment < b.nextAppointment) return -1
+        return 0
+      })
+
+      setAppointments(records)
     }
     updateState()
   }, [])

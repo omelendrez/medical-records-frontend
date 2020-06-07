@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Home from './components/Home'
@@ -20,37 +20,45 @@ import Vaccinations from './components/vaccinations/Vaccinations'
 import VaccinationAdd from './components/vaccinations/VaccinationAdd'
 import VaccinationEdit from './components/vaccinations/VaccinationEdit'
 import Restore from './components/Restore'
+import Login from './components/users/Login'
+import { getUser } from './services/utils'
 
 function App() {
+  const isLogedIn = !!getUser()
   return (
     <BrowserRouter>
-      <Navbar />
-      <main>
-        <Switch>
-          <Route path="/" component={Home} exact />
-          <Route path="/clientes" exact component={Customers} />
-          <Route path="/clientes/:id" exact component={CustomerView} />
-          <Route path="/clientes/:id/:petId" exact component={CustomerView} />
-          <Route path="/nuevo-cliente" component={CustomerAdd} />
-          <Route path="/edit-cliente/:id" exact component={CustomerEdit} />
-          <Route path="/pacientes" exact component={Pets} />
-          <Route path="/nuevo-paciente/:id" exact component={PetAdd} />
-          <Route path="/edit-paciente/:id" exact component={PetEdit} />
-          <Route path="/consultas" component={Consultations} />
-          <Route path="/edit-consulta/:consultationId" exact component={ConsultationEdit} />
-          <Route path="/nueva-consulta/:customerId/:petId" exact component={ConsultationAdd} />
-          <Route path="/restaurar/:table" exact component={Restore} />
-          <Route path="/deudores" exact component={Debtors} />
-          <Route path="/desparasitaciones" exact component={Dewormings} />
-          <Route path="/edit-desparasitacion/:dewormingId" exact component={DewormingEdit} />
-          <Route path="/nueva-desparasitacion/:customerId/:petId" exact component={DewormingAdd} />
-          <Route path="/vacunaciones" exact component={Vaccinations} />
-          <Route path="/edit-vacunacion/:vaccinationId" exact component={VaccinationEdit} />
-          <Route path="/nueva-vacunacion/:customerId/:petId" exact component={VaccinationAdd} />
-        </Switch>
-      </main>
+      {!isLogedIn && <Login />}
+      {isLogedIn &&
+        <>
+          <Navbar />
+          <main>
+            <Switch>
+              <Route path="/" component={Home} exact />
+              <Route path="/clientes" exact component={Customers} />
+              <Route path="/clientes/:id" exact component={CustomerView} />
+              <Route path="/clientes/:id/:petId" exact component={CustomerView} />
+              <Route path="/nuevo-cliente" component={CustomerAdd} />
+              <Route path="/edit-cliente/:id" exact component={CustomerEdit} />
+              <Route path="/pacientes" exact component={Pets} />
+              <Route path="/nuevo-paciente/:id" exact component={PetAdd} />
+              <Route path="/edit-paciente/:id" exact component={PetEdit} />
+              <Route path="/consultas" component={Consultations} />
+              <Route path="/edit-consulta/:consultationId" exact component={ConsultationEdit} />
+              <Route path="/nueva-consulta/:customerId/:petId" exact component={ConsultationAdd} />
+              <Route path="/restaurar/:table" exact component={Restore} />
+              <Route path="/deudores" exact component={Debtors} />
+              <Route path="/desparasitaciones" exact component={Dewormings} />
+              <Route path="/edit-desparasitacion/:dewormingId" exact component={DewormingEdit} />
+              <Route path="/nueva-desparasitacion/:customerId/:petId" exact component={DewormingAdd} />
+              <Route path="/vacunaciones" exact component={Vaccinations} />
+              <Route path="/edit-vacunacion/:vaccinationId" exact component={VaccinationEdit} />
+              <Route path="/nueva-vacunacion/:customerId/:petId" exact component={VaccinationAdd} />
+            </Switch>
+          </main>
+        </>
+      }
     </BrowserRouter>
-  );
+  )
 }
 
-export default App;
+export default App
