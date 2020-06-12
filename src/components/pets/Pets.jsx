@@ -106,7 +106,7 @@ const Pets = () => {
               <th scope="col">Raza</th>
               <th scope="col">Sexo</th>
               <th scope="col">Edad</th>
-              <th scope="col" colSpan="2"></th>
+              <th scope="col" colSpan="3"></th>
             </tr>
           </thead>
           <tbody>

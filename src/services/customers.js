@@ -1,4 +1,5 @@
 import http from './api'
+import { getUser } from '../services/utils'
 
 const getData = async (url, pagination) => {
   const { filter, limit, curPage: page } = pagination
@@ -32,9 +33,11 @@ export const getDebt = async id => {
 }
 
 export const saveCustomer = customer => {
+  customer.userId = getUser().id
   return new Promise((resolve, reject) => {
     http.post('customers', customer)
       .then(response => {
+        console.log(customer)
         resolve(response.data)
       })
       .catch(error => reject(error))

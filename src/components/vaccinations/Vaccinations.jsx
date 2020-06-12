@@ -108,7 +108,7 @@ const Vaccinations = () => {
 							<th scope="col">Cliente</th>
 							<th scope="col">Vacunación</th>
 							<th scope="col" className="text-nowrap">Próx. Turno</th>
-							<th scope="col" colSpan="2">
+							<th scope="col" colSpan="3">
 							</th>
 						</tr>
 					</thead>

@@ -24,6 +24,7 @@ export const fieldsDefault = {
       { name: 'name', title: 'Nombre' },
       { name: 'type', title: 'Tipo' },
       { name: 'breed', title: 'Raza' },
+      { name: 'sex', title: 'Sexo' },
       { name: 'observations', title: 'Observaciones' }
     ],
     getRecords: getInactivePets,
@@ -144,6 +145,8 @@ export const getAge = birthDate => moment(birthDate).toNow().replace('en ', '')
 
 export const formatDate = date => moment(date).format('L')
 
+export const formatDateFull = dateTime => moment(dateTime).format('l LT')
+
 export const setToday = () => moment(new Date()).format('YYYY-MM-DD')
 
 export const logout = () => {
@@ -159,3 +162,39 @@ export const saveUser = user => {
 export const getUser = () => {
   return JSON.parse(localStorage.getItem('user'))
 }
+
+/*
+
+SELECT JSON_ARRAYAGG(JSON_OBJECT('name', name, 'phone', phone)) from customers;
+
+
+SELECT JSON_OBJECT(
+  'id', c.id,
+  'name', c.name
+  ,'statusList', (SELECT CAST(CONCAT(
+  '[',
+    GROUP_CONCAT(
+      JSON_OBJECT(
+        'id', id, 'name', name
+      )
+    ),
+  ']') AS JSON) FROM `statuses` WHERE id = c.statusId)
+  ) FROM customers c;
+
+ALTER TABLE `vmr`.`accounts`
+ADD COLUMN `userId` INT NULL DEFAULT 0 AFTER `debit`;
+ALTER TABLE `vmr`.`consultations`
+ADD COLUMN `userId` INT NULL DEFAULT 0 AFTER `statusId`;
+ALTER TABLE `vmr`.`customers`
+ADD COLUMN `userId` INT NULL DEFAULT 0 AFTER `statusId`;
+ALTER TABLE `vmr`.`dewormings`
+ADD COLUMN `userId` INT NULL DEFAULT 0 AFTER `statusId`;
+ALTER TABLE `vmr`.`pets`
+ADD COLUMN `userId` INT NULL DEFAULT 0 AFTER `statusId`;
+ALTER TABLE `vmr`.`users`
+ADD COLUMN `userId` INT NULL DEFAULT 0 AFTER `statusId`;
+ALTER TABLE `vmr`.`vaccinations`
+ADD COLUMN `userId` INT NULL DEFAULT 0 AFTER `statusId`;
+
+
+  */

@@ -1,4 +1,5 @@
 import http from './api'
+import { getUser } from '../services/utils'
 
 export const getPets = async pagination => {
 	const { filter, limit, curPage } = pagination
@@ -18,6 +19,7 @@ export const getPet = async id => {
 }
 
 export const savePet = pet => {
+	pet.userId = getUser().id
 	return new Promise((resolve, reject) => {
 		http.post('pets', pet)
 			.then(response => {

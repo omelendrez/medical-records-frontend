@@ -1,4 +1,5 @@
 import http from './api'
+import { getUser } from '../services/utils'
 
 export const getConsultations = async pagination => {
   const { filter, limit, curPage } = pagination
@@ -23,6 +24,7 @@ export const getConsultationsByPet = async id => {
 }
 
 export const saveConsultation = consultation => {
+  consultation.userId = getUser().id
   return new Promise((resolve, reject) => {
     http.post('consultations', consultation)
       .then(response => {
