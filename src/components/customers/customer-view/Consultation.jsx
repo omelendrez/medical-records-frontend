@@ -1,13 +1,17 @@
 import React from 'react'
 import Balance from './Balance'
-import { formatDate, getTreatmentStage } from '../../../services/utils'
+import { formatDate, getTreatmentStage, formatDateFull } from '../../../services/utils'
 
 const Consultation = ({ consultation, editConsultation, deleteConsultation }) => {
-  const { id, date, anamnesis, clinicalExamination, diagnosis, treatment, nextAppointment, amount, paid, vaccination, deworming, treatmentStage } = consultation
+  const { id, date, anamnesis, clinicalExamination, diagnosis, treatment, nextAppointment, amount, paid, vaccination, deworming, treatmentStage, userName, updatedAt } = consultation
 
   return (
     <div className="card consultation pb-2">
       <div className="card-body">
+        <p className="float-right text-capitalize small">
+          <div>{userName || ''}</div>
+          <div>{formatDateFull(updatedAt)}</div>
+        </p>
         {amount > 0 && <Balance amount={amount} paid={paid} />}
         <h6 className="card-title">{formatDate(date)}</h6>
         {anamnesis && <p className="card-text"><b>Anamnesis</b>: {anamnesis}</p>}
