@@ -123,6 +123,7 @@ const Debtors = () => {
       {loading && <Loading />}
       {!loading &&
         <div className="container-fluid">
+          <h3>Deudores</h3>
           <table className="table table-sm table-responsive">
             <thead>
               <tr>

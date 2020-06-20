@@ -100,6 +100,7 @@ const Vaccinations = () => {
 			}
 			{redirect && <Redirect to={redirect} />}
 			<div className="container-fluid">
+				<h3>Vacunaciones</h3>
 				<table className="table table-sm table-responsive">
 					<thead>
 						<tr>

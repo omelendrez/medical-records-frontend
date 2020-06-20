@@ -100,6 +100,7 @@ const Dewormings = () => {
       }
       {redirect && <Redirect to={redirect} />}
       <div className="container-fluid">
+        <h3>Desparasitaciones</h3>
         <table className="table table-sm table-responsive">
           <thead>
             <tr>

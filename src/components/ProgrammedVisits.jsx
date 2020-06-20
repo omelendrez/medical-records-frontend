@@ -5,7 +5,7 @@ import { formatDate } from '../services/utils'
 const ProgrammedVisits = ({ appointments }) => {
 	return (
 		<div className="container">
-			<h5 className="display-4">Visitas Programadas</h5>
+			<h3>Visitas Programadas</h3>
 			<table className="table table-sm table-responsive">
 				<tbody>
 					{appointments
