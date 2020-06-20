@@ -77,7 +77,7 @@ const ConsultationForm = props => {
                       id="anamnesis"
                       onChange={e => handleChange(e)}
                       value={form.anamnesis}
-                      rows="1"
+                      rows="6"
                     />
                   </div>
                 </div>
@@ -89,7 +89,7 @@ const ConsultationForm = props => {
                       id="clinicalExamination"
                       onChange={e => handleChange(e)}
                       value={form.clinicalExamination}
-                      rows="1"
+                      rows="6"
                     />
                   </div>
                 </div>
@@ -101,7 +101,7 @@ const ConsultationForm = props => {
                       id="diagnosis"
                       onChange={e => handleChange(e)}
                       value={form.diagnosis}
-                      rows="1"
+                      rows="6"
                     />
                   </div>
                 </div>
@@ -113,7 +113,7 @@ const ConsultationForm = props => {
                       id="treatment"
                       onChange={e => handleChange(e)}
                       value={form.treatment}
-                      rows="2"
+                      rows="6"
                     />
                   </div>
                 </div>
