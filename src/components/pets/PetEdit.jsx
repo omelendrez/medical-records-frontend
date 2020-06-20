@@ -70,7 +70,7 @@ const PetForm = props => {
 			{back && <Redirect to={`/pacientes`} />}
 			<div className="container">
 				<div className="row">
-					<div className="container col-8">
+					<div className="container col-lg-8">
 						<h1 className="my-3">Editando Paciente</h1>
 						<form>
 							<div className="form-row">

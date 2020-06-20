@@ -17,7 +17,7 @@ const Restore = props => {
   const [pagination, setPagination] = useState(paginationDefault)
   const [loading, setLoading] = useState(false)
 
-  const table = props.match.params.table;
+  const table = props.match.params.table
 
   const fields = fieldsDefault[table].fields
   const getRecords = fieldsDefault[table].getRecords
@@ -64,7 +64,7 @@ const Restore = props => {
 
   return (
     <div className="restore">
-      {rows && <table className="table">
+      {rows && <table className="table table-responsive">
         <thead>
           <tr>
             {fields.map((field, index) => <th scope="col" key={index}>{field.title}</th>)}

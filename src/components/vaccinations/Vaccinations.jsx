@@ -100,7 +100,7 @@ const Vaccinations = () => {
 			}
 			{redirect && <Redirect to={redirect} />}
 			<div className="container-fluid">
-				<table className="table table-sm">
+				<table className="table table-sm table-responsive">
 					<thead>
 						<tr>
 							<th scope="col">Fecha</th>

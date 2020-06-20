@@ -7,7 +7,7 @@ const Modal = props => {
 
   return (
     <div className="local-modal" style={style}>
-      <div className="local-modal-content p-4">
+      <div className="local-modal-content p-4  col-lg-8">
         <div className="local-modal-header">
           <span className="close" onClick={e => toggleModal(e)}>&times;</span>
           <h5>{title}</h5>

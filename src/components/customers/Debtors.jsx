@@ -123,7 +123,7 @@ const Debtors = () => {
       {loading && <Loading />}
       {!loading &&
         <div className="container-fluid">
-          <table className="table table-sm">
+          <table className="table table-sm table-responsive">
             <thead>
               <tr>
                 <th scope="col">Nombre</th>

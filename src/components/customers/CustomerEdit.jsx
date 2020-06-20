@@ -45,7 +45,7 @@ const CustomerForm = props => {
       {back && <Redirect to="/clientes" />}
       <div className="container">
         <div className="row">
-          <div className="container col-8">
+          <div className="container col-lg-8">
             <h1 className="my-3">Editando Cliente</h1>
             <form>
               <div className="form-row">

@@ -38,7 +38,7 @@ const CustomerForm = () => {
       {redirect && <Redirect to={redirect} />}
       <div className="container">
         <div className="row">
-          <div className="container col-8">
+          <div className="container col-lg-8">
             <h1 className="my-3">Nuevo Cliente</h1>
             <form>
               <div className="form-row">

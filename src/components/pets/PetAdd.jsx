@@ -63,7 +63,7 @@ const PetForm = props => {
       <div
         className="container">
         <div className="row">
-          <div className="container col-8">
+          <div className="container col-lg-8">
             <h1 className="my-3">Nuevo Paciente</h1>
             <form>
               <div className="form-row">
