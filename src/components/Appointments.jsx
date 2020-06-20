@@ -3,9 +3,11 @@ import { getProgrammedVisits as con } from '../services/consultations'
 import { getProgrammedVisits as vac } from '../services/vaccinations'
 import { getProgrammedVisits as dew } from '../services/dewormings'
 import ProgrammedVisits from '../components/ProgrammedVisits'
+import Loading from './Loading'
 
 const Appointments = () => {
   const [appointments, setAppointments] = useState([])
+  const [loading, setLoading] = useState(false)
 
   const updateData = (data, type) => {
     return data.rows.map(item => {
@@ -15,6 +17,7 @@ const Appointments = () => {
   }
 
   useEffect(() => {
+    setLoading(true)
     const updateState = async () => {
       let records = []
 
@@ -34,9 +37,13 @@ const Appointments = () => {
       })
 
       setAppointments(records)
+      setLoading(false)
     }
     updateState()
+
   }, [])
+
+  if (loading) return <Loading />
 
   return (
     <div className="programmed-visits">
