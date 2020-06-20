@@ -45,6 +45,7 @@ const CustomerView = props => {
 
 	useEffect(() => {
 		if (props.location.state && props.location.state.current) {
+			console.log(props.location.state)
 			setCurrent(props.location.state.current)
 		} else {
 			setCurrent('consultas')

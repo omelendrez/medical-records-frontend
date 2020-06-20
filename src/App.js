@@ -21,6 +21,7 @@ import VaccinationAdd from './components/vaccinations/VaccinationAdd'
 import VaccinationEdit from './components/vaccinations/VaccinationEdit'
 import Restore from './components/Restore'
 import Login from './components/users/Login'
+import Appointments from './components/Appointments.jsx'
 import { getUser } from './services/utils'
 
 function App() {
@@ -53,6 +54,7 @@ function App() {
               <Route path="/vacunaciones" exact component={Vaccinations} />
               <Route path="/edit-vacunacion/:vaccinationId" exact component={VaccinationEdit} />
               <Route path="/nueva-vacunacion/:customerId/:petId" exact component={VaccinationAdd} />
+              <Route path="/turnos" exact component={Appointments} />
             </Switch>
           </main>
         </>
