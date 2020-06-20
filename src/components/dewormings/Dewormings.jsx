@@ -20,7 +20,7 @@ const Dewormings = () => {
   const [selected, setSelected] = useState({})
   const [redirect, setRedirect] = useState('')
   const [pagination, setPagination] = useState(paginationDefault)
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const updateState = () => {

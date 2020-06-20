@@ -18,7 +18,7 @@ const Debtors = () => {
 
   const [debtors, setDebtors] = useState({ rows: [] })
   const [pagination, setPagination] = useState(paginationDefault)
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
   const [showModal, setShowModal] = useState(false)
   const [debtor, setDebtor] = useState({})
   const [form, setForm] = useState({ credit: 0, date: '' })

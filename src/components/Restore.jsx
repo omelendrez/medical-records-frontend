@@ -15,7 +15,7 @@ const Restore = props => {
   const [error, setError] = useState('')
   const [update, setUpdate] = useState(false)
   const [pagination, setPagination] = useState(paginationDefault)
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   const table = props.match.params.table
 

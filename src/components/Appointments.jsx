@@ -7,7 +7,7 @@ import Loading from './Loading'
 
 const Appointments = () => {
   const [appointments, setAppointments] = useState([])
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   const updateData = (data, type) => {
     return data.rows.map(item => {
