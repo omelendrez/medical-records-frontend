@@ -67,7 +67,7 @@ const PetForm = props => {
             <h1 className="my-3">Nuevo Paciente</h1>
             <form>
               <div className="form-row">
-                <div className="col">
+                <div className="col-md-6">
                   <div className="form-group">
                     <label htmlFor="name">Nombre del Paciente</label>
                     <input
@@ -80,7 +80,7 @@ const PetForm = props => {
                     />
                   </div>
                 </div>
-                <div className="col">
+                <div className="col-md-6">
                   <div className="form-group">
                     <label htmlFor="type">Tipo</label>
                     <input
@@ -95,7 +95,7 @@ const PetForm = props => {
                 </div>
               </div>
               <div className="form-row">
-                <div className="col">
+                <div className="col-md-6">
                   <div className="form-group">
                     <label htmlFor="breed">Raza</label>
                     <input
@@ -108,7 +108,7 @@ const PetForm = props => {
                     />
                   </div>
                 </div>
-                <div className="col">
+                <div className="col-md-6">
                   <div className="form-group">
                     <label htmlFor="sex">Sexo</label>
                     <select
@@ -129,7 +129,7 @@ const PetForm = props => {
                 </div>
               </div>
               <div className="form-row">
-                <div className="col">
+                <div className="col-md-3">
                   <div className="form-group">
                     <label htmlFor="weight">Peso</label>
                     <input
@@ -142,7 +142,7 @@ const PetForm = props => {
                     />
                   </div>
                 </div>
-                <div className="col">
+                <div className="col-md-3">
                   <div className="form-group">
                     <label htmlFor="birthDate">Nacimiento</label>
                     <input
@@ -155,7 +155,7 @@ const PetForm = props => {
                     />
                   </div>
                 </div>
-                <div className="col">
+                <div className="col-md-3">
                   <div className="form-group">
                     <label htmlFor="months">Edad en meses</label>
                     <input
@@ -167,7 +167,7 @@ const PetForm = props => {
                     />
                   </div>
                 </div>
-                <div className="col">
+                <div className="col-md-3">
                   <div className="form-group">
                     <label htmlFor="days">Edad en días</label>
                     <input

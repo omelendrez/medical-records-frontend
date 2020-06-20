@@ -49,7 +49,7 @@ const CustomerForm = props => {
             <h1 className="my-3">Editando Cliente</h1>
             <form>
               <div className="form-row">
-                <div className="col">
+                <div className="col-md-6">
                   <div className="form-group">
                     <label htmlFor="name">Nombre y apellido</label>
                     <input
@@ -62,7 +62,7 @@ const CustomerForm = props => {
                     />
                   </div>
                 </div>
-                <div className="col">
+                <div className="col-md-6">
                   <div className="form-group">
                     <label htmlFor="address">Domicilio</label>
                     <input
@@ -77,7 +77,7 @@ const CustomerForm = props => {
                 </div>
               </div>
               <div className="form-row">
-                <div className="col">
+                <div className="col-md-6">
                   <div className="form-group">
                     <label htmlFor="phone">Teléfono</label>
                     <input
@@ -90,7 +90,7 @@ const CustomerForm = props => {
                     />
                   </div>
                 </div>
-                <div className="col">
+                <div className="col-md-6">
                   <div className="form-group">
                     <label htmlFor="email">Email</label>
                     <input
