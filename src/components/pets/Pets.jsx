@@ -5,6 +5,7 @@ import Confirm from '../Confirm'
 import Pagination from '../Pagination'
 import Loading from '../Loading'
 import { getPets, deletePet } from '../../services/pets'
+import { readOnly } from '../../services/utils'
 
 const Pets = () => {
   const [filter, setFilter] = useState('')
@@ -141,16 +142,19 @@ const Pets = () => {
           <div className="col-4">
             {totPages > 1 && <Pagination pagination={pagination} changePage={changePage} />}
           </div>
-          <div className="col-4">
-            <div className="float-right">
-              <button
-                className="btn btn-outline-secondary"
-                onClick={() => handleRestore()}
-              >
-                Restaurar
+
+          {!readOnly() &&
+            <div className="col-4">
+              <div className="float-right">
+                <button
+                  className="btn btn-outline-secondary"
+                  onClick={() => handleRestore()}
+                >
+                  Restaurar
               </button>
+              </div>
             </div>
-          </div>
+          }
         </div>
       </div>
     </>

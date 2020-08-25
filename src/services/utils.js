@@ -164,7 +164,8 @@ export const getUser = () => {
 }
 
 export const readOnly = () => {
-  return JSON.parse(localStorage.getItem('user').toLocaleLowerCase() !== 'visitante')
+  const user = JSON.parse(localStorage.getItem('user'))
+  return user.name.toLocaleLowerCase() === 'visitante'
 }
 
 /*

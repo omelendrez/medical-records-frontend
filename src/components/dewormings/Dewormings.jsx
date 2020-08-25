@@ -5,6 +5,7 @@ import Confirm from '../Confirm'
 import Pagination from '../Pagination'
 import Loading from '../Loading'
 import { getDewormings, deleteDeworming } from '../../services/dewormings'
+import { readOnly } from '../../services/utils'
 
 const Dewormings = () => {
   const [filter, setFilter] = useState('')
@@ -145,15 +146,17 @@ const Dewormings = () => {
             {totPages > 1 && <Pagination pagination={pagination} changePage={changePage} />}
           </div>
 
-          <div className="col-4">
-            <div className="float-right">
-              <button
-                className="btn btn-outline-secondary"
-                onClick={() => handleRestore()}>
-                Restaurar
+          {!readOnly() &&
+            <div className="col-4">
+              <div className="float-right">
+                <button
+                  className="btn btn-outline-secondary"
+                  onClick={() => handleRestore()}>
+                  Restaurar
               </button>
+              </div>
             </div>
-          </div>
+          }
         </div>
       </div>
     </>
