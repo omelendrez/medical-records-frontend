@@ -1,4 +1,5 @@
 import React from 'react'
+import { readOnly } from '../../../services/utils'
 
 const PetsList = ({ pet, pets, loadPet, handleAddPet }) => {
 
@@ -28,13 +29,15 @@ const PetsList = ({ pet, pets, loadPet, handleAddPet }) => {
       {
         !pets.length && <div className="alert alert-warning my-3">No tiene mascotas</div>
       }
-      <div className="text-center">
-        <button
-          type="button"
-          className="btn btn-link btn-sm mt-4"
-          onClick={e => handleAddPet(e)}
-        >Agregar paciente</button>
-      </div>
+      {!readOnly() &&
+        <div className="text-center">
+          <button
+            type="button"
+            className="btn btn-link btn-sm mt-4"
+            onClick={e => handleAddPet(e)}
+          >Agregar paciente</button>
+        </div>
+      }
 
     </div >
 

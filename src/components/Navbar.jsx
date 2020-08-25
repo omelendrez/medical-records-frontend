@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import NavLink from './NavLink'
-import { logout, getUser } from '../services/utils'
+import { logout, getUser, readOnly } from '../services/utils'
 
 const Navbar = () => {
   const [user, setUser] = useState({})
+  const disabled = readOnly()
 
   useEffect(() => {
     setUser(getUser())
@@ -46,7 +47,7 @@ const Navbar = () => {
           <NavLink to="/consultas">Consultas</NavLink>
           <NavLink to="/vacunaciones">Vacunaciones</NavLink>
           <NavLink to="/desparasitaciones">Desparasitaciones</NavLink>
-          <NavLink to="/deudores">Deudores</NavLink>
+          {!disabled && <NavLink to="/deudores">Deudores</NavLink>}
         </ul>
         <div className="text-white mr-2 text-capitalize">{user.name}</div>
         <button

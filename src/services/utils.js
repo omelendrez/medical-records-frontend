@@ -163,6 +163,10 @@ export const getUser = () => {
   return JSON.parse(localStorage.getItem('user'))
 }
 
+export const readOnly = () => {
+  return JSON.parse(localStorage.getItem('user').toLocaleLowerCase() !== 'visitante')
+}
+
 /*
 
 SELECT JSON_ARRAYAGG(JSON_OBJECT('name', name, 'phone', phone)) from customers;

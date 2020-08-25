@@ -5,6 +5,7 @@ import Confirm from '../Confirm'
 import Pagination from '../Pagination'
 import Loading from '../Loading'
 import { getConsultations, deleteConsultation } from '../../services/consultations'
+import { readOnly } from '../../services/utils'
 
 const Consultations = () => {
   const [filter, setFilter] = useState('')
@@ -146,15 +147,17 @@ const Consultations = () => {
             {totPages > 1 && <Pagination pagination={pagination} changePage={changePage} />}
           </div>
 
-          <div className="col-4">
-            <div className="float-right">
-              <button
-                className="btn btn-outline-secondary"
-                onClick={() => handleRestore()}>
-                Restaurar
+          {!readOnly() &&
+            <div className="col-4">
+              <div className="float-right">
+                <button
+                  className="btn btn-outline-secondary"
+                  onClick={() => handleRestore()}>
+                  Restaurar
               </button>
+              </div>
             </div>
-          </div>
+          }
         </div>
       </div>
     </>

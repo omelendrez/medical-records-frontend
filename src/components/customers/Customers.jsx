@@ -5,6 +5,7 @@ import Confirm from '../Confirm'
 import Pagination from '../Pagination'
 import Loading from '../Loading'
 import { getCustomers, deleteCustomer } from '../../services/customers'
+import { readOnly } from '../../services/utils'
 
 const Customers = () => {
   const [filter, setFilter] = useState('')
@@ -108,10 +109,12 @@ const Customers = () => {
               <th scope="col" style={{ width: '400px' }}>Teléfono</th>
               <th scope="col" style={{ width: '100px' }}>Observaciones</th>
               <th scope="col" colSpan="3">
-                <button
-                  className="btn btn-primary my-1 float-right text-nowrap"
-                  onClick={() => handleAdd()}
-                >Agregar Cliente</button>
+                {!readOnly() &&
+                  <button
+                    className="btn btn-primary my-1 float-right text-nowrap"
+                    onClick={() => handleAdd()}
+                  >Agregar Cliente</button>
+                }
               </th>
             </tr>
           </thead>
@@ -146,17 +149,18 @@ const Customers = () => {
           <div className="col-4">
             {totPages > 1 && <Pagination pagination={pagination} changePage={changePage} />}
           </div>
-
-          <div className="col-4">
-            <div className="float-right">
-              <button
-                className="btn btn-outline-secondary"
-                onClick={() => handleRestore()}
-              >
-                Restaurar
+          {!readOnly() &&
+            <div className="col-4">
+              <div className="float-right">
+                <button
+                  className="btn btn-outline-secondary"
+                  onClick={() => handleRestore()}
+                >
+                  Restaurar
               </button>
+              </div>
             </div>
-          </div>
+          }
         </div>
       </div>
     </>

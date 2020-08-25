@@ -1,7 +1,8 @@
 import React from 'react'
+import { readOnly } from '../services/utils'
 
 const TableActions = ({ data, actionDelete, actionEdit }) => {
-
+  if (readOnly()) return null
   return (
     <>
       <td style={{ width: '120px' }}>

@@ -4,6 +4,7 @@ import Customer from './customer-view/Customer'
 import Consultations from './customer-view/Consultations'
 import { getCustomer, getDebt } from '../../services/customers'
 import { getPet } from '../../services/pets'
+import { readOnly } from '../../services/utils'
 import './CustomerView.css'
 
 const TabItem = ({ option, title, current, setCurrent }) => {
@@ -139,29 +140,31 @@ const CustomerView = props => {
 									setCurrent={setCurrent}
 								/>
 							</ul>
-							<div className="flex-last">
-								{current === 'consultas' &&
-									<button
-										type="button"
-										className="btn btn-primary btn-block"
-										onClick={e => handleAddConsultation(e)}
-									>+ Consulta</button>
-								}
-								{current === 'vacunaciones' &&
-									<button
-										type="button"
-										className="btn btn-primary btn-block"
-										onClick={e => handleAddVaccination(e)}
-									>+ Vacunación</button>
-								}
-								{current === 'desparasitaciones' &&
-									<button
-										type="button"
-										className="btn btn-primary btn-block"
-										onClick={e => handleAddDeworming(e)}
-									>+ Desparasitación</button>
-								}
-							</div>
+							{!readOnly() &&
+								<div className="flex-last">
+									{current === 'consultas' &&
+										<button
+											type="button"
+											className="btn btn-primary btn-block"
+											onClick={e => handleAddConsultation(e)}
+										>+ Consulta</button>
+									}
+									{current === 'vacunaciones' &&
+										<button
+											type="button"
+											className="btn btn-primary btn-block"
+											onClick={e => handleAddVaccination(e)}
+										>+ Vacunación</button>
+									}
+									{current === 'desparasitaciones' &&
+										<button
+											type="button"
+											className="btn btn-primary btn-block"
+											onClick={e => handleAddDeworming(e)}
+										>+ Desparasitación</button>
+									}
+								</div>
+							}
 						</div>
 						<div className="mt-1">
 							<Consultations pet={pet} current={current} />
