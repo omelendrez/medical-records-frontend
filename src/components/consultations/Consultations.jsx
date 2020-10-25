@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import Consultation from './Consultation'
+import TableHeader from '../table/TableHeader'
 import Confirm from '../Confirm'
-import Pagination from '../Pagination'
 import Loading from '../Loading'
 import { getConsultations, deleteConsultation } from '../../services/consultations'
-import { readOnly } from '../../services/utils'
 
 const Consultations = () => {
   const [filter, setFilter] = useState('')
@@ -102,6 +101,15 @@ const Consultations = () => {
       {redirect && <Redirect to={redirect} />}
       <div className="container-fluid">
         <h3>Consultas</h3>
+        <TableHeader
+          handleChange={handleChange}
+          filter={filter}
+          handleClick={handleClick}
+          totPages={totPages}
+          pagination={pagination}
+          changePage={changePage}
+          handleRestore={handleRestore}
+        />
         <table className="table table-sm table-responsive">
           <thead>
             <tr>
@@ -127,38 +135,6 @@ const Consultations = () => {
             )}
           </tbody>
         </table>
-        <div className="row">
-          <div className="col-4">
-            <form className="form-inline">
-              <input
-                className="form-control mr-sm-2"
-                type="search"
-                aria-label="Search"
-                onChange={e => handleChange(e)}
-                value={filter}
-              />
-              <button
-                className="btn btn-warning"
-                onClick={e => handleClick(e)}
-              >Buscar</button>
-            </form>
-          </div>
-          <div className="col-4">
-            {totPages > 1 && <Pagination pagination={pagination} changePage={changePage} />}
-          </div>
-
-          {!readOnly() &&
-            <div className="col-4">
-              <div className="float-right">
-                <button
-                  className="btn btn-outline-secondary"
-                  onClick={() => handleRestore()}>
-                  Restaurar
-              </button>
-              </div>
-            </div>
-          }
-        </div>
       </div>
     </>
   )

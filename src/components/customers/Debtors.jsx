@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Pagination from '../Pagination'
+import TableHeader from '../table/TableHeader'
 import Loading from '../Loading'
 import Modal from '../Modal'
 import { getDebtors } from '../../services/customers'
@@ -124,6 +124,14 @@ const Debtors = () => {
       {!loading &&
         <div className="container-fluid">
           <h3>Deudores</h3>
+          <TableHeader
+            handleChange={handleChange}
+            filter={filter}
+            handleClick={handleClick}
+            totPages={totPages}
+            pagination={pagination}
+            changePage={changePage}
+          />
           <table className="table table-sm table-responsive">
             <thead>
               <tr>
@@ -154,26 +162,6 @@ const Debtors = () => {
                 )}
             </tbody>
           </table>
-          <div className="row">
-            <div className="col-4">
-              <form className="form-inline">
-                <input
-                  className="form-control mr-sm-2"
-                  type="search"
-                  aria-label="Search"
-                  onChange={e => handleChange(e)}
-                  value={filter}
-                />
-                <button
-                  className="btn btn-warning"
-                  onClick={e => handleClick(e)}
-                >Buscar</button>
-              </form>
-            </div>
-            <div className="col-4">
-              {totPages > 1 && <Pagination pagination={pagination} changePage={changePage} />}
-            </div>
-          </div>
         </div>
       }
       <Modal
