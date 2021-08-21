@@ -136,6 +136,24 @@ export const getTreatmentStage = (stageId) => {
   return stage ? stage.name : "???";
 };
 
+export const getDateFromYears = (years) => {
+  if (years < 1) {
+    return "";
+  }
+  let d = new Date();
+  d.setFullYear(d.getFullYear() - years);
+  return moment(d).format("YYYY-MM-DD");
+};
+
+export const getDateFromMonths = (months) => {
+  if (months < 1) {
+    return "";
+  }
+  let d = new Date();
+  d.setMonth(d.getMonth() - months);
+  return moment(d).format("YYYY-MM-DD");
+};
+
 export const getDateFromDays = (days) => {
   if (days < 1) {
     return "";
@@ -156,15 +174,6 @@ export const getApointmentFromDays = (days, date) => {
   d.setDate(arrayDate[2]);
   d.setMonth(parseInt(arrayDate[1]) - 1);
   d.setDate(d.getDate() + parseInt(days));
-  return moment(d).format("YYYY-MM-DD");
-};
-
-export const getDateFromMonths = (months) => {
-  if (months < 1) {
-    return "";
-  }
-  let d = new Date();
-  d.setMonth(d.getMonth() - months);
   return moment(d).format("YYYY-MM-DD");
 };
 
