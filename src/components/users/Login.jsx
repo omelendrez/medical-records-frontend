@@ -58,7 +58,7 @@ const Login = () => {
             className="btn btn-primary"
             onClick={e => handlelogin(e)}
           >Login</button>
-          {error.length > 0 && <div className="alert alert-danger mt-3" role="alert">{error}</div>}
+          {error?.length > 0 && <div className="alert alert-danger mt-3" role="alert">{error}</div>}
         </div>
         <div className="col"></div>
       </div>
