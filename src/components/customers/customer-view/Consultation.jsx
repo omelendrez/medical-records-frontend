@@ -1,6 +1,6 @@
 import React from 'react'
 import Balance from './Balance'
-import { formatDate, getTreatmentStage, formatDateFull, readOnly } from '../../../services/utils'
+import { formatDate, getTreatmentStage, formatDateFull, isReadOnly } from '../../../services/utils'
 
 const Consultation = ({ consultation, editConsultation, deleteConsultation }) => {
   const { id, date, anamnesis, clinicalExamination, diagnosis, treatment, nextAppointment, amount, paid, vaccination, deworming, treatmentStage, userName, updatedAt } = consultation
@@ -12,7 +12,7 @@ const Consultation = ({ consultation, editConsultation, deleteConsultation }) =>
           <div>{userName || ''}</div>
           <div>{formatDateFull(updatedAt)}</div>
         </p>
-        {!readOnly() && amount > 0 && <Balance amount={amount} paid={paid} />}
+        {!isReadOnly() && amount > 0 && <Balance amount={amount} paid={paid} />}
         <h6 className="card-title">{formatDate(date)}</h6>
         {anamnesis && <p className="card-text"><b>Anamnesis</b>: {anamnesis}</p>}
         {clinicalExamination && <p className="card-text"><b>Examen Clinico</b>: {clinicalExamination}</p>}
@@ -23,7 +23,7 @@ const Consultation = ({ consultation, editConsultation, deleteConsultation }) =>
         {treatmentStage && <p className="card-text"><b>Etapa tratamiento</b>: {getTreatmentStage(treatmentStage)}</p>}
         {nextAppointment && <h6 className="card-text">Próximo turno: {formatDate(nextAppointment)}</h6>}
       </div>
-      {!readOnly() &&
+      {!isReadOnly() &&
         <div className="mx-3">
           <button
             type="button"

@@ -5,7 +5,7 @@ import Confirm from '../Confirm'
 import TableHeader from '../table/TableHeader'
 import Loading from '../Loading'
 import { getCustomers, deleteCustomer } from '../../services/customers'
-import { readOnly } from '../../services/utils'
+import { isReadOnly } from '../../services/utils'
 
 const Customers = () => {
   const [filter, setFilter] = useState('')
@@ -118,7 +118,7 @@ const Customers = () => {
               <th scope="col" style={{ width: '400px' }}>Teléfono</th>
               <th scope="col" style={{ width: '100px' }}>Observaciones</th>
               <th scope="col" colSpan="3">
-                {!readOnly() &&
+                {!isReadOnly() &&
                   <button
                     className="btn btn-primary my-1 float-right text-nowrap"
                     onClick={() => handleAdd()}

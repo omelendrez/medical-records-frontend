@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from "react";
-import NavLink from "./NavLink";
-import { logout, getUser, readOnly } from "../services/utils";
+import React, { useEffect, useState } from "react"
+import NavLink from "./NavLink"
+import { logout, getUser, isReadOnly, isAdmin } from "../services/utils"
 
 const Navbar = () => {
-  const [user, setUser] = useState({});
-  const [isSmallDevice, setIsSmallDevice] = useState(false);
-  const disabled = readOnly();
+  const [user, setUser] = useState({})
+  const [isSmallDevice, setIsSmallDevice] = useState(false)
+  const disabled = isReadOnly()
 
   useEffect(() => {
-    setUser(getUser());
-    window.onresize = windowResize;
-  }, []);
+    setUser(getUser())
+    window.onresize = windowResize
+  }, [])
 
   const handleLogout = (e) => {
-    e.preventDefault();
-    logout();
-  };
-  const windowResize = () => setIsSmallDevice(window.innerWidth < 768);
+    e.preventDefault()
+    logout()
+  }
+  const windowResize = () => setIsSmallDevice(window.innerWidth < 768)
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -46,6 +46,7 @@ const Navbar = () => {
           <NavLink to="/vacunaciones">Vacunaciones</NavLink>
           <NavLink to="/desparasitaciones">Desparasitaciones</NavLink>
           {!disabled && <NavLink to="/deudores">Deudores</NavLink>}
+          {isAdmin() && <NavLink to="/users">Users</NavLink>}
         </ul>
         <div className="text-white mr-2 text-capitalize">{user.name}</div>
         <button
@@ -56,7 +57,7 @@ const Navbar = () => {
         </button>
       </div>
     </nav>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

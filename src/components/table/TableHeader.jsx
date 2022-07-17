@@ -1,7 +1,7 @@
-import React from "react";
-import Pagination from "../Pagination";
-import { readOnly } from "../../services/utils";
-import "./TableHeader.css";
+import React from "react"
+import Pagination from "../Pagination"
+import { isReadOnly } from "../../services/utils"
+import "./TableHeader.css"
 
 export default function TableHeader({
   handleChange,
@@ -11,7 +11,7 @@ export default function TableHeader({
   changePage,
   handleRestore,
 }) {
-  const smallDevice = window.innerWidth < 768;
+  const smallDevice = window.innerWidth < 768
   return (
     <div className="table-header">
       <div>
@@ -34,7 +34,7 @@ export default function TableHeader({
         </div>
       )}
 
-      {!readOnly() && handleRestore && (
+      {!isReadOnly() && handleRestore && (
         <div>
           <button
             className="btn btn-outline-secondary"
@@ -45,5 +45,5 @@ export default function TableHeader({
         </div>
       )}
     </div>
-  );
+  )
 }

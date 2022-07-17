@@ -1,5 +1,5 @@
 import React from 'react'
-import { readOnly } from '../../../services/utils'
+import { isReadOnly } from '../../../services/utils'
 
 const PetsList = ({ pet, pets, loadPet, handleAddPet }) => {
 
@@ -29,7 +29,7 @@ const PetsList = ({ pet, pets, loadPet, handleAddPet }) => {
       {
         !pets.length && <div className="alert alert-warning my-3">No tiene mascotas</div>
       }
-      {!readOnly() &&
+      {!isReadOnly() &&
         <div className="text-center">
           <button
             type="button"

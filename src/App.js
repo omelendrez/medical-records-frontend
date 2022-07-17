@@ -21,11 +21,13 @@ import VaccinationAdd from './components/vaccinations/VaccinationAdd'
 import VaccinationEdit from './components/vaccinations/VaccinationEdit'
 import Restore from './components/Restore'
 import Login from './components/users/Login'
-import Appointments from './components/Appointments.jsx'
+import Appointments from './components/Appointments'
+import Users from './components/admin/Users'
 import { getUser } from './services/utils'
 
 function App() {
-  const isLogedIn = !!getUser()
+  const user = getUser()
+  const isLogedIn = !!user
   return (
     <BrowserRouter>
       {!isLogedIn && <Login />}
@@ -55,6 +57,7 @@ function App() {
               <Route path="/edit-vacunacion/:vaccinationId" exact component={VaccinationEdit} />
               <Route path="/nueva-vacunacion/:customerId/:petId" exact component={VaccinationAdd} />
               <Route path="/turnos" exact component={Appointments} />
+              <Route path="/users" exact component={Users} />
             </Switch>
           </main>
         </>

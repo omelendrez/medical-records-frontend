@@ -178,7 +178,7 @@ const Debtors = () => {
               <input
                 type="number"
                 className="form-control text-right"
-                readOnly={true}
+                isReadOnly={true}
                 id="amount"
                 onChange={e => handleChangeForm(e)}
                 value={parseFloat(form.balance).toFixed(2)}
